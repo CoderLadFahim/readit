@@ -31,6 +31,7 @@ export const postsSlice = createSlice({
 				fetchPosts.fulfilled,
 				(
 					state,
+					// Destructuring the children property from action.payload.data.children
 					{
 						payload: {
 							data: { children },
