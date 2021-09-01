@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchPosts } from './features/posts/postsSlice';
 import { fetchSubreddits } from './features/subreddits/subredditSlice';
+import { fetchCommentsByPermalink } from './features/subreddits/subredditSlice';
 import './App.css';
 
 function App() {
