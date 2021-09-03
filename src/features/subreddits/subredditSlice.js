@@ -47,8 +47,4 @@ export const subredditsSlice = createSlice({
 	},
 });
 
-// Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } =
-	subredditsSlice.actions;
-
 export default subredditsSlice.reducer;
