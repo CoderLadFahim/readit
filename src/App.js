@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { usePosts, useSubreddits, useComments } from './hooks';
@@ -11,24 +10,8 @@ function App() {
 		'/r/3amjokes/comments/p45vw7/my_buddy_got_arrested_on_drug_charges_and_because/'
 	);
 
-	return (
-		<div className="App">
-			<header className="App-header font-ubuntu">
-				<img src={logo} className="App-logo" alt="logo" />
-				<p>
-					Edit <code>src/App.js</code> and save to reload.
-				</p>
-				<a
-					className="App-link font-nunito"
-					href="https://reactjs.org"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Learn React
-				</a>
-			</header>
-		</div>
-	);
+	return <div className="App">
+		</div>;
 }
 
 export default App;
