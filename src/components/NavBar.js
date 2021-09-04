@@ -1,4 +1,4 @@
-function AppNav() {
+function NavBar() {
 	// this is the function for fetching subreddits needed from the searchbar input
 	const searchSubreddits = async (searchTerm = 'minecraft') => {
 		const apiResponse = await fetch(
@@ -16,4 +16,4 @@ function AppNav() {
 	return <nav></nav>;
 }
 
-export default AppNav;
+export default NavBar;
