@@ -1,14 +1,19 @@
 import logo from './logo.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { usePosts, useSubreddits } from './hooks';
+import { usePosts, useSubreddits, useComments } from './hooks';
 import './App.css';
 
 function App() {
-	const dispatch = useDispatch();
-	const subs = useSelector((state) => state.subreddits.subreddits);
 	const posts = usePosts('vim');
 	const subreddits = useSubreddits();
+	const comments = useComments(
+		'/r/3amjokes/comments/p45vw7/my_buddy_got_arrested_on_drug_charges_and_because/'
+	);
+
+	useEffect(() => {
+		if (comments) console.dir(comments);
+	}, [comments]);
 
 	return (
 		<div className="App">
