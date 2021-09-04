@@ -11,10 +11,6 @@ function App() {
 		'/r/3amjokes/comments/p45vw7/my_buddy_got_arrested_on_drug_charges_and_because/'
 	);
 
-	useEffect(() => {
-		if (comments) console.dir(comments);
-	}, [comments]);
-
 	return (
 		<div className="App">
 			<header className="App-header">
