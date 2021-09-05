@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { usePosts, useSubreddits, useComments } from './hooks';
 import './App.css';
+import NavBar from './components/NavBar'
 
 function App() {
 	const posts = usePosts('vim');
@@ -12,6 +13,7 @@ function App() {
 
 	return (
 		<div className="App">
+			<NavBar />
 		</div>
 	);
 }
