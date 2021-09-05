@@ -1,10 +1,15 @@
 import Logo from './Logo';
+import SubredditResult from './SubredditResult';
 import { useState } from 'react';
 import { SearchIcon } from '../icons';
 import { InfoCircleIcon } from '../icons';
 
 function NavBar() {
 	const [searchTerm, setSearchTerm] = useState('');
+	const [searchResults, setSubredditResults] = useState([]);
+
+	const formatApiResponseData = (data) =>
+		data.data.children.map((subreddit) => subreddit.data);
 
 	// this is the function for fetching subreddits needed from the searchbar input
 	const searchSubreddits = async (searchTerm = 'minecraft') => {
@@ -13,8 +18,7 @@ function NavBar() {
 		);
 		const jsonData = await apiResponse.json();
 
-		// for now it just logs
-		console.log(jsonData);
+		setSubredditResults((prevData) => (prevData = jsonData));
 	};
 
 	// this fires on every keystroke on the searchbar input, but calls the api only when searchTerm is truthy and on enter press
@@ -24,7 +28,7 @@ function NavBar() {
 	return (
 		<nav className="bg-gray-700">
 			<ul className="container">
-				<li>
+				<li className="hidden sm:block">
 					<Logo />
 				</li>
 				<li>
@@ -35,6 +39,7 @@ function NavBar() {
 						<input
 							type="text"
 							placeholder="Search subreddits."
+							className="font-nunito"
 							value={searchTerm}
 							onChange={({
 								keyCode,
@@ -50,6 +55,13 @@ function NavBar() {
 					<InfoCircleIcon className="" />
 				</li>
 			</ul>
+			{searchResults.length !== 0 && (
+				<div className="search-results">
+					{searchResults.map((result) => (
+						<SubredditResult subredditData={result} />
+					))}
+				</div>
+			)}
 		</nav>
 	);
 }
