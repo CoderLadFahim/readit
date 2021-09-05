@@ -17,8 +17,9 @@ function NavBar() {
 		console.log(jsonData);
 	};
 
+	// this fires on every keystroke on the searchbar input, but calls the api only when searchTerm is truthy and on enter press
 	const handleEnterPress = (e) =>
-		searchTerm && e.keyCode === 13 ? searchSubreddits(searchTerm) : '';
+		searchTerm ? searchSubreddits(searchTerm) : '';
 
 	return (
 		<nav className="bg-gray-700">
@@ -41,7 +42,7 @@ function NavBar() {
 							}) =>
 								setSearchTerm((prevTerm) => (prevTerm = newSearchTerm))
 							}
-							onKeyUp={handleEnterPress}
+							onKeyUp={(e) => e.keyCode === 13 && handleEnterPress()}
 						/>
 					</div>
 				</li>
