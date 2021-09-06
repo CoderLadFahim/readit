@@ -25,28 +25,32 @@ function TopCommunities() {
 
 			<ul>
 				{relevantDataExtracted &&
-					relevantDataExtracted.map((sub) => (
-						<li
-							key={sub.postId}
-							className="container mb-5 rounded-md bg-gray-600 shadow flex items-center py-2 gap-5 pl-5 cursor-pointer"
-						>
-							<img
-								src={sub.iconImg}
-								className={`${
-									!sub.iconImg && 'invisible'
-								}  w-6 h-6 rounded-full border border-2 border-blue-400`}
-							/>
+					relevantDataExtracted.map(
+						(sub) =>
+							// Remove this conditional in production
+							sub.iconImg && (
+								<li
+									key={sub.postId}
+									className="container mb-5 rounded-md bg-gray-600 shadow flex items-center py-2 gap-5 pl-5 cursor-pointer"
+								>
+									<img
+										src={sub.iconImg}
+										className={`${
+											!sub.iconImg && 'invisible'
+										}  w-6 h-6 rounded-full border border-2 border-blue-400 shadow`}
+									/>
 
-							<div className="subreddit-data text-left ">
-								<h2 className="font-nunito text-gray-50 font-extrabold">
-									{sub.name}
-								</h2>
-								<p className="text-gray-300 text-sm">
-									{sub.subscribers} members
-								</p>
-							</div>
-						</li>
-					))}
+									<div className="subreddit-data text-left ">
+										<h2 className="font-nunito text-gray-50 font-extrabold">
+											{sub.name}
+										</h2>
+										<p className="text-gray-300 text-sm">
+											{sub.subscribers} members
+										</p>
+									</div>
+								</li>
+							)
+					)}
 			</ul>
 		</div>
 	);
