@@ -26,15 +26,15 @@ function NavBar() {
 		searchTerm ? searchSubreddits(searchTerm) : '';
 
 	return (
-		<nav className="bg-gray-700">
-			<ul className="container">
+		<nav className="bg-gray-700 py-4">
+			<ul className="container border flex justify-between">
 				<li className="hidden sm:block">
 					<Logo />
 				</li>
 				<li>
-					<div className="search-bar">
+					<div className="search-bar flex bg-red-400">
 						<div className="icon-wrapper">
-							<SearchIcon />
+							<SearchIcon className="text-white" />
 						</div>
 						<input
 							type="text"
@@ -52,7 +52,7 @@ function NavBar() {
 					</div>
 				</li>
 				<li>
-					<InfoCircleIcon className="" />
+					<InfoCircleIcon className="text-blue-400" />
 				</li>
 			</ul>
 			{searchResults.length !== 0 && (
