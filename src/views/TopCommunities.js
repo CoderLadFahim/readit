@@ -18,7 +18,7 @@ function TopCommunities() {
 		}));
 
 	return (
-		<div className="text-green-400 font-nunito font-bold mt-24">
+		<div className="text-green-400 font-nunito font-bold mt-10">
 			<h1 className="container bg-gray-500 text-white font-ubuntu rounded-md shadow p-3 text-left pl-5 mb-10">
 				Top Communities
 			</h1>
