@@ -3,14 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts } from './features/posts/postsSlice';
 import { fetchSubreddits } from './features/subreddits/subredditSlice';
 
-// takes in subreddit name and returns an array of posts from that subreddit
+// takes in subreddit name and sortType (defaults to 'hot'). Returns an array of posts, (based on sortType) from that subreddit
 // subredditName is case-insensitive also it doesn't need to be prefixed with r/ just the subname
 
-export const usePosts = (subredditName) => {
+export const usePosts = (subredditName, sortType = 'hot') => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(fetchPosts(subredditName));
+		dispatch(fetchPosts(subredditName, sortType));
 	}, []);
 
 	const posts = useSelector((state) => {
