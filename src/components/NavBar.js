@@ -27,19 +27,19 @@ function NavBar() {
 
 	return (
 		<nav className="bg-gray-700 py-4">
-			<ul className="container border flex justify-between">
+			<ul className="container flex justify-between items-center">
 				<li className="hidden sm:block">
 					<Logo />
 				</li>
-				<li>
-					<div className="search-bar flex bg-red-400">
-						<div className="icon-wrapper">
+				<li className="w-5/6">
+					<div className="search-bar flex rounded overflow-hidden">
+						<div className="icon-wrapper bg-red-400 px-2 py-1">
 							<SearchIcon className="text-white" />
 						</div>
 						<input
 							type="text"
-							placeholder="Search subreddits."
-							className="font-nunito"
+							placeholder="Search subreddits"
+							className="font-nunito text-center bg-gray-600 flex-1 outline-none text-white"
 							value={searchTerm}
 							onChange={({
 								keyCode,
@@ -51,8 +51,8 @@ function NavBar() {
 						/>
 					</div>
 				</li>
-				<li>
-					<InfoCircleIcon className="text-blue-400" />
+				<li className="border">
+					<InfoCircleIcon className="text-blue-400 block" />
 				</li>
 			</ul>
 			{searchResults.length !== 0 && (
