@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { SearchIcon } from '../icons';
 import { InfoCircleIcon } from '../icons';
 
-function NavBar() {
+function NavBar({ infoModalToggler }) {
 	const [searchTerm, setSearchTerm] = useState('');
 	const [searchResults, setSubredditResults] = useState([]);
 
@@ -51,7 +51,7 @@ function NavBar() {
 						/>
 					</div>
 				</li>
-				<li>
+				<li onClick={infoModalToggler}>
 					<InfoCircleIcon className="text-blue-400 transform scale-125" />
 				</li>
 			</ul>

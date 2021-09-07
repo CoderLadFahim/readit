@@ -14,44 +14,60 @@ import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 
-export const CrossIcon = ({ className }) => (
-	<FontAwesomeIcon className={className} icon={faTimes} />
+export const CrossIcon = ({ className, onClick }) => (
+	<FontAwesomeIcon className={className} icon={faTimes} onClick={onClick} />
 );
 
-export const LinkedInIcon = ({ className }) => (
-	<FontAwesomeIcon className={className} icon={faLinkedin} />
+export const LinkedInIcon = ({ className, onClick }) => (
+	<FontAwesomeIcon className={className} icon={faLinkedin} onClick={onClick} />
 );
-export const GithubIcon = ({ className }) => (
-	<FontAwesomeIcon className={className} icon={faGithub} />
+export const GithubIcon = ({ className, onClick }) => (
+	<FontAwesomeIcon className={className} icon={faGithub} onClick={onClick} />
 );
-export const DiscordIcon = ({ className }) => (
-	<FontAwesomeIcon className={className} icon={faDiscord} />
+export const DiscordIcon = ({ className, onClick }) => (
+	<FontAwesomeIcon className={className} icon={faDiscord} onClick={onClick} />
 );
 
-export const InfoCircleIcon = ({ className }) => (
-	<FontAwesomeIcon className={className} icon={faInfoCircle} />
+export const InfoCircleIcon = ({ className, onClick }) => (
+	<FontAwesomeIcon
+		className={className}
+		icon={faInfoCircle}
+		onClick={onClick}
+	/>
 );
-export const SearchIcon = ({ className }) => (
-	<FontAwesomeIcon className={className} icon={faSearch} />
+export const SearchIcon = ({ className, onClick }) => (
+	<FontAwesomeIcon className={className} icon={faSearch} onClick={onClick} />
 );
-export const AngleUpIcon = ({ className }) => (
-	<FontAwesomeIcon className={className} icon={faAngleUp} />
+export const AngleUpIcon = ({ className, onClick }) => (
+	<FontAwesomeIcon className={className} icon={faAngleUp} onClick={onClick} />
 );
-export const ListIcon = ({ className }) => (
-	<FontAwesomeIcon className={className} icon={faListOl} />
+export const ListIcon = ({ className, onClick }) => (
+	<FontAwesomeIcon className={className} icon={faListOl} onClick={onClick} />
 );
-export const CertificateIcon = ({ className }) => (
-	<FontAwesomeIcon className={className} icon={faCertificate} />
+export const CertificateIcon = ({ className, onClick }) => (
+	<FontAwesomeIcon
+		className={className}
+		icon={faCertificate}
+		onClick={onClick}
+	/>
 );
-export const FireIcon = ({ className }) => (
-	<FontAwesomeIcon className={className} icon={faFire} />
+export const FireIcon = ({ className, onClick }) => (
+	<FontAwesomeIcon className={className} icon={faFire} onClick={onClick} />
 );
-export const CommentIcon = ({ className }) => (
-	<FontAwesomeIcon className={className} icon={faCommentAlt} />
+export const CommentIcon = ({ className, onClick }) => (
+	<FontAwesomeIcon
+		className={className}
+		icon={faCommentAlt}
+		onClick={onClick}
+	/>
 );
-export const ArrowUpIcon = ({ className }) => (
-	<FontAwesomeIcon className={className} icon={faArrowUp} />
+export const ArrowUpIcon = ({ className, onClick }) => (
+	<FontAwesomeIcon className={className} icon={faArrowUp} onClick={onClick} />
 );
-export const ArrowDownIcon = ({ className }) => (
-	<FontAwesomeIcon className={className} icon={faArrowDown} />
+export const ArrowDownIcon = ({ className, onClick }) => (
+	<FontAwesomeIcon
+		className={className}
+		icon={faArrowDown}
+		onClick={onClick}
+	/>
 );
