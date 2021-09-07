@@ -26,3 +26,7 @@ body {
 .container {
 	@apply w-5/6;
 }
+
+.social-icon {
+	@apply text-gray-100 transform scale-110;
+}

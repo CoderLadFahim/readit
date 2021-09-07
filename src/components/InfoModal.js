@@ -1,11 +1,74 @@
 import Logo from './Logo.js';
 import { CrossIcon, LinkedInIcon, GithubIcon, DiscordIcon } from '../icons.js';
 
-function InfoModal({ infoModalToggler }) {
+function AuthorCard({ author: { name, linkedIn, github, discord, email } }) {
 	return (
-		<section className="backdrop w-screen h-screen bg-gray-800">
-			<Logo />
-			<CrossIcon className="text-blue-400" onClick={infoModalToggler} />
+		<div className="author-card bg-gray-700 flex flex-col w-1/2 justify-around items-center  box-content px-2">
+			<h1 className="author-name">
+				<span className="text-blue-400">{'<'}</span>
+				<span className="text-green-400 font-bold">{name}</span>
+				<span className="text-blue-400 ">{'/>'}</span>
+			</h1>
+			<div className="author-social w-full flex justify-evenly">
+				<a href={linkedIn} target="_blank">
+					<LinkedInIcon className="social-icon text-gray-400" />
+				</a>
+				<a href={github} target="_blank">
+					<GithubIcon className="social-icon text-gray-400" />
+				</a>
+				<a href={discord} target="_blank">
+					<DiscordIcon className="social-icon text-gray-400" />
+				</a>
+			</div>
+
+			<button className="p-2 px-3 text-gray-200 font-nunito text-xs font-bold bg-gray-600 rounded-lg">
+				Copy Email
+			</button>
+		</div>
+	);
+}
+
+// Main Component
+function InfoModal({ infoModalToggler }) {
+	const authors = [
+		{
+			name: 'Fahim',
+			linkedIn: 'https://www.linkedin.com/in/fahim-al-emroz-52b21720b/',
+			github: 'https://github.com/CoderLadFahim',
+			discord: 'https://discord.com/users/857790946413641735',
+			email: 'fahimalemroz@gmail.com',
+		},
+		{
+			name: 'HanzHanz',
+			linkedIn: '',
+			github: 'https://github.com/hanzala019',
+			discord: 'https://discord.com/users/768892963756441640',
+			email: 'hanzala@email.com',
+		},
+	];
+
+	return (
+		<section className="backdrop w-screen h-screen">
+			<div className="w-11/12 info-card bg-gray-600 z-10 h-5/6 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-xl flex flex-col justify-evenly items-center">
+				<Logo additionalTailiwindClasses={'text-3xl'} />
+				<CrossIcon
+					className="text-blue-400 absolute right-3 top-3"
+					onClick={infoModalToggler}
+				/>
+				<h1 className="text-2xl text-gray-300 font-bold font-nunito">
+					Created by
+				</h1>
+
+				<div className="author-cards flex justify-center h-1/2 w-5/6 rounded-2xl overflow-hidden">
+					{authors.map((authorData) => (
+						<AuthorCard key={authorData.name} author={authorData} />
+					))}
+				</div>
+			</div>
+			<div
+				className="backdrop bg-gray-800 opacity-50 absolute top-0 bottom-0 right-0 left-0 border border-green-400 z-0"
+				onClick={infoModalToggler}
+			></div>
 		</section>
 	);
 }

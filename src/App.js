@@ -8,12 +8,12 @@ import TopCommunities from './views/TopCommunities';
 
 function App() {
 	const [showInfoModal, setShowInfoModal] = useState(false);
-	const posts = usePosts('vim');
+	const posts = usePosts('all');
 	const subreddits = useSubreddits();
 	const comments = useComments(
 		'/r/3amjokes/comments/p45vw7/my_buddy_got_arrested_on_drug_charges_and_because/'
 	);
-
+	if (posts) console.dir(posts.length ? posts : null);
 	const toggleInfoModal = () => {
 		console.log(showInfoModal);
 		setShowInfoModal((prevState) => !prevState);
