@@ -1,33 +1,6 @@
 import Logo from './Logo.js';
 import { CrossIcon, LinkedInIcon, GithubIcon, DiscordIcon } from '../icons.js';
 
-function AuthorCard({ author: { name, linkedIn, github, discord, email } }) {
-	return (
-		<div className="author-card bg-gray-700 flex flex-col w-1/2 justify-around items-center  box-content px-2">
-			<h1 className="author-name">
-				<span className="text-blue-400">{'<'}</span>
-				<span className="text-green-400 font-bold">{name}</span>
-				<span className="text-blue-400 ">{'/>'}</span>
-			</h1>
-			<div className="author-social w-full flex justify-evenly">
-				<a href={linkedIn} target="_blank">
-					<LinkedInIcon className="social-icon text-gray-400" />
-				</a>
-				<a href={github} target="_blank">
-					<GithubIcon className="social-icon text-gray-400" />
-				</a>
-				<a href={discord} target="_blank">
-					<DiscordIcon className="social-icon text-gray-400" />
-				</a>
-			</div>
-
-			<button className="p-2 px-3 text-gray-200 font-nunito text-xs font-bold bg-gray-600 rounded-lg">
-				Copy Email
-			</button>
-		</div>
-	);
-}
-
 // Main Component
 function InfoModal({ infoModalToggler }) {
 	const authors = [
@@ -40,16 +13,16 @@ function InfoModal({ infoModalToggler }) {
 		},
 		{
 			name: 'HanzHanz',
-			linkedIn: '',
+			linkedIn: 'https://www.linkedin.com/in/hasan-omar-a8a94221b/',
 			github: 'https://github.com/hanzala019',
 			discord: 'https://discord.com/users/768892963756441640',
-			email: 'hanzala@email.com',
+			email: 'hanzalaomar1@gmail.com',
 		},
 	];
 
 	return (
 		<section className="backdrop w-screen h-screen">
-			<div className="w-11/12 info-card bg-gray-600 z-10 h-5/6 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-xl flex flex-col justify-evenly items-center">
+			<div className="info-card w-11/12 h-5/6 sm:w-3/5 sm:h-3/5 md:w-1/2   bg-gray-600 z-10  absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-xl flex flex-col justify-evenly items-center">
 				<Logo additionalTailiwindClasses={'text-3xl'} />
 				<CrossIcon
 					className="text-blue-400 absolute right-3 top-3"
@@ -73,4 +46,36 @@ function InfoModal({ infoModalToggler }) {
 	);
 }
 
+function AuthorCard({ author: { name, linkedIn, github, discord, email } }) {
+	const copyEmailToClipboard = () => navigator.clipboard.writeText(email);
+
+	return (
+		<div className="author-card bg-gray-700 flex flex-col w-1/2 justify-around items-center  box-content px-2">
+			<h1 className="author-name">
+				<span className="text-blue-400">{'<'}</span>
+				<span className="text-green-400 font-bold">{name}</span>
+				<span className="text-blue-400 ">{'/>'}</span>
+			</h1>
+
+			<div className="author-social w-full flex justify-around">
+				<a href={linkedIn} target="_blank">
+					<LinkedInIcon className="social-icon text-gray-400" />
+				</a>
+				<a href={github} target="_blank">
+					<GithubIcon className="social-icon text-gray-400" />
+				</a>
+				<a href={discord} target="_blank">
+					<DiscordIcon className="social-icon text-gray-400" />
+				</a>
+			</div>
+
+			<button
+				onClick={copyEmailToClipboard}
+				className="p-2 px-3 text-gray-200 font-nunito text-xs font-bold bg-gray-600 rounded-lg transition hover:bg-gray-500"
+			>
+				Copy Email
+			</button>
+		</div>
+	);
+}
 export default InfoModal;
