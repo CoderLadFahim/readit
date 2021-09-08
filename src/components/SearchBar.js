@@ -3,7 +3,7 @@ import { SearchIcon } from '../icons';
 
 function SearchBar() {
 	const [searchTerm, setSearchTerm] = useState('');
-	const [searchResults, setSubredditResults] = useState([]);
+	const [searchedSubredditResults, setSearchSubredditResults] = useState([]);
 
 	// this is the function for fetching subreddits needed from the searchbar input
 	const searchSubreddits = async (searchTerm) => {
@@ -16,7 +16,8 @@ function SearchBar() {
 			(subreddit) => subreddit.data
 		);
 
-		setSubredditResults((prevData) => (prevData = subreddits));
+		console.dir(subreddits);
+		setSearchSubredditResults((prevData) => (prevData = subreddits));
 	};
 
 	// this fires on every keystroke on the searchbar input, but calls the api only when searchTerm is truthy and on enter press
