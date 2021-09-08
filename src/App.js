@@ -15,7 +15,6 @@ function App() {
 	);
 
 	const toggleInfoModal = () => {
-		console.log(showInfoModal);
 		setShowInfoModal((prevState) => !prevState);
 	};
 
