@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { usePosts, useSubreddits, useComments } from './hooks';
@@ -19,11 +20,11 @@ function App() {
 	};
 
 	return (
-		<div className="App">
+		<Router>
 			{showInfoModal && <InfoModal infoModalToggler={toggleInfoModal} />}
 			<NavBar infoModalToggler={toggleInfoModal} />
 			<TopCommunities />
-		</div>
+		</Router>
 	);
 }
 
