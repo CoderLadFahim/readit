@@ -16,7 +16,6 @@ function SearchBar() {
 			(subreddit) => subreddit.data
 		);
 
-		console.dir(subreddits);
 		setSearchSubredditResults((prevData) => (prevData = subreddits));
 	};
 
