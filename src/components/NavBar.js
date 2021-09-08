@@ -52,7 +52,9 @@ function NavBar({ infoModalToggler }) {
 					</div>
 				</li>
 				<li onClick={infoModalToggler}>
-					<InfoCircleIcon className="text-blue-400 transform scale-125" />
+					<button>
+						<InfoCircleIcon className="text-blue-400 transform scale-125" />
+					</button>
 				</li>
 			</ul>
 			{searchResults.length !== 0 && (

@@ -24,10 +24,12 @@ function InfoModal({ infoModalToggler }) {
 		<section className="backdrop w-screen h-screen">
 			<div className="info-card w-11/12 h-5/6 sm:w-3/5 sm:h-3/5 md:w-1/2   bg-gray-600 z-10  absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-xl flex flex-col justify-evenly items-center">
 				<Logo additionalTailiwindClasses={'text-3xl'} />
-				<CrossIcon
-					className="text-blue-400 absolute right-3 top-3"
-					onClick={infoModalToggler}
-				/>
+				<button>
+					<CrossIcon
+						className="text-blue-400 absolute block right-3 top-3 transform transition hover:scale-125"
+						onClick={infoModalToggler}
+					/>
+				</button>
 				<h1 className="text-2xl text-gray-300 font-bold font-nunito">
 					Created by
 				</h1>
