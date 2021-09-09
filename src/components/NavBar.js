@@ -1,16 +1,16 @@
 import Logo from './Logo';
-import SubredditResult from './SubredditResult';
 import SearchBar from './SearchBar';
-import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { InfoCircleIcon } from '../icons';
-import { SearchIcon } from '../icons';
 
 function NavBar({ infoModalToggler }) {
 	return (
 		<nav className="bg-gray-700 py-4 sm:py-3">
 			<ul className="container flex justify-between items-center">
 				<li className="hidden sm:block text-xl">
-					<Logo />
+					<Link to="/">
+						<Logo />
+					</Link>
 				</li>
 				<li className="w-5/6 sm:w-1/2 lg:w-1/3">
 					<SearchBar />

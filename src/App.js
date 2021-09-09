@@ -1,21 +1,14 @@
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
-import { usePosts, useSubreddits, useComments } from './hooks';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { useState } from 'react';
 import './App.css';
 import NavBar from './components/NavBar';
 import InfoModal from './components/InfoModal';
-import TopCommunities from './views/TopCommunities';
+import SubredditsDisplay from './views/SubredditsDisplay';
 import Home from './views/Home';
 import CatchAll from './views/CatchAll';
 
 function App() {
 	const [showInfoModal, setShowInfoModal] = useState(false);
-	const posts = usePosts('all');
-	const subreddits = useSubreddits();
-	const comments = useComments(
-		'/r/3amjokes/comments/p45vw7/my_buddy_got_arrested_on_drug_charges_and_because/'
-	);
 
 	const toggleInfoModal = () => {
 		setShowInfoModal((prevState) => !prevState);
@@ -31,7 +24,7 @@ function App() {
 				</Route>
 
 				<Route exact path="/subreddits">
-					<TopCommunities />
+					<SubredditsDisplay />
 				</Route>
 
 				<Route exact path="*">

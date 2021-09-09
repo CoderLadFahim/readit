@@ -60,13 +60,13 @@ function AuthorCard({ author: { name, linkedIn, github, discord, email } }) {
 			</h1>
 
 			<div className="author-social w-full flex justify-around">
-				<a href={linkedIn} target="_blank">
+				<a href={linkedIn} target="_blank" rel="noreferrer">
 					<LinkedInIcon className="social-icon text-gray-400" />
 				</a>
-				<a href={github} target="_blank">
+				<a href={github} target="_blank" rel="noreferrer">
 					<GithubIcon className="social-icon text-gray-400" />
 				</a>
-				<a href={discord} target="_blank">
+				<a href={discord} target="_blank" rel="noreferrer">
 					<DiscordIcon className="social-icon text-gray-400" />
 				</a>
 			</div>

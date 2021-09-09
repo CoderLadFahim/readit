@@ -8,8 +8,12 @@ const initialState = {
 
 export const fetchSubreddits = createAsyncThunk(
 	'counter/fetchSubreddits',
-	async () => {
-		const apiResponse = await fetch(`https://www.reddit.com/subreddits.json`);
+	async (searchTerm = null) => {
+		const topSubredditsEndpoint = 'https://www.reddit.com/subreddits.json';
+		const subredditsBySearchTermEndpoint = `https://www.reddit.com/search.json?q=${searchTerm}&type=sr`;
+		const apiResponse = await fetch(
+			searchTerm ? subredditsBySearchTermEndpoint : topSubredditsEndpoint
+		);
 		const apiData = await apiResponse.json();
 		return apiData;
 	}
@@ -18,7 +22,13 @@ export const fetchSubreddits = createAsyncThunk(
 export const subredditsSlice = createSlice({
 	name: 'subreddits',
 	initialState,
-	reducers: {},
+	reducers: {
+		clearAll: (state) => {
+			state.subredditsLoading = false;
+			state.subreddits = null;
+			state.subredditsError = false;
+		},
+	},
 	extraReducers: (builder) => {
 		builder
 			.addCase(fetchSubreddits.pending, (state, action) => {
@@ -46,5 +56,7 @@ export const subredditsSlice = createSlice({
 			});
 	},
 });
+
+export const { clearAll } = subredditsSlice.actions;
 
 export default subredditsSlice.reducer;

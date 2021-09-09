@@ -1,27 +1,19 @@
 import { useState } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 import { SearchIcon } from '../icons';
 
 function SearchBar() {
 	const [searchTerm, setSearchTerm] = useState('');
-	const [searchedSubredditResults, setSearchSubredditResults] = useState([]);
-
-	// this is the function for fetching subreddits needed from the searchbar input
-	const searchSubreddits = async (searchTerm) => {
-		const apiResponse = await fetch(
-			`https://www.reddit.com/search.json?q=${searchTerm}&type=sr`
-		);
-		const jsonData = await apiResponse.json();
-
-		const subreddits = jsonData.data.children.map(
-			(subreddit) => subreddit.data
-		);
-
-		setSearchSubredditResults((prevData) => (prevData = subreddits));
-	};
+	const history = useHistory();
+	const { pathname } = useLocation();
+	const location = useLocation();
 
 	// this fires on every keystroke on the searchbar input, but calls the api only when searchTerm is truthy and on enter press
-	const handleEnterPress = (e) =>
-		searchTerm ? searchSubreddits(searchTerm) : '';
+	const handleEnterPress = (e) => {
+		if (searchTerm) history.push(`/subreddits?q=${searchTerm}`);
+		// if user searches for anything whilst being on the /subreddits route, page will refresh, showing the new data
+		if (pathname === '/subreddits') window.location.reload();
+	};
 
 	return (
 		<div className="search-bar flex rounded overflow-hidden">
@@ -31,7 +23,7 @@ function SearchBar() {
 			<input
 				type="text"
 				placeholder="Search subreddits"
-				className="font-nunito text-center bg-gray-600 flex-1 outline-none text-white font-bold"
+				className="font-nunito pl-3 bg-gray-600 flex-1 outline-none text-white font-bold"
 				value={searchTerm}
 				onChange={({ keyCode, target: { value: newSearchTerm } }) =>
 					setSearchTerm((prevTerm) => (prevTerm = newSearchTerm))
