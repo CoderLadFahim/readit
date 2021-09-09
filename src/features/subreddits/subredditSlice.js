@@ -24,7 +24,9 @@ export const subredditsSlice = createSlice({
 	initialState,
 	reducers: {
 		clearAll: (state) => {
-			state = { ...initialState };
+			state.subredditsLoading = false;
+			state.subreddits = null;
+			state.subredditsError = false;
 		},
 	},
 	extraReducers: (builder) => {

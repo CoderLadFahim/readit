@@ -1,6 +1,11 @@
+import { useEffect } from 'react';
+import { clearAll } from '../features/subreddits/subredditSlice';
 import { useSubreddits, useQuery } from '../hooks';
+import { useDispatch } from 'react-redux';
 
 function SubredditsDisplay() {
+	const subredditSliceActionDispatcher = useDispatch();
+
 	// getting the query params
 	const query = useQuery();
 	const searchQuery = query.get('q');
@@ -16,6 +21,13 @@ function SubredditsDisplay() {
 			iconImg: sub.icon_img || sub.banner_img,
 			subscribers: sub.subscribers,
 		}));
+
+	useEffect(() => {
+		return () => {
+			console.log('bye');
+			subredditSliceActionDispatcher(clearAll());
+		};
+	}, []);
 
 	return (
 		<div className="text-green-400 font-nunito font-bold mt-5">
