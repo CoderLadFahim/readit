@@ -5,7 +5,7 @@ import { usePosts, useSubreddits, useComments } from './hooks';
 import './App.css';
 import NavBar from './components/NavBar';
 import InfoModal from './components/InfoModal';
-import TopCommunities from './views/TopCommunities';
+import SubredditsDisplay from './views/SubredditsDisplay';
 import Home from './views/Home';
 import CatchAll from './views/CatchAll';
 
@@ -31,7 +31,7 @@ function App() {
 				</Route>
 
 				<Route exact path="/subreddits">
-					<TopCommunities />
+					<SubredditsDisplay />
 				</Route>
 
 				<Route exact path="*">
