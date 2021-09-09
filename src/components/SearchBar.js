@@ -6,7 +6,6 @@ function SearchBar() {
 	const [searchTerm, setSearchTerm] = useState('');
 	const history = useHistory();
 	const { pathname } = useLocation();
-	const location = useLocation();
 
 	// this fires on every keystroke on the searchbar input, but calls the api only when searchTerm is truthy and on enter press
 	const handleEnterPress = (e) => {

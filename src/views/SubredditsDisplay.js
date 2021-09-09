@@ -1,7 +1,4 @@
-import { useEffect } from 'react';
-import { clearAll } from '../features/subreddits/subredditSlice';
 import { useSubreddits, useQuery } from '../hooks';
-import { useDispatch } from 'react-redux';
 
 function SubredditsDisplay() {
 	// getting the query params
