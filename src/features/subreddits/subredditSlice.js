@@ -22,7 +22,11 @@ export const fetchSubreddits = createAsyncThunk(
 export const subredditsSlice = createSlice({
 	name: 'subreddits',
 	initialState,
-	reducers: {},
+	reducers: {
+		clearAll: (state) => {
+			state = { ...initialState };
+		},
+	},
 	extraReducers: (builder) => {
 		builder
 			.addCase(fetchSubreddits.pending, (state, action) => {
@@ -50,5 +54,7 @@ export const subredditsSlice = createSlice({
 			});
 	},
 });
+
+export const { clearAll } = subredditsSlice.actions;
 
 export default subredditsSlice.reducer;
