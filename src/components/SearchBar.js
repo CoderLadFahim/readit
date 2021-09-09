@@ -33,7 +33,7 @@ function SearchBar() {
 			<input
 				type="text"
 				placeholder="Search subreddits"
-				className="font-nunito text-center bg-gray-600 flex-1 outline-none text-white font-bold"
+				className="font-nunito pl-3 bg-gray-600 flex-1 outline-none text-white font-bold"
 				value={searchTerm}
 				onChange={({ keyCode, target: { value: newSearchTerm } }) =>
 					setSearchTerm((prevTerm) => (prevTerm = newSearchTerm))
