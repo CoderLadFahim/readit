@@ -6,6 +6,8 @@ import './App.css';
 import NavBar from './components/NavBar';
 import InfoModal from './components/InfoModal';
 import TopCommunities from './views/TopCommunities';
+import Home from './views/Home';
+import CatchAll from './views/CatchAll';
 
 function App() {
 	const [showInfoModal, setShowInfoModal] = useState(false);
@@ -23,7 +25,19 @@ function App() {
 		<Router>
 			{showInfoModal && <InfoModal infoModalToggler={toggleInfoModal} />}
 			<NavBar infoModalToggler={toggleInfoModal} />
-			<TopCommunities />
+			<Switch>
+				<Route exact path="/">
+					<Home />
+				</Route>
+
+				<Route exact path="/subreddits">
+					<TopCommunities />
+				</Route>
+
+				<Route exact path="*">
+					<CatchAll />
+				</Route>
+			</Switch>
 		</Router>
 	);
 }
