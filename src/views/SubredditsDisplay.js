@@ -4,8 +4,6 @@ import { useSubreddits, useQuery } from '../hooks';
 import { useDispatch } from 'react-redux';
 
 function SubredditsDisplay() {
-	const subredditSliceActionDispatcher = useDispatch();
-
 	// getting the query params
 	const query = useQuery();
 	const searchQuery = query.get('q');
@@ -22,6 +20,7 @@ function SubredditsDisplay() {
 			subscribers: sub.subscribers,
 		}));
 
+	// for now it redirects the user to subreddit on reddit
 	const handleSubredditResultClick = (link) => {
 		window.open(`https://www.reddit.com${link}`, '_blank').focus();
 	};
@@ -67,6 +66,7 @@ function SubredditsDisplay() {
 						</li>
 					))
 				) : (
+					// skeleton loading
 					<>
 						{new Array(25).fill(null).map((I, i) => (
 							<li

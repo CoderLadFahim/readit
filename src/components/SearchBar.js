@@ -7,25 +7,11 @@ function SearchBar() {
 	const history = useHistory();
 	const { pathname } = useLocation();
 	const location = useLocation();
-	// const [searchedSubredditResults, setSearchSubredditResults] = useState([]);
-
-	// this is the function for fetching subreddits needed from the searchbar input
-	// const searchSubreddits = async (searchTerm) => {
-	// 	const apiResponse = await fetch(
-	// 		`https://www.reddit.com/search.json?q=${searchTerm}&type=sr`
-	// 	);
-	// 	const jsonData = await apiResponse.json();
-
-	// 	const subreddits = jsonData.data.children.map(
-	// 		(subreddit) => subreddit.data
-	// 	);
-
-	// 	setSearchSubredditResults((prevData) => (prevData = subreddits));
-	// };
 
 	// this fires on every keystroke on the searchbar input, but calls the api only when searchTerm is truthy and on enter press
 	const handleEnterPress = (e) => {
 		if (searchTerm) history.push(`/subreddits?q=${searchTerm}`);
+		// if user searches for anything whilst being on the /subreddits route, page will refresh, showing the new data
 		if (pathname === '/subreddits') window.location.reload();
 	};
 
