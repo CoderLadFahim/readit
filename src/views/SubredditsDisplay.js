@@ -22,12 +22,9 @@ function SubredditsDisplay() {
 			subscribers: sub.subscribers,
 		}));
 
-	useEffect(() => {
-		return () => {
-			console.log('bye');
-			subredditSliceActionDispatcher(clearAll());
-		};
-	}, []);
+	const handleSubredditResultClick = (link) => {
+		window.open(`https://www.reddit.com${link}`, '_blank').focus();
+	};
 
 	return (
 		<div className="text-green-400 font-nunito font-bold mt-5">
@@ -47,6 +44,9 @@ function SubredditsDisplay() {
 						<li
 							key={sub.postId}
 							className="container mb-5 rounded-md bg-gray-600 shadow flex items-center py-2 gap-5 pl-5 cursor-pointer transition hover:bg-gray-500"
+							onClick={() =>
+								handleSubredditResultClick(sub.subredditUrl)
+							}
 						>
 							<img
 								src={sub.iconImg}
