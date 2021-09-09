@@ -47,14 +47,15 @@ function SubredditsDisplay() {
 								handleSubredditResultClick(sub.subredditUrl)
 							}
 						>
-							<img
-								src={sub.iconImg}
-								alt="subreddit icon"
-								className={`${
-									!sub.iconImg && 'invisible'
-								}  w-6 h-6 rounded-full border border-2 border-blue-400 shadow`}
-							/>
-
+							{sub.iconImg ? (
+								<img
+									src={sub.iconImg}
+									alt="subreddit icon"
+									className="w-6 h-6 rounded-full border border-2 border-gray-400 shadow"
+								/>
+							) : (
+								<CustomSubIcon subName={sub.name} />
+							)}
 							<div className="subreddit-data text-left ">
 								<h2 className="font-nunito text-gray-50 font-extrabold">
 									{sub.name}
@@ -85,6 +86,28 @@ function SubredditsDisplay() {
 					</>
 				)}
 			</ul>
+		</div>
+	);
+}
+
+function CustomSubIcon({ subName }) {
+	const availableColors = [
+		'red',
+		'yellow',
+		'green',
+		'blue',
+		'indigo',
+		'purple',
+		'pink',
+	];
+
+	return (
+		<div
+			className={`w-6 h-6 rounded-full bg-${
+				availableColors[Math.floor(Math.random() * availableColors.length)]
+			}-500 font-ubuntu text-sm text-center text-white shadow grid place-items-center`}
+		>
+			<h1 className="text-center">{subName[2].toUpperCase()}</h1>
 		</div>
 	);
 }
