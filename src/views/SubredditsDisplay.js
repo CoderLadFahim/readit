@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { useSubreddits, useQuery } from '../hooks';
 
 function SubredditsDisplay() {
@@ -35,6 +34,7 @@ function SubredditsDisplay() {
 							>
 								<img
 									src={sub.iconImg}
+									alt="subreddit icon"
 									className={`${
 										!sub.iconImg && 'invisible'
 									}  w-6 h-6 rounded-full border border-2 border-blue-400 shadow`}

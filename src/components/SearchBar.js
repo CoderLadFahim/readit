@@ -5,21 +5,21 @@ import { SearchIcon } from '../icons';
 function SearchBar() {
 	const [searchTerm, setSearchTerm] = useState('');
 	const history = useHistory();
-	const [searchedSubredditResults, setSearchSubredditResults] = useState([]);
+	// const [searchedSubredditResults, setSearchSubredditResults] = useState([]);
 
 	// this is the function for fetching subreddits needed from the searchbar input
-	const searchSubreddits = async (searchTerm) => {
-		const apiResponse = await fetch(
-			`https://www.reddit.com/search.json?q=${searchTerm}&type=sr`
-		);
-		const jsonData = await apiResponse.json();
+	// const searchSubreddits = async (searchTerm) => {
+	// 	const apiResponse = await fetch(
+	// 		`https://www.reddit.com/search.json?q=${searchTerm}&type=sr`
+	// 	);
+	// 	const jsonData = await apiResponse.json();
 
-		const subreddits = jsonData.data.children.map(
-			(subreddit) => subreddit.data
-		);
+	// 	const subreddits = jsonData.data.children.map(
+	// 		(subreddit) => subreddit.data
+	// 	);
 
-		setSearchSubredditResults((prevData) => (prevData = subreddits));
-	};
+	// 	setSearchSubredditResults((prevData) => (prevData = subreddits));
+	// };
 
 	// this fires on every keystroke on the searchbar input, but calls the api only when searchTerm is truthy and on enter press
 	const handleEnterPress = (e) =>

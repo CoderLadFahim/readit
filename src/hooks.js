@@ -47,7 +47,6 @@ export const useComments = (permalink) => {
 		const fetchComments = async () => {
 			const apiResponse = await fetch(API_ENPOINT);
 			const [, commentsJson] = await apiResponse.json();
-			const temp = commentsJson.data.children[0].data.body;
 			const commentBodies = commentsJson.data.children.map(
 				(commentObj) => commentObj.data.body
 			);
