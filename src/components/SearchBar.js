@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { SearchIcon } from '../icons';
 
 function SearchBar() {
 	const [searchTerm, setSearchTerm] = useState('');
+	const history = useHistory();
 	const [searchedSubredditResults, setSearchSubredditResults] = useState([]);
 
 	// this is the function for fetching subreddits needed from the searchbar input
@@ -21,7 +23,7 @@ function SearchBar() {
 
 	// this fires on every keystroke on the searchbar input, but calls the api only when searchTerm is truthy and on enter press
 	const handleEnterPress = (e) =>
-		searchTerm ? searchSubreddits(searchTerm) : '';
+		searchTerm ? history.push(`/subreddits?q=${searchTerm}`) : '';
 
 	return (
 		<div className="search-bar flex rounded overflow-hidden">

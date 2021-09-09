@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts } from './features/posts/postsSlice';
 import { fetchSubreddits } from './features/subreddits/subredditSlice';
@@ -21,12 +22,12 @@ export const usePosts = (subredditName, sortType = 'hot') => {
 	return posts;
 };
 
-// returns an array of popular subreddits
-export const useSubreddits = () => {
+// returns an array of popular subreddits takes in an optional param
+export const useSubreddits = (searchTerm = null) => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(fetchSubreddits());
+		dispatch(fetchSubreddits(searchTerm));
 	}, []);
 
 	const subreddits = useSelector((state) => {
@@ -58,4 +59,10 @@ export const useComments = (permalink) => {
 	}, []);
 
 	return comments;
+};
+
+export const useQuery = () => {
+	const routeLocation = useLocation();
+	const searchParams = new URLSearchParams(routeLocation.search);
+	return searchParams;
 };

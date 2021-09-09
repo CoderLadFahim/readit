@@ -8,8 +8,12 @@ const initialState = {
 
 export const fetchSubreddits = createAsyncThunk(
 	'counter/fetchSubreddits',
-	async () => {
-		const apiResponse = await fetch(`https://www.reddit.com/subreddits.json`);
+	async (searchTerm = null) => {
+		const topSubredditsEndpoint = 'https://www.reddit.com/subreddits.json';
+		const subredditsBySearchTermEndpoint = `https://www.reddit.com/search.json?q=${searchTerm}&type=sr`;
+		const apiResponse = await fetch(
+			searchTerm ? subredditsBySearchTermEndpoint : topSubredditsEndpoint
+		);
 		const apiData = await apiResponse.json();
 		return apiData;
 	}
