@@ -65,7 +65,8 @@ function SubredditsDisplay() {
 									{sub.namePrefixed}
 								</h2>
 								<p className="text-gray-300 text-sm">
-									{sub.subscribers} members
+									{new Intl.NumberFormat().format(sub.subscribers)}{' '}
+									members
 								</p>
 							</div>
 						</li>

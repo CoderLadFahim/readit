@@ -37,12 +37,14 @@ function Home() {
 						show posts from r/{subredditQuery}
 					</span>
 				</h1>
-				<Link
-					className="top-communities-btn absolute transform w-9 h-9 bg-gray-500 rounded-full grid place-items-center right-0 bottom-0 transition hover:scale-110"
-					to="/subreddits"
-				>
-					<ListIcon className="text-gray-50 transform scale-125" />
-				</Link>
+				<div className="side-btns">
+					<Link
+						className="top-communities-btn absolute transform w-9 h-9 bg-gray-500 rounded-full grid place-items-center right-0 bottom-0 transition hover:scale-110"
+						to="/subreddits"
+					>
+						<ListIcon className="text-gray-50 transform scale-125" />
+					</Link>
+				</div>
 			</div>
 		</section>
 	);
