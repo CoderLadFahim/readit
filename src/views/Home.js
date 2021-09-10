@@ -23,10 +23,10 @@ function Home() {
 	*/
 	const posts = usePosts(subredditQuery);
 
-	useEffect(() => {
-		console.log(subredditQuery);
-		posts && console.dir(posts[1]);
-	}, [posts]);
+	// uncomment the following useEffect blocc to study the data
+	// useEffect(() => {
+	// 	posts && console.dir(posts[1]);
+	// }, [posts]);
 
 	return (
 		<section>
@@ -37,9 +37,22 @@ function Home() {
 						show posts from r/{subredditQuery}
 					</span>
 				</h1>
-				<div className="side-btns">
+				<div className="side-btns absolute right-0 bottom-0">
+					<button
+						className="transform w-9 h-9 bg-gray-200 rounded-full grid place-items-center transition hover:scale-110"
+						me
+					>
+						<span className="font-bold text-gray-600">r/?</span>
+					</button>
+					<button
+						className="transform w-9 h-9 bg-blue-400 rounded-full grid place-items-center transition hover:scale-110"
+						me
+					>
+						<span className="font-bold text-white text-xs">r/all</span>
+					</button>
+
 					<Link
-						className="top-communities-btn absolute transform w-9 h-9 bg-gray-500 rounded-full grid place-items-center right-0 bottom-0 transition hover:scale-110"
+						className="top-communities-btn transform w-9 h-9 bg-gray-500 rounded-full grid place-items-center transition hover:scale-110"
 						to="/subreddits"
 					>
 						<ListIcon className="text-gray-50 transform scale-125" />
