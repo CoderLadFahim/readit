@@ -19,7 +19,7 @@ function App() {
 			{showInfoModal && <InfoModal infoModalToggler={toggleInfoModal} />}
 			<NavBar infoModalToggler={toggleInfoModal} />
 			<Switch>
-				<Route exact path="/">
+				<Route exact path="/home">
 					<Home />
 				</Route>
 

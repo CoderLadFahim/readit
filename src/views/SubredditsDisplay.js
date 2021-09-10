@@ -19,7 +19,7 @@ function SubredditsDisplay() {
 
 	// for now it redirects the user to subreddit on reddit
 	const handleSubredditResultClick = (link) => {
-		window.open(`https://www.reddit.com${link}`, '_blank').focus();
+		// window.open(`https://www.reddit.com${link}`, '_blank').focus();
 	};
 
 	return (
