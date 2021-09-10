@@ -1,8 +1,10 @@
+import { useHistory } from 'react-router-dom';
 import { useSubreddits, useQuery } from '../hooks';
 
 function SubredditsDisplay() {
 	// getting the query params
 	const query = useQuery();
+	const history = useHistory();
 	const searchQuery = query.get('q');
 
 	let subreddits = useSubreddits(searchQuery);
@@ -12,14 +14,17 @@ function SubredditsDisplay() {
 		subreddits.map((sub) => ({
 			postId: sub.id,
 			subredditUrl: sub.url,
-			name: sub.display_name_prefixed,
+			subredditName: sub.display_name,
+			namePrefixed: sub.display_name_prefixed,
 			iconImg: sub.icon_img || sub.banner_img,
 			subscribers: sub.subscribers,
 		}));
 
 	// for now it redirects the user to subreddit on reddit
-	const handleSubredditResultClick = (link) => {
+	const handleSubredditResultClick = (name) => {
+		console.log(name);
 		// window.open(`https://www.reddit.com${link}`, '_blank').focus();
+		history.push(`/home?subreddit=${name}`);
 	};
 
 	return (
@@ -41,7 +46,9 @@ function SubredditsDisplay() {
 							key={sub.postId}
 							className="container mb-5 rounded-md bg-gray-600 shadow flex items-center py-2 gap-5 pl-5 cursor-pointer transition hover:bg-gray-500"
 							onClick={() =>
-								handleSubredditResultClick(sub.subredditUrl)
+								handleSubredditResultClick(
+									sub.subredditName.toLowerCase()
+								)
 							}
 						>
 							{sub.iconImg ? (
@@ -51,11 +58,11 @@ function SubredditsDisplay() {
 									className="w-6 h-6 rounded-full border border-2 border-gray-400 shadow"
 								/>
 							) : (
-								<CustomSubIcon subName={sub.name} />
+								<CustomSubIcon subName={sub.namePrefixed} />
 							)}
 							<div className="subreddit-data text-left ">
 								<h2 className="font-nunito text-gray-50 font-extrabold">
-									{sub.name}
+									{sub.namePrefixed}
 								</h2>
 								<p className="text-gray-300 text-sm">
 									{sub.subscribers} members
