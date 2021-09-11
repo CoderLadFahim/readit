@@ -10,7 +10,7 @@ function Home() {
 	const query = useQuery();
 	const subredditQuery = query.get('subreddit');
 
-	// the following variable and side effect, clears the subreddits when user visits the home route
+	// the following variable and side effect, clears the subreddits when user visits the home route (DO NOT TAMPER WITH IT)
 	const subredditSliceActionDispatcher = useDispatch();
 	useEffect(() => {
 		subredditSliceActionDispatcher(clearAll());
@@ -37,8 +37,9 @@ function Home() {
 						show posts from r/{subredditQuery}
 					</span>
 				</h1>
+				{/* TEMPORARY, will be moved to a separate component */}
 				<Link
-					className="top-communities-btn absolute transform w-9 h-9 bg-gray-500 rounded-full grid place-items-center right-0 bottom-0 transition hover:scale-110"
+					className="top-communities-btn sm:hidden absolute transform w-9 h-9 bg-gray-500 rounded-full grid place-items-center right-0 bottom-0 transition hover:scale-110"
 					to="/subreddits"
 				>
 					<ListIcon className="text-gray-50 transform scale-125" />
