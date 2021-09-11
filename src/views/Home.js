@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { clearAll } from '../features/subreddits/subredditSlice';
 import { useDispatch } from 'react-redux';
-import { ListIcon } from '../icons';
 import { usePosts, useComments, useSubreddits, useQuery } from '../hooks';
 import { Link } from 'react-router-dom';
 
@@ -37,27 +36,6 @@ function Home() {
 						show posts from r/{subredditQuery}
 					</span>
 				</h1>
-				<div className="side-btns absolute right-0 bottom-0">
-					<button
-						className="transform w-9 h-9 bg-gray-200 rounded-full grid place-items-center transition hover:scale-110"
-						me
-					>
-						<span className="font-bold text-gray-600">r/?</span>
-					</button>
-					<button
-						className="transform w-9 h-9 bg-blue-400 rounded-full grid place-items-center transition hover:scale-110"
-						me
-					>
-						<span className="font-bold text-white text-xs">r/all</span>
-					</button>
-
-					<Link
-						className="top-communities-btn transform w-9 h-9 bg-gray-500 rounded-full grid place-items-center transition hover:scale-110"
-						to="/subreddits"
-					>
-						<ListIcon className="text-gray-50 transform scale-125" />
-					</Link>
-				</div>
 			</div>
 		</section>
 	);
