@@ -12,7 +12,7 @@ function Home() {
 
 	const posts = usePosts('all');
 	console.log(posts);
-	const subreddits = useSubreddits('starterpacks')
+	const subreddits = useSubreddits('gifs')
 	console.log(subreddits);
 	//confused  with how to implement usePosts and useSubreddits. it doesnt have anycontent it to show.
 	return (
@@ -21,7 +21,7 @@ function Home() {
 				Home Route (/)
 			</h1>
 			<h1 className="w-1/2 my-0 mx-auto text-center text-white text-2xl font-bold mt-24">
-				{posts[2].subreddit}
+				What do i do now ?
 			</h1>
 			
 		</section>

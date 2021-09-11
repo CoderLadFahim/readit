@@ -13,7 +13,7 @@ function App() {
 	const toggleInfoModal = () => {
 		setShowInfoModal((prevState) => !prevState);
 	};
-
+		
 	return (
 		<Router>
 			{showInfoModal && <InfoModal infoModalToggler={toggleInfoModal} />}
