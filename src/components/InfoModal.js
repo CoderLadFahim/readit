@@ -22,7 +22,7 @@ function InfoModal({ infoModalToggler }) {
 
 	return (
 		<section className="backdrop w-screen h-screen absolute">
-			<div className="info-card z-20  w-11/12 h-5/6 sm:w-3/5 sm:h-3/5 md:w-1/2 xl:w-1/4 xl:h-5/6 2xl:w-1/3 bg-gray-600 z-10  absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-xl flex flex-col justify-evenly items-center">
+			<div className="info-card z-20  w-11/12 h-5/6 sm:w-3/5 sm:h-3/5 md:w-1/2 xl:w-1/4 xl:h-5/6 2xl:w-1/3 bg-gray-600 z-50  absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-xl flex flex-col justify-evenly items-center">
 				<Logo additionalTailiwindClasses={'text-3xl'} />
 				<button>
 					<CrossIcon
@@ -41,7 +41,7 @@ function InfoModal({ infoModalToggler }) {
 				</div>
 			</div>
 			<div
-				className="backdrop bg-gray-800 opacity-95 absolute top-0 bottom-0 right-0 left-0 z-10"
+				className="backdrop bg-gray-800 opacity-95 absolute top-0 bottom-0 right-0 left-0 z-40"
 				onClick={infoModalToggler}
 			></div>
 		</section>
