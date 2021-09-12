@@ -19,7 +19,6 @@ function App() {
 			{showInfoModal && <InfoModal infoModalToggler={toggleInfoModal} />}
 			<NavBar infoModalToggler={toggleInfoModal} />
 			<Switch>
-				{/* the following route gets catched by CatchAll route, but then gets programmatically redirected to back to /home as / is the original route */}
 				<Route exact path="/home">
 					<Home />
 				</Route>

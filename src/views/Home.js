@@ -1,13 +1,10 @@
 import { useEffect } from 'react';
 import { clearAll } from '../features/subreddits/subredditSlice';
 import { useDispatch } from 'react-redux';
-<<<<<<< HEAD
-import { usePosts, useSubreddits } from '../hooks';
-=======
 import { ListIcon } from '../icons';
 import { usePosts, useComments, useSubreddits, useQuery } from '../hooks';
 import { Link } from 'react-router-dom';
->>>>>>> main
+import MainPage from '../components/MainPage';
 
 function Home() {
 	// getting the subreddit to look for from query params, (coming initially from CatchAll and also from subreddit results on SubredditDisplay)
@@ -20,22 +17,6 @@ function Home() {
 		subredditSliceActionDispatcher(clearAll());
 	}, []);
 
-<<<<<<< HEAD
-	const posts = usePosts('all');
-	console.log(posts);
-	const subreddits = useSubreddits('gifs')
-	console.log(subreddits);
-	//confused  with how to implement usePosts and useSubreddits. it doesnt have anycontent it to show.
-	return (
-		<section>
-			<h1 className="w-1/2 my-0 mx-auto text-center text-white text-2xl font-bold mt-24">
-				Home Route (/)
-			</h1>
-			<h1 className="w-1/2 my-0 mx-auto text-center text-white text-2xl font-bold mt-24">
-				What do i do now ?
-			</h1>
-			
-=======
 	/*
 	 returns an array of postObjs
 	 properties needed from the post objects: 
@@ -47,14 +28,16 @@ function Home() {
 		console.log(subredditQuery);
 		posts && console.dir(posts[1]);
 	}, [posts]);
+	
+
 
 	return (
 		<section>
-			<div className="container border relative">
-				<h1 className="w-1/2 my-0 mx-auto text-center text-white text-2xl font-bold mt-24">
+			<div className="container border relative bg-gray-700">
+			<h1 className="w-1/2 my-0 mx-auto text-center text-white text-2xl font-bold mt-24">
 					Home Route <br />
 					<span className="font-light">
-						show posts from r/{subredditQuery}
+						show posts from r/
 					</span>
 				</h1>
 				{/* TEMPORARY, will be moved to a separate component */}
@@ -65,7 +48,11 @@ function Home() {
 					<ListIcon className="text-gray-50 transform scale-125" />
 				</Link>
 			</div>
->>>>>>> main
+			<div>
+				{/* <MainPage posts={posts}></MainPage> */}
+				
+			</div>
+
 		</section>
 	);
 }
