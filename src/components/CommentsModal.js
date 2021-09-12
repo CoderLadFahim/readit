@@ -38,7 +38,10 @@ function CommentsModal({ permalink }) {
 							Comments on u/{postComments.parentPostAuthorName}'s post
 						</h1>
 					</div>
-					<ul className="w-11/12 my-0 mx-auto h-5/6 overflow-scroll rounded-lg">
+					<ul
+						id="comments"
+						className="w-11/12 my-0 mx-auto h-5/6 overflow-scroll rounded-lg"
+					>
 						{postComments.comments.map((comment, i) => (
 							<li
 								className="comment text-white mb-3 bg-gray-500 rounded-lg px-3 py-2"
