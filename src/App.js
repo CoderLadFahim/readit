@@ -11,9 +11,7 @@ import SideButtons from './components/SideButtons';
 function App() {
 	const [showInfoModal, setShowInfoModal] = useState(false);
 
-	const toggleInfoModal = () => {
-		setShowInfoModal((prevState) => !prevState);
-	};
+	const toggleInfoModal = () => setShowInfoModal((prevState) => !prevState);
 
 	return (
 		<Router>
