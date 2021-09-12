@@ -19,28 +19,33 @@ function CommentsModal({ permalink }) {
 
 	return (
 		<section className="modal-container border border-2 border-red-400 text-white">
+			{/* BACKDROP */}
 			<div className="backdrop bg-gray-800 opacity-95 absolute top-0 bottom-0 right-0 left-0 z-40"></div>{' '}
+			{/* COMMENTS MODAL */}
 			{postComments && (
 				<div
 					className="comments-modal w-11/12 h-5/6 bg-gray-600
 					z-50 absolute left-1/2 top-1/2 transform -translate-x-1/2
 					-translate-y-1/2 rounded-xl"
 				>
-					{' '}
+					{/* MODAL HEADER */}
 					<div className="header w-11/12 my-0 mx-auto py-5 mb-2 flex items-center justify-between">
-						<h1 className="font-bold text-sm">
+						<h1 className="font-bold text-sm sm:text-base">
 							Comments on{' '}
 							<span className="text-red-400">
 								u/{postComments.parentPostAuthorName}'s
 							</span>{' '}
 							post
 						</h1>
-						<CrossIcon className="text-blue-400" />
+						<CrossIcon className="text-blue-400 transform sm:scale-125" />
 					</div>
+
+					{/* COMMENTS CONTAINER */}
 					<ul
 						id="comments"
-						className="w-11/12 my-0 mx-auto h-5/6 overflow-scroll rounded-lg"
+						className="w-11/12 my-0 mx-auto h-5/6 overflow-scroll rounded-lg border"
 					>
+						{/* COMMENTS */}
 						{postComments.comments.map(
 							(comment, i) =>
 								comment.commentText && (
