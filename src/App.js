@@ -7,11 +7,15 @@ import SubredditsDisplay from './views/SubredditsDisplay';
 import Home from './views/Home';
 import CatchAll from './views/CatchAll';
 import SideButtons from './components/SideButtons';
+import scrollDisabler from './scrollDisabler';
 
 function App() {
 	const [showInfoModal, setShowInfoModal] = useState(false);
 
-	const toggleInfoModal = () => setShowInfoModal((prevState) => !prevState);
+	const toggleInfoModal = () => {
+		setShowInfoModal((prevState) => !prevState);
+		scrollDisabler();
+	};
 
 	return (
 		<Router>

@@ -38,7 +38,7 @@ function Home() {
 					</span>
 				</h1>
 			</div>
-			<CommentsModal />
+			{/* <CommentsModal /> */}
 		</section>
 	);
 }
