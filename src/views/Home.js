@@ -3,6 +3,7 @@ import { clearAll } from '../features/subreddits/subredditSlice';
 import { useDispatch } from 'react-redux';
 import { usePosts, useComments, useSubreddits, useQuery } from '../hooks';
 import { Link } from 'react-router-dom';
+import CommentsModal from '../components/CommentsModal';
 
 function Home() {
 	// getting the subreddit to look for from query params, (coming initially from CatchAll and also from subreddit results on SubredditDisplay)
@@ -37,6 +38,7 @@ function Home() {
 					</span>
 				</h1>
 			</div>
+			<CommentsModal />
 		</section>
 	);
 }
