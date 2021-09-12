@@ -1,6 +1,7 @@
 import React from 'react';
 import '../App.css'
 import { useComments } from '../hooks';
+import LeaderBoard from './LeaderBoard';
 
 const MainPage = (props) => {
     let comments = useComments(props.posts[0].permalink)
@@ -8,10 +9,10 @@ const MainPage = (props) => {
    
     return (
         
-        <main className="post">
+        <main className="post container">
             {
                 props.posts.map(post => {
-                    return  <div className=" post-detail border-2 bg-gray-700   ">
+                    return  <div className=" container post-detail bg-gray-700   ">
                         
                     <h4>
                         <span>{post.subreddit_name_prefixed}</span>
@@ -22,13 +23,13 @@ const MainPage = (props) => {
                     </div>
                     <div className='post-btn'>
         
-                        <div>
+                        <div className="left">
                         <button className='btn upvote'>Upvotes<span>{post.ups}</span></button>
                         <button className='btn downvote'>Downvotes<span>{post.downs}</span></button>
                         </div>
         
-                        <div>
-                        {/* <button className='btn comment'>Comments<span>{comments.length}</span></button> */}
+                        <div className='right'>
+                        <button className='btn comment'>Comments<span>{comments.length}</span></button>
                         </div>
                         
                         
@@ -36,7 +37,7 @@ const MainPage = (props) => {
                 </div>
                 } )
             }
-       
+    
         </main>
     );
 };

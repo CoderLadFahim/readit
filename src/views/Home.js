@@ -5,6 +5,7 @@ import { ListIcon } from '../icons';
 import { usePosts, useComments, useSubreddits, useQuery } from '../hooks';
 import { Link } from 'react-router-dom';
 import MainPage from '../components/MainPage';
+import LeaderBoard from '../components/LeaderBoard';
 
 function Home() {
 	// getting the subreddit to look for from query params, (coming initially from CatchAll and also from subreddit results on SubredditDisplay)
@@ -48,9 +49,9 @@ function Home() {
 					<ListIcon className="text-gray-50 transform scale-125" />
 				</Link>
 			</div>
-			<div>
-				{/* <MainPage posts={posts}></MainPage> */}
-				
+			<div className='front-page'>
+				<MainPage posts={posts}></MainPage>
+				<LeaderBoard></LeaderBoard>
 			</div>
 
 		</section>
