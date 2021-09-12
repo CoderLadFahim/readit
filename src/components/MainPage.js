@@ -5,14 +5,18 @@ import { useComments } from '../hooks';
 
 const MainPage = (props) => {
 	/* You have to check its availability with the && operator like this first bro, as the data is asynchronous */
+
 	let comments = useComments(props.posts && props.posts[0].permalink);
+
+	/* and just leave the comment functionality bits to me, just put a random number in the comments button
+	 * I have to make some more changes to useComments (i did make some) as I just reliased it can't be used iteratively (big brain yes)*/
 
 	return (
 		<main className="post">
 			{props.posts &&
 				props.posts.map((post, i) => {
 					return (
-						<div className=" post-detail border-2 bg-gray-700   " key={i}>
+						<div className="post-detail border-2 bg-gray-700" key={i}>
 							<h4>
 								<span>{post.subreddit_name_prefixed}</span>
 								<span>posted by/{post.author}</span>
@@ -32,7 +36,11 @@ const MainPage = (props) => {
 
 								<div>
 									<button className="btn comment">
-										Comments<span>{comments && comments.length}</span>
+										Comments
+										<span>
+											{/* returns comments for a single post (don't worry about it man, I'll handle everything)*/}
+											{comments && comments.comments.length}
+										</span>
 									</button>
 								</div>
 							</div>
