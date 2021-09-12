@@ -17,7 +17,7 @@ function SideButtons() {
 
 	return (
 		<div className="side-btns absolute right-2 bottom-0 border flex flex-col justify-between">
-			{history.location === '/subreddit' && (
+			{history.location.pathname === '/home' && (
 				<button className="transform w-9 h-9 bg-gray-200 rounded-full grid place-items-center transition hover:scale-110 shadow sm:hidden">
 					<span className="font-bold text-gray-600">r/?</span>
 				</button>
