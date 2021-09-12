@@ -16,15 +16,22 @@ function SideButtons() {
 	};
 
 	return (
-		<div className="side-btns absolute right-2 bottom-0 border flex flex-col justify-between">
+		<div className="side-btns fixed right-4 bottom-4 flex flex-col justify-between z-10">
 			{history.location.pathname === '/home' && (
-				<button className="transform w-9 h-9 bg-gray-200 rounded-full grid place-items-center transition hover:scale-110 shadow sm:hidden">
+				<button
+					className="side-btn transform w-9 h-9 bg-gray-200 rounded-full grid place-items-center transition hover:scale-110 shadow sm:hidden"
+					onClick={() => {
+						console.log(
+							'Show the subreddit info as a modal on mobile, hanz'
+						);
+					}}
+				>
 					<span className="font-bold text-gray-600">r/?</span>
 				</button>
 			)}
 			{subredditQuery !== 'all' && (
 				<Link
-					className="transform w-9 h-9 bg-blue-400 rounded-full grid place-items-center transition hover:scale-110 shadow"
+					className="transform side-btn w-9 h-9 bg-blue-400 rounded-full grid place-items-center transition hover:scale-110 shadow"
 					to="/home?subreddit=all"
 				>
 					<span className="font-bold text-white text-xs">r/all</span>
@@ -32,7 +39,7 @@ function SideButtons() {
 			)}
 			{history.location.search && (
 				<Link
-					className="top-communities-btn transform w-9 h-9 bg-gray-500
+					className="side-btn top-communities-btn transform w-9 h-9 bg-gray-500
 				rounded-full grid place-items-center transition hover:scale-110
 				shadow"
 					to="/subreddits"
