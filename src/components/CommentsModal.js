@@ -33,7 +33,7 @@ function CommentsModal({ permalink }) {
 				<div
 					className="comments-modal w-11/12 h-5/6 bg-gray-600
 					z-50 absolute left-1/2 top-1/2 transform -translate-x-1/2
-					-translate-y-1/2 rounded-xl sm:flex sm:flex-col sm:justify-around sm:w-5/6 lg:w-3/4 xl:w-4/6 xl:block 2xl:flex 2xl:w-1/2  2xl:justify-evenly"
+					-translate-y-1/2 rounded-xl sm:flex sm:flex-col sm:justify-around sm:w-5/6 lg:w-3/4 xl:w-4/6 2xl:flex 2xl:w-1/2  2xl:justify-evenly"
 				>
 					{/* MODAL HEADER */}
 					<div className="header w-11/12 my-0 mx-auto py-5 mb-2 flex items-center justify-between">
@@ -53,7 +53,7 @@ function CommentsModal({ permalink }) {
 					{/* COMMENTS CONTAINER */}
 					<ul
 						id="comments"
-						className="w-11/12 my-0 mx-auto h-5/6 overflow-scroll rounded-lg xl:mt-10 2xl:mt-0"
+						className="w-11/12 my-0 mx-auto h-5/6 overflow-scroll rounded-lg 2xl:mt-0 xl:mb-5"
 					>
 						{/* COMMENTS */}
 						{postComments.comments.map(
