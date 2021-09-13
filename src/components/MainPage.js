@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css'
 import { useComments } from '../hooks';
-import LeaderBoard from './LeaderBoard';
+
 
 const MainPage = (props) => {
     let comments = useComments(props.posts[0].permalink)
