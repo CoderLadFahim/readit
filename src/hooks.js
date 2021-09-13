@@ -41,23 +41,30 @@ export const useSubreddits = (searchTerm = null) => {
 // takes in a permalink and returns an array of 1st level comments of the given link's associated post
 export const useComments = (permalink) => {
 	const API_ENPOINT = `https://www.reddit.com${permalink}.json`;
-	const [comments, setComments] = useState(null);
+	const [commentsObj, setCommentsObj] = useState(null);
 
 	useEffect(() => {
 		const fetchComments = async () => {
 			const apiResponse = await fetch(API_ENPOINT);
-			const [, commentsJson] = await apiResponse.json();
-			const commentBodies = commentsJson.data.children.map(
-				(commentObj) => commentObj.data.body
-			);
+			const [parentPost, commentsJson] = await apiResponse.json();
 
-			setComments(commentBodies);
+			const commentBodies = commentsJson.data.children.map((commentObj) => ({
+				commentAuthor: commentObj.data.author,
+				commentText: commentObj.data.body,
+			}));
+
+			const comment = {
+				parentPostAuthorName: parentPost.data.children[0].data.author,
+				comments: commentBodies,
+			};
+
+			setCommentsObj(comment);
 		};
 
 		fetchComments();
 	}, []);
 
-	return comments;
+	return commentsObj;
 };
 
 export const useQuery = () => {

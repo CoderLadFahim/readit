@@ -27,18 +27,16 @@ function Home() {
 
 	useEffect(() => {
 		console.log(subredditQuery);
-		posts && console.dir(posts[1]);
+		// posts && console.dir(posts[1]);
 	}, [posts]);
-	
-
 
 	return (
 		<section>
 			<div className="container border relative bg-gray-700">
-			<h1 className="w-1/2 my-0 mx-auto text-center text-white text-2xl font-bold mt-24">
+				<h1 className="w-1/2 my-0 mx-auto text-center text-white text-2xl font-bold mt-24">
 					Home Route <br />
 					<span className="font-light">
-						show posts from r/
+						show posts from r/{subredditQuery}
 					</span>
 				</h1>
 				{/* TEMPORARY, will be moved to a separate component */}
@@ -49,11 +47,11 @@ function Home() {
 					<ListIcon className="text-gray-50 transform scale-125" />
 				</Link>
 			</div>
-			<div className='front-page'>
-				<MainPage posts={posts}></MainPage>
+			<div>
+				{<MainPage posts={posts}></MainPage>}
 				<LeaderBoard></LeaderBoard>
+				
 			</div>
-
 		</section>
 	);
 }
