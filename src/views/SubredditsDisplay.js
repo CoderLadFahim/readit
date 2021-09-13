@@ -1,5 +1,6 @@
 import { useHistory } from 'react-router-dom';
 import { useSubreddits, useQuery } from '../hooks';
+import CommentsModal from '../components/CommentsModal';
 
 function SubredditsDisplay() {
 	// getting the query params
