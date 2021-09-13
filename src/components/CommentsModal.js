@@ -53,7 +53,7 @@ function CommentsModal({ permalink }) {
 					{/* COMMENTS CONTAINER */}
 					<ul
 						id="comments"
-						className="w-11/12 my-0 mx-auto h-5/6 overflow-scroll rounded-lg"
+						className="w-11/12 my-0 mx-auto h-5/6 overflow-scroll rounded-lg xl:mt-10 2xl:mt-0"
 					>
 						{/* COMMENTS */}
 						{postComments.comments.map(
