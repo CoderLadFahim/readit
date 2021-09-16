@@ -1,6 +1,7 @@
 import { useHistory } from 'react-router-dom';
 import { useSubreddits, useQuery } from '../hooks';
 import CommentsModal from '../components/CommentsModal';
+import CustomSubredditIcon from '../components/CustomSubredditIcon';
 
 function SubredditsDisplay() {
 	// getting the query params
@@ -55,7 +56,7 @@ function SubredditsDisplay() {
 									className="w-6 h-6 rounded-full border border-2 border-gray-400 shadow"
 								/>
 							) : (
-								<CustomSubIcon subName={sub.namePrefixed} />
+								<CustomSubredditIcon subName={sub.namePrefixed} />
 							)}
 							<div className="subreddit-data text-left ">
 								<h2 className="font-nunito text-gray-50 font-extrabold">
@@ -88,28 +89,6 @@ function SubredditsDisplay() {
 					</>
 				)}
 			</ul>
-		</div>
-	);
-}
-
-function CustomSubIcon({ subName }) {
-	const availableColors = [
-		'red',
-		'yellow',
-		'green',
-		'blue',
-		'indigo',
-		'purple',
-		'pink',
-	];
-
-	return (
-		<div
-			className={`w-6 h-6 rounded-full bg-${
-				availableColors[Math.floor(Math.random() * availableColors.length)]
-			}-500 font-ubuntu text-sm text-center text-white shadow grid place-items-center`}
-		>
-			<h1 className="text-center">{subName[2].toUpperCase()}</h1>
 		</div>
 	);
 }
