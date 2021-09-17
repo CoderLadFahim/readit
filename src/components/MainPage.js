@@ -2,6 +2,7 @@
 import React from 'react';
 import '../App.css';
 import { useComments } from '../hooks';
+import { ArrowDownIcon, ArrowUpIcon, CommentIcon } from '../icons';
 
 
 const MainPage = (props) => {
@@ -17,7 +18,7 @@ const MainPage = (props) => {
 			{props.posts &&
 				props.posts.map((post, i) => {
 					return (
-						<div className="post-detail border-2 bg-gray-700" key={i}>
+						<div className="post-detail container bg-gray-700" key={i}>
 							<h4>
 								<span>{post.subreddit_name_prefixed}</span>
 								<span>posted by/{post.author}</span>
@@ -28,21 +29,20 @@ const MainPage = (props) => {
 							<div className="post-btn">
 								<div>
 									<button className="btn upvote">
-										Upvotes<span>{post.ups}</span>
+										<ArrowUpIcon/> Upvotes<span>{post.ups}</span>
 									</button>
 									<button className="btn downvote">
-										Downvotes<span>{post.downs}</span>
+										<ArrowDownIcon/> DownVotes<span>{post.downs}</span>
 									</button>
-								</div>
 
-								<div>
-									<button className="btn comment">
-										Comments
+									<button className="btn comment right">
+										<CommentIcon/> Comments
 										<span>
 											{/* returns comments for a single post (don't worry about it man, I'll handle everything)*/}
 											{comments && comments.comments.length}
 										</span>
 									</button>
+
 								</div>
 							</div>
 						</div>

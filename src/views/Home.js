@@ -47,7 +47,7 @@ function Home() {
 					<ListIcon className="text-gray-50 transform scale-125" />
 				</Link>
 			</div>
-			<div>
+			<div className='front-page'>
 				{<MainPage posts={posts}></MainPage>}
 				<LeaderBoard></LeaderBoard>
 				
