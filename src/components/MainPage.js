@@ -25,7 +25,10 @@ const MainPage = (props) => {
 							</h4>
 							<div>
 								<h2 className="title">{post.title}</h2>
-							</div>
+							</div>	
+									{!post.media && <img src= { post. url }/>}
+						       
+							
 							<div className="post-btn">
 								<div>
 									<button className="btn upvote">

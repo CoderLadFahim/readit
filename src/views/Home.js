@@ -27,7 +27,7 @@ function Home() {
 
 	useEffect(() => {
 		console.log(subredditQuery);
-		// posts && console.dir(posts[1]);
+		posts && console.log(posts);
 	}, [posts]);
 
 	return (
