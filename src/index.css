@@ -30,3 +30,7 @@ body {
 .social-icon {
 	@apply text-gray-100 transform scale-110;
 }
+
+.side-btn {
+	@apply mb-3;
+}

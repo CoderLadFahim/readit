@@ -1,5 +1,7 @@
 import { useHistory } from 'react-router-dom';
 import { useSubreddits, useQuery } from '../hooks';
+import CommentsModal from '../components/CommentsModal';
+import CustomSubredditIcon from '../components/CustomSubredditIcon';
 
 function SubredditsDisplay() {
 	// getting the query params
@@ -20,12 +22,8 @@ function SubredditsDisplay() {
 			subscribers: sub.subscribers,
 		}));
 
-	// for now it redirects the user to subreddit on reddit
-	const handleSubredditResultClick = (name) => {
-		console.log(name);
-		// window.open(`https://www.reddit.com${link}`, '_blank').focus();
+	const handleSubredditResultClick = (name) =>
 		history.push(`/home?subreddit=${name}`);
-	};
 
 	return (
 		<div className="text-green-400 font-nunito font-bold mt-5">
@@ -58,14 +56,15 @@ function SubredditsDisplay() {
 									className="w-6 h-6 rounded-full border border-2 border-gray-400 shadow"
 								/>
 							) : (
-								<CustomSubIcon subName={sub.namePrefixed} />
+								<CustomSubredditIcon subName={sub.namePrefixed} />
 							)}
 							<div className="subreddit-data text-left ">
 								<h2 className="font-nunito text-gray-50 font-extrabold">
 									{sub.namePrefixed}
 								</h2>
 								<p className="text-gray-300 text-sm">
-									{sub.subscribers} members
+									{new Intl.NumberFormat().format(sub.subscribers)}{' '}
+									members
 								</p>
 							</div>
 						</li>
@@ -76,13 +75,13 @@ function SubredditsDisplay() {
 						{new Array(25).fill(null).map((I, i) => (
 							<li
 								key={i}
-								className="container animate-pulse mb-5 rounded-md bg-gray-600 shadow flex items-center py-5 gap-5 pl-5 cursor-pointer transition hover:bg-gray-500"
+								className="container animate-pulse mb-5 rounded-md bg-gray-600 shadow flex items-center py-5 gap-5 pl-5"
 							>
 								<div className="w-6 h-6 rounded-full bg-gray-400 opacity-50"></div>
 								<div
 									className={`h-5 rounded-xl bg-gray-400 opacity-50`}
 									style={{
-										width: Math.floor(Math.random() * 20 + 10) + '%',
+										width: Math.floor(Math.random() * 10 + 10) + '%',
 									}}
 								></div>
 							</li>
@@ -90,28 +89,6 @@ function SubredditsDisplay() {
 					</>
 				)}
 			</ul>
-		</div>
-	);
-}
-
-function CustomSubIcon({ subName }) {
-	const availableColors = [
-		'red',
-		'yellow',
-		'green',
-		'blue',
-		'indigo',
-		'purple',
-		'pink',
-	];
-
-	return (
-		<div
-			className={`w-6 h-6 rounded-full bg-${
-				availableColors[Math.floor(Math.random() * availableColors.length)]
-			}-500 font-ubuntu text-sm text-center text-white shadow grid place-items-center`}
-		>
-			<h1 className="text-center">{subName[2].toUpperCase()}</h1>
 		</div>
 	);
 }
