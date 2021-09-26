@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { clearAll } from '../features/subreddits/subredditSlice';
 import { useDispatch } from 'react-redux';
-import { usePosts, useComments, useSubreddits, useQuery } from '../hooks';
+import { usePosts, useComments, useQuery } from '../hooks';
 import { Link } from 'react-router-dom';
 import CommentsModal from '../components/CommentsModal';
 
