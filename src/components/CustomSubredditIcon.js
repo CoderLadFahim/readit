@@ -1,4 +1,6 @@
-function CustomSubredditIcon({ subredditName }) {
+import { useEffect } from 'react';
+
+function CustomSubredditIcon({ subName }) {
 	const availableColors = [
 		'red',
 		'yellow',
@@ -9,13 +11,17 @@ function CustomSubredditIcon({ subredditName }) {
 		'pink',
 	];
 
+	useEffect(() => {
+		console.log(subName);
+	}, []);
+
 	return (
 		<div
 			className={`w-6 h-6 rounded-full bg-${
 				availableColors[Math.floor(Math.random() * availableColors.length)]
 			}-500 font-ubuntu text-sm text-center text-white shadow grid place-items-center`}
 		>
-			<h1 className="text-center">{subredditName[2].toUpperCase()}</h1>
+			<h1 className="text-center">{subName[2].toUpperCase()}</h1>
 		</div>
 	);
 }
