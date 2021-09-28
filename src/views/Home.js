@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { clearAll } from '../features/subreddits/subredditSlice';
 import { useDispatch } from 'react-redux';
-import { usePosts, useComments, useQuery } from '../hooks';
+import { usePosts, useComments, useQuery, useSubredditDesc } from '../hooks';
 import { Link } from 'react-router-dom';
 import CommentsModal from '../components/CommentsModal';
 
@@ -9,12 +9,17 @@ function Home() {
 	// getting the subreddit to look for from query params, (coming initially from CatchAll and also from subreddit results on SubredditDisplay)
 	const query = useQuery();
 	const subredditQuery = query.get('subreddit');
+	const subDesc = useSubredditDesc(subredditQuery);
 
 	// the following variable and side effect, clears the subreddits when user visits the home route (DO NOT TAMPER WITH IT)
 	const subredditSliceActionDispatcher = useDispatch();
 	useEffect(() => {
 		subredditSliceActionDispatcher(clearAll());
 	}, []);
+
+	useEffect(() => {
+		console.dir(subDesc);
+	}, [subDesc]);
 
 	/*
 	 returns an array of postObjs

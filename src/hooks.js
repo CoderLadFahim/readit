@@ -38,6 +38,27 @@ export const useSubreddits = (searchTerm = null) => {
 	return subreddits;
 };
 
+export const useSubredditDesc = (subreddit) => {
+	const [subDesc, setSubDesc] = useState(null);
+	useEffect(() => {
+		async function getSubredditDesc() {
+			const subredditsBySearchTermEndpoint = `https://www.reddit.com/search.json?q=${subreddit}&type=sr`;
+			const apiResponse = await fetch(subredditsBySearchTermEndpoint);
+			const apiData = await apiResponse.json();
+
+			const firstSubredditResultData = apiData.data.children[0].data;
+			const subredditName = firstSubredditResultData.display_name_prefixed;
+			const subredditDescription =
+				firstSubredditResultData.public_description;
+
+			setSubDesc({ subredditName, subredditDescription });
+		}
+		getSubredditDesc();
+	}, []);
+
+	return subDesc;
+};
+
 // takes in a permalink and returns an array of 1st level comments of the given link's associated post
 export const useComments = (permalink) => {
 	const API_ENPOINT = `https://www.reddit.com${permalink}.json`;
