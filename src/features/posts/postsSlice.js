@@ -8,7 +8,7 @@ const initialState = {
 
 export const fetchPosts = createAsyncThunk(
 	'counter/fetchPosts',
-	async (subredditName, sortType = 'hot') => {
+	async (subredditName) => {
 		const apiResponse = await fetch(
 			`https://www.reddit.com/r/${subredditName.toLowerCase()}.json`
 		);
