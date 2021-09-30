@@ -4,12 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts } from './features/posts/postsSlice';
 import { fetchSubreddits } from './features/subreddits/subredditSlice';
 
+// takes in subreddit name and sortType (defaults to 'hot'). Returns an array of posts, (based on sortType) from that subreddit
 // subredditName is case-insensitive also it doesn't need to be prefixed with r/ just the subname
-export const usePosts = (subredditName) => {
+
+export const usePosts = (subredditName, sortType = 'hot') => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(fetchPosts(subredditName));
+		dispatch(fetchPosts(subredditName, sortType));
 	}, []);
 
 	const posts = useSelector((state) => {
@@ -42,28 +44,26 @@ export const useSubredditData = (subreddit) => {
 	useEffect(() => {
 		async function getSubredditDesc() {
 			try {
-				const subredditSearchEndpoint = `https://www.reddit.com/search.json?q=${subreddit}&type=sr`;
-				const apiResponse = await fetch(subredditSearchEndpoint);
-				// returns an array of matching subreddits
+				const subredditsBySearchTermEndpoint = `https://www.reddit.com/search.json?q=${subreddit}&type=sr`;
+				const apiResponse = await fetch(subredditsBySearchTermEndpoint);
 				const apiData = await apiResponse.json();
 
-				// getting only the first search result
 				const firstSubredditResultData = apiData.data.children[0].data;
+				const subredditName =
+					firstSubredditResultData.display_name_prefixed;
+				const subredditDescription =
+					firstSubredditResultData.public_description;
 
-				// extracting the relevant properties
-				const subredditDataObj = {
+				setSubDesc({
 					name: firstSubredditResultData.display_name_prefixed,
-					description: firstSubredditResultData.public_description,
-					iconImg:
-						firstSubredditResultData.icon_img ||
-						firstSubredditResultData.banner_img,
+					description:firstSubredditResultData.public_description,
 					subscribers: firstSubredditResultData.subscribers,
-				};
-
-				setSubDesc(subredditDataObj);
+				});
+				// setSubDesc(firstSubredditResultData);
 			} catch (e) {
 				setSubDesc({
-					msg: '400, not found',
+					subredditName: 'SUBREDDIT NOT FOUND',
+					subredditDescription: 'SUBREDDIT NOT FOUND',
 				});
 			}
 		}

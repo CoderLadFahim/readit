@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { clearAll } from '../features/subreddits/subredditSlice';
 import { useDispatch } from 'react-redux';
-import { usePosts, useComments, useSubreddits, useQuery } from '../hooks';
+import { usePosts, useComments, useSubreddits, useQuery,useSubredditData } from '../hooks';
 import { Link, Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import CommentsModal from '../components/CommentsModal';
 import MainPage from '../components/MainPage';
@@ -11,6 +11,8 @@ function Home() {
 	// getting the subreddit to look for from query params, (coming initially from CatchAll and also from subreddit results on SubredditDisplay)
 	const query = useQuery();
 	const subredditQuery = query.get('subreddit');
+	// returns an obj {name, iconImg, desc, subscribers}
+	const subData = useSubredditData(subredditQuery);
 
 	// the following variable and side effect, clears the subreddits when user visits the home route (DO NOT TAMPER WITH IT)
 	const subredditSliceActionDispatcher = useDispatch();
