@@ -5,53 +5,59 @@ import { useComments } from '../hooks';
 import { ArrowDownIcon, ArrowUpIcon, CommentIcon } from '../icons';
 import CustomSubredditIcon from './CustomSubredditIcon';
 
-
 const MainPage = (props) => {
 	/* You have to check its availability with the && operator like this first bro, as the data is asynchronous */
 
-	let comments = useComments(props.posts && props.posts[0].permalink);
+	let comments = useComments(props.posts[0].permalink);
 
 	/* and just leave the comment functionality bits to me, just put a random number in the comments button
 	 * I have to make some more changes to useComments (i did make some) as I just reliased it can't be used iteratively (big brain yes)*/
 
+	React.useEffect(() => {
+		console.dir(props.posts);
+	}, [props.posts]);
+
 	return (
 		<main className="post">
-			
 			{props.posts &&
 				props.posts.map((post, i) => {
 					return (
 						<div className="post-detail container bg-gray-700" key={i}>
-							<h4 className='flex'>
-							    <CustomSubredditIcon subName={post}/>
+							<h4 className="flex">
+								<CustomSubredditIcon subName={post} />
 								<span>{post.subreddit_name_prefixed}</span>
 								<span>posted by/{post.author}</span>
 							</h4>
 							<div>
 								<h2 className="title">{post.title}</h2>
-							</div>	
-									{!post.media && <img src= { post. url }/>}
-						       		{post.media && 
-									   <video width="100%" controls>
-										   	<source src={post.secure_media.reddit_video.fallback_url} type='video/mp4'></source>
-									   </video>}
-							
+							</div>
+							{!post.media && <img src={post.url} />}
+							{props.posts.is_video && (
+								<video width="100%" controls>
+									<source
+										src={post.secure_media.reddit_video.fallback_url}
+										type="video/mp4"
+									></source>
+								</video>
+							)}
+
 							<div className="post-btn">
 								<div>
 									<button className="btn upvote">
-										<ArrowUpIcon/> Upvotes<span>{post.ups}</span>
+										<ArrowUpIcon /> Upvotes<span>{post.ups}</span>
 									</button>
 									<button className="btn downvote">
-										<ArrowDownIcon/> DownVotes<span>{post.downs}</span>
+										<ArrowDownIcon /> DownVotes
+										<span>{post.downs}</span>
 									</button>
 
 									<button className="btn comment right">
-										<CommentIcon/> Comments
+										<CommentIcon /> Comments
 										<span>
 											{/* returns comments for a single post (don't worry about it man, I'll handle everything)*/}
 											{comments && comments.comments.length}
 										</span>
 									</button>
-
 								</div>
 							</div>
 						</div>

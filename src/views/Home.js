@@ -1,7 +1,13 @@
 import { useEffect } from 'react';
 import { clearAll } from '../features/subreddits/subredditSlice';
 import { useDispatch } from 'react-redux';
-import { usePosts, useComments, useSubreddits, useQuery,useSubredditData } from '../hooks';
+import {
+	usePosts,
+	useComments,
+	useSubreddits,
+	useQuery,
+	useSubredditData,
+} from '../hooks';
 import { Link, Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import CommentsModal from '../components/CommentsModal';
 import MainPage from '../components/MainPage';
@@ -26,28 +32,26 @@ function Home() {
 	 		title, over_18 (hide the post if true), author, permalink(need this to fetch comments), subreddit_name_prefixed, ups, downs,
 	*/
 	const posts = usePosts(subredditQuery);
-	const subreddit = useSubreddits('funny')
+	const subreddit = useSubreddits('funny');
 	// uncomment the following useEffect blocc to study the data
 	useEffect(() => {
 		posts && console.log(posts, subData);
 	}, [posts]);
 
 	return (
-		<section >
-			
+		<section>
 			{/* <CommentsModal /> */}
-			<div className='front-page'>
+			<div className="front-page">
 				<Router>
 					<Switch>
-						<Route path='/'>
-							<MainPage posts={posts}></MainPage>
+						<Route path="/">
+							{posts && <MainPage posts={posts}></MainPage>}
 							<LeaderBoard></LeaderBoard>
 						</Route>
 					</Switch>
 				</Router>
 			</div>
 		</section>
-		
 	);
 }
 
