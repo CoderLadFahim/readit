@@ -24,7 +24,7 @@ const MainPage = (props) => {
 					return (
 						<div className="post-detail container bg-gray-700" key={i}>
 							<h4 className="flex">
-								<CustomSubredditIcon subName={post} />
+								<CustomSubredditIcon subName={post.author} />
 								<span>{post.subreddit_name_prefixed}</span>
 								<span>posted by/{post.author}</span>
 							</h4>
