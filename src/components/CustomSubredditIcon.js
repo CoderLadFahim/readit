@@ -1,4 +1,5 @@
 function CustomSubredditIcon({ subName }) {
+	
 	const availableColors = [
 		'red',
 		'yellow',
@@ -15,7 +16,7 @@ function CustomSubredditIcon({ subName }) {
 				availableColors[Math.floor(Math.random() * availableColors.length)]
 			}-500 font-ubuntu text-sm text-center text-white shadow grid place-items-center`}
 		>
-			<h1 className="text-center">{subName[2].toUpperCase()}</h1>
+			<h1 className="text-center">{subName.author && subName.author[0].toUpperCase() }</h1>
 		</div>
 	);
 }

@@ -3,6 +3,7 @@ import React from 'react';
 import '../App.css';
 import { useComments } from '../hooks';
 import { ArrowDownIcon, ArrowUpIcon, CommentIcon } from '../icons';
+import CustomSubredditIcon from './CustomSubredditIcon';
 
 
 const MainPage = (props) => {
@@ -15,11 +16,13 @@ const MainPage = (props) => {
 
 	return (
 		<main className="post">
+			
 			{props.posts &&
 				props.posts.map((post, i) => {
 					return (
 						<div className="post-detail container bg-gray-700" key={i}>
-							<h4>
+							<h4 className='flex'>
+							    <CustomSubredditIcon subName={post}/>
 								<span>{post.subreddit_name_prefixed}</span>
 								<span>posted by/{post.author}</span>
 							</h4>
@@ -27,7 +30,10 @@ const MainPage = (props) => {
 								<h2 className="title">{post.title}</h2>
 							</div>	
 									{!post.media && <img src= { post. url }/>}
-						       
+						       		{post.media && 
+									   <video width="100%" controls>
+										   	<source src={post.secure_media.reddit_video.fallback_url} type='video/mp4'></source>
+									   </video>}
 							
 							<div className="post-btn">
 								<div>

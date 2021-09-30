@@ -26,28 +26,21 @@ function Home() {
 	 		title, over_18 (hide the post if true), author, permalink(need this to fetch comments), subreddit_name_prefixed, ups, downs,
 	*/
 	const posts = usePosts(subredditQuery);
-
+	const subreddit = useSubreddits('funny')
 	// uncomment the following useEffect blocc to study the data
-	// useEffect(() => {
-	// 	posts && console.dir(posts[1]);
-	// }, [posts]);
+	useEffect(() => {
+		posts && console.log(posts, subData);
+	}, [posts]);
 
 	return (
-		<section>
-			<div className="container border relative bg-gray-700">
-				<h1 className="w-1/2 my-0 mx-auto text-center text-white text-2xl font-bold mt-24">
-					Home Route <br />
-					<span className="font-light">
-						show posts from r/{subredditQuery}
-					</span>
-				</h1>
-			</div>
+		<section >
+			
 			{/* <CommentsModal /> */}
-			<div>
+			<div className='front-page'>
 				<Router>
 					<Switch>
 						<Route path='/'>
-							<MainPage></MainPage>
+							<MainPage posts={posts}></MainPage>
 							<LeaderBoard></LeaderBoard>
 						</Route>
 					</Switch>
