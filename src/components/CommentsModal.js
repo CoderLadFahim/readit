@@ -64,7 +64,7 @@ function CommentsModal({ permalink }) {
 							(comment, i) =>
 								comment.commentText && (
 									<li
-										className="comment text-white mb-2 sm:mb-3 bg-gray-400 rounded-xl px-3 py-2 shadow"
+										className="comment text-white mb-3 sm:mb-4 border border-gray-500  rounded-xl px-3 py-2 shadow"
 										key={i}
 									>
 										<span className="block commenter-name text-gray-300  mb-2 text-xs">
@@ -82,7 +82,7 @@ function CommentsModal({ permalink }) {
 							{new Array(10).fill(null).map((I, i) => (
 								<li
 									key={i}
-									className="skeleton rounded bg-gray-400 w-full h-24 opacity-50 animate-pulse mb-2"
+									className="skeleton rounded bg-gray-500 w-full h-24 opacity-50 animate-pulse mb-2"
 									style={{
 										height: Math.floor(Math.random() * 10 + 10) + '%',
 									}}

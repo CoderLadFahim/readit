@@ -1,6 +1,5 @@
 import { useHistory } from 'react-router-dom';
 import { useSubreddits, useQuery } from '../hooks';
-import CommentsModal from '../components/CommentsModal';
 import CustomSubredditIcon from '../components/CustomSubredditIcon';
 
 function SubredditsDisplay() {
