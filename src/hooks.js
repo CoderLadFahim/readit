@@ -37,12 +37,12 @@ export const useSubreddits = (searchTerm = null) => {
 };
 
 // takes in a subredditName and returns an object with subredditName and subredditDescription is apiResponse is OK
-export const useSubredditData = (subreddit) => {
+export const useSubredditData = (subredditQuery) => {
 	const [subDesc, setSubDesc] = useState(null);
 	useEffect(() => {
 		async function getSubredditDesc() {
 			try {
-				const subredditSearchEndpoint = `https://www.reddit.com/search.json?q=${subreddit}&type=sr`;
+				const subredditSearchEndpoint = `https://www.reddit.com/search.json?q=${subredditQuery}&type=sr`;
 				const apiResponse = await fetch(subredditSearchEndpoint);
 				// returns an array of matching subreddits
 				const apiData = await apiResponse.json();

@@ -22,8 +22,10 @@ function SubredditsDisplay() {
 			subscribers: sub.subscribers,
 		}));
 
-	const handleSubredditResultClick = (name) =>
-		history.push(`/home?subreddit=${name}`);
+	const handleSubredditResultClick = (name) => {
+		// history.push(`/home?subreddit=${name}`);
+		console.log(name);
+	};
 
 	return (
 		<div className="text-green-400 font-nunito font-bold mt-5">

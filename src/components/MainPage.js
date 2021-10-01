@@ -1,21 +1,22 @@
 // you don't have to import react in every file anymore
-import React from 'react';
+import { useState, useEffect } from 'react';
 import '../App.css';
 import { useComments } from '../hooks';
 import { ArrowDownIcon, ArrowUpIcon, CommentIcon } from '../icons';
 import CustomSubredditIcon from './CustomSubredditIcon';
+import CommentsModal from './CommentsModal';
 
 const MainPage = (props) => {
-	/* You have to check its availability with the && operator like this first bro, as the data is asynchronous */
-
 	let comments = useComments(props.posts[0].permalink);
+	const [permalinkForComments, setPermalinkForComments] = useState('');
 
-	/* and just leave the comment functionality bits to me, just put a random number in the comments button
-	 * I have to make some more changes to useComments (i did make some) as I just reliased it can't be used iteratively (big brain yes)*/
+	const showComments = (permalink) => setPermalinkForComments(permalink);
 
-	React.useEffect(() => {
-		console.dir(props.posts);
-	}, [props.posts]);
+	const hideComments = () => setPermalinkForComments('');
+
+	// useEffect(() => {
+	// 	console.dir(props.posts);
+	// }, [props.posts]);
 
 	return (
 		<main className="post">
@@ -23,6 +24,7 @@ const MainPage = (props) => {
 				props.posts.map((post, i) => {
 					return (
 						<div className="post-detail container bg-gray-700" key={i}>
+							{/* <CommentsModal /> */}
 							<h4 className="flex">
 								<CustomSubredditIcon subName={post.author} />
 								<span>{post.subreddit_name_prefixed}</span>
@@ -51,7 +53,13 @@ const MainPage = (props) => {
 										<span>{post.downs}</span>
 									</button>
 
-									<button className="btn comment right">
+									<button
+										onClick={() => {
+											// setPermalinkForComments(post.permalink)
+											console.log(post.permalink);
+										}}
+										className="btn comment right"
+									>
 										<CommentIcon /> Comments
 										<span>
 											{/* returns comments for a single post (don't worry about it man, I'll handle everything)*/}

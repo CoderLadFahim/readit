@@ -14,17 +14,15 @@ const LeaderBoard = () => {
 	return (
 		<div className="leader-board">
 			<div className="top"> Top Communities</div>
-			{shortenSubreddits.map((data) => {
+			{shortenSubreddits.map((data, i) => {
 				return (
-					<>
-						<div className="subreddit">
-							<h4>{data.display_name}</h4>
-							<span className="text-span">
-								{' '}
-								{data.subscribers} memebrship
-							</span>
-						</div>
-					</>
+					<div className="subreddit" key={i}>
+						<h4>{data.display_name}</h4>
+						<span className="text-span">
+							{' '}
+							{data.subscribers} memebrship
+						</span>
+					</div>
 				);
 			})}
 			<div className="bottom"> View All </div>

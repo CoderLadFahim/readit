@@ -34,9 +34,9 @@ function Home() {
 	const posts = usePosts(subredditQuery);
 	const subreddit = useSubreddits('funny');
 	// uncomment the following useEffect blocc to study the data
-	useEffect(() => {
-		posts && console.log(posts, subData);
-	}, [posts]);
+	// useEffect(() => {
+	// 	posts && console.log(posts, subData);
+	// }, [posts]);
 
 	return (
 		<section>
