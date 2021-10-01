@@ -2,6 +2,7 @@ import { useComments } from '../hooks';
 import { ArrowDownIcon, ArrowUpIcon, CommentIcon } from '../icons';
 import CustomSubredditIcon from './CustomSubredditIcon';
 
+import CommentsModal from './CommentsModal';
 function Post({ post }) {
 	let comments = useComments(post.permalink);
 
