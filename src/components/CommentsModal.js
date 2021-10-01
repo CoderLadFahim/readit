@@ -2,17 +2,13 @@ import { useEffect } from 'react';
 import { CrossIcon } from '../icons';
 import { useComments } from '../hooks';
 
-function CommentsModal({ permalink }) {
+function CommentsModal({ permalink, modalHider }) {
 	const placeholderPermalink =
 		'/r/funny/comments/pzhyr0/this_man_is_talented/';
 
 	const postComments = useComments(
 		permalink ? permalink : placeholderPermalink
 	);
-
-	const closeModal = (params) => {
-		console.log('close modal');
-	};
 
 	useEffect(() => {
 		document.body.style.overflowY = 'hidden';
@@ -26,7 +22,7 @@ function CommentsModal({ permalink }) {
 			{/* BACKDROP */}
 			<div
 				className="backdrop bg-gray-800 opacity-95 absolute top-0 bottom-0 right-0 left-0 z-40"
-				onClick={closeModal}
+				onClick={modalHider}
 			></div>{' '}
 			{/* COMMENTS MODAL */}
 			<div
@@ -49,7 +45,7 @@ function CommentsModal({ permalink }) {
 					)}
 					<CrossIcon
 						className="text-blue-400 transform sm:scale-125 cursor-pointer hover:scale-150"
-						onClick={closeModal}
+						onClick={modalHider}
 					/>
 				</div>
 

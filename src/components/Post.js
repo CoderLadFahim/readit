@@ -1,14 +1,25 @@
+import { useState } from 'react';
 import { useComments } from '../hooks';
 import { ArrowDownIcon, ArrowUpIcon, CommentIcon } from '../icons';
-import CustomSubredditIcon from './CustomSubredditIcon';
 
+import CustomSubredditIcon from './CustomSubredditIcon';
 import CommentsModal from './CommentsModal';
+
 function Post({ post }) {
 	let comments = useComments(post.permalink);
+	const [permalinkForComments, setPermalinkForComments] = useState('');
+
+	const showCommentsModal = () => setPermalinkForComments(post.permalink);
+	const hideCommentsModal = () => setPermalinkForComments();
 
 	return (
 		<div className="post-detail container bg-gray-700" key={post.permalink}>
-			{/* <CommentsModal /> */}
+			{permalinkForComments && (
+				<CommentsModal
+					modalHider={hideCommentsModal}
+					permalink={permalinkForComments}
+				/>
+			)}
 			<h4 className="flex">
 				<CustomSubredditIcon subName={post.author} />
 				<span>{post.subreddit_name_prefixed}</span>
@@ -38,10 +49,7 @@ function Post({ post }) {
 					</button>
 
 					<button
-						onClick={() => {
-							// setPermalinkForComments(post.permalink)
-							console.log(post.permalink);
-						}}
+						onClick={showCommentsModal}
 						className="btn comment right"
 					>
 						<CommentIcon /> Comments
