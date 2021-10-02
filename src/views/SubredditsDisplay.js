@@ -22,8 +22,7 @@ function SubredditsDisplay() {
 		}));
 
 	const handleSubredditResultClick = (name) => {
-		// history.push(`/home?subreddit=${name}`);
-		console.log(name);
+		history.push(`/home?subreddit=${name}`);
 	};
 
 	return (

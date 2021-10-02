@@ -12,7 +12,6 @@ function SideButtons() {
 
 	const listIconClickHandler = () => {
 		dispatch(fetchSubreddits());
-		history.push('/subreddits');
 	};
 
 	return (
