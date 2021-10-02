@@ -33,9 +33,9 @@ const LeaderBoard = () => {
 							className="subreddit"
 							key={i}
 						>
-							<h4>{data.display_name}</h4>
+							<h4 className="font-bold text-sm">{data.display_name}</h4>
 							<span className="text-span">
-								{data.subscribers} subscribers
+								{data.subscribers.toLocaleString('hi-IN')} subscribers
 							</span>
 						</div>
 					);
