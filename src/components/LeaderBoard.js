@@ -10,6 +10,10 @@ const LeaderBoard = () => {
 
 	const handleSubredditResultClick = (name) => {
 		history.push(`/home?subreddit=${name}`);
+
+		setTimeout(() => {
+			window.location.reload();
+		}, 50);
 	};
 
 	// useEffect(() => {
@@ -31,19 +35,19 @@ const LeaderBoard = () => {
 						>
 							<h4>{data.display_name}</h4>
 							<span className="text-span">
-								{' '}
 								{data.subscribers} subscribers
 							</span>
 						</div>
 					);
 				})}
+
 			<Link
 				className="bottom block"
 				to="/subreddits"
 				onClick={() => {
 					setTimeout(() => {
 						window.location.reload();
-					}, 100);
+					}, 50);
 				}}
 			>
 				View All
