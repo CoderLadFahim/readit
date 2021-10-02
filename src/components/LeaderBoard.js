@@ -22,7 +22,7 @@ const LeaderBoard = () => {
 
 	return (
 		<div className="leader-board">
-			<div className="top"> Top Communities</div>
+			<div className="top font-bold"> Top Communities</div>
 			{subreddits &&
 				subreddits.slice(0, 4).map((data, i) => {
 					return (
@@ -42,7 +42,7 @@ const LeaderBoard = () => {
 				})}
 
 			<Link
-				className="bottom block"
+				className="bottom block font-bold transition hover:bg-blue-300"
 				to="/subreddits"
 				onClick={() => {
 					setTimeout(() => {
