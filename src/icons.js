@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -63,6 +64,13 @@ export const CommentIcon = ({ className, onClick }) => (
 );
 export const ArrowUpIcon = ({ className, onClick }) => (
 	<FontAwesomeIcon className={className} icon={faArrowUp} onClick={onClick} />
+);
+export const RedirectIcon = ({ className, onClick }) => (
+	<FontAwesomeIcon
+		className={className}
+		icon={faExternalLinkAlt}
+		onClick={onClick}
+	/>
 );
 export const ArrowDownIcon = ({ className, onClick }) => (
 	<FontAwesomeIcon
