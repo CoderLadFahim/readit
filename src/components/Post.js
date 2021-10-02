@@ -13,10 +13,7 @@ function Post({ post }) {
 	const hideCommentsModal = () => setPermalinkForComments();
 
 	return (
-		<div
-			className="post-detail container bg-gray-700 opacity-0"
-			key={post.permalink}
-		>
+		<div className="post-detail container bg-gray-700" key={post.permalink}>
 			{permalinkForComments && (
 				<CommentsModal
 					modalHider={hideCommentsModal}
