@@ -17,11 +17,26 @@ body {
 
 .font-ubuntu {
 	font-family: 'Ubuntu';
+	font-weight: 400;
+}
+
+.ubuntu-bold {
+	font-weight: 500;
+}
+
+.ubuntu-black {
+	font-weight: 700;
+}
+
+.weight-light {
+	font-weight: 300;
 }
 
 .font-nunito {
 	font-family: 'Nunito Sans';
+	font-weight: 600;
 }
+.nunito-bold {font-weight: 500}
 
 .container {
 	@apply w-5/6;

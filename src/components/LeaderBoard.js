@@ -37,7 +37,8 @@ const LeaderBoard = () => {
 								{data.display_name_prefixed}
 							</h4>
 							<span className="text-span">
-								{new Intl.NumberFormat().format(data.subscribers)}{' '}
+								{data &&
+									new Intl.NumberFormat().format(data.subscribers)}
 								subscribers
 							</span>
 						</div>
