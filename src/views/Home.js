@@ -47,8 +47,8 @@ function Home() {
 					<Switch>
 						<Route path="/">
 							{posts && <MainPage posts={posts}></MainPage>}
-							<LeaderBoard></LeaderBoard>
 							<SubredditDescription />
+							<LeaderBoard></LeaderBoard>
 						</Route>
 					</Switch>
 				</Router>
