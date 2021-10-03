@@ -35,7 +35,7 @@ function Post({ post }) {
 				/>
 			)}
 			<h4 className="flex font-ubuntu no-underline mx-4 mt-3">
-				<CustomSubredditIcon subName={post.author} />
+				<CustomSubredditIcon subName={post.subreddit_name_prefixed} />
 				<span>{post.subreddit_name_prefixed}</span>
 				<span>posted by u/{post.author}</span>
 			</h4>
@@ -54,7 +54,7 @@ function Post({ post }) {
 				!post.is_video && <img src={post.url} />
 			)}
 			{post.is_video && (
-				<video width="100%" controls style={{ maxHeight: '28rem' }}>
+				<video className="w-full" controls style={{ maxHeight: '28rem' }}>
 					<source
 						src={post.secure_media.reddit_video.fallback_url}
 						type="video/mp4"
