@@ -7,7 +7,7 @@ function SubredditDescription({ subredditDataToSearch }) {
 	const subredditData = useSubredditData(subredditDataToSearch);
 
 	return (
-		<div class="sub-desc bg-gray-600 rounded-md">
+		<div class="sub-desc bg-gray-600 rounded-md hidden xl:block">
 			<header>
 				<div className="flex">
 					{false ? (
