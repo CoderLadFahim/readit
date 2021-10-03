@@ -9,6 +9,7 @@ import {
 
 import CustomSubredditIcon from './CustomSubredditIcon';
 import CommentsModal from './CommentsModal';
+import RedirectBtn from './RedirectBtn';
 
 function Post({ post }) {
 	let comments = useComments(post.permalink);
@@ -80,14 +81,7 @@ function Post({ post }) {
 						</span>
 					</button>
 				</div>
-				<a
-					className="btn text-xs bg-gray-600 flex gap-2 rounded-lg weight-light transition  text-gray-300 hover:text-red-400"
-					href={`https://www.reddit.com${post.permalink}`}
-					target="_blank"
-				>
-					Reddit
-					<RedirectIcon />
-				</a>
+				<RedirectBtn link={post.permalink} />
 			</div>
 		</div>
 	);
