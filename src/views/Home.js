@@ -42,7 +42,7 @@ function Home() {
 	return (
 		<section>
 			{/* <CommentsModal /> */}
-			<div className="container flex  items-start justify-between">
+			<div className="container flex items-start justify-between">
 				{posts && <MainPage posts={posts}></MainPage>}
 				<SubredditDescription />
 				<LeaderBoard></LeaderBoard>
