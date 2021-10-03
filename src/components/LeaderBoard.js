@@ -31,7 +31,7 @@ const LeaderBoard = () => {
 							onClick={() =>
 								handleSubredditResultClick(data.display_name)
 							}
-							className="subreddit"
+							className="flex items-center gap-4 py-3 px-6 bg-gray-600 transition hover:bg-gray-500 cursor-pointer"
 							key={i}
 						>
 							{data.icon_img || data.banner_img ? (
@@ -46,16 +46,18 @@ const LeaderBoard = () => {
 								/>
 							)}
 
-							<h4 className="font-bold text-sm">
-								{data.display_name_prefixed}
-							</h4>
-							<span className="text-span">
-								{data &&
-									new Intl.NumberFormat().format(
-										data.subscribers
-									)}{' '}
-								subscribers
-							</span>
+							<div className="text-left">
+								<h4 className="font-bold text-sm text-gray-50">
+									{data.display_name_prefixed}
+								</h4>
+								<span className="text-span font-nunito">
+									{data &&
+										new Intl.NumberFormat().format(
+											data.subscribers
+										)}{' '}
+									subscribers
+								</span>
+							</div>
 						</div>
 					);
 				})}

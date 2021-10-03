@@ -54,7 +54,7 @@ function Post({ post }) {
 				!post.is_video && <img src={post.url} />
 			)}
 			{post.is_video && (
-				<video width="100%" controls>
+				<video width="100%" controls style={{ maxHeight: '28rem' }}>
 					<source
 						src={post.secure_media.reddit_video.fallback_url}
 						type="video/mp4"
