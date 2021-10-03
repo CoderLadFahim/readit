@@ -42,16 +42,10 @@ function Home() {
 	return (
 		<section>
 			{/* <CommentsModal /> */}
-			<div className="front-page">
-				<Router>
-					<Switch>
-						<Route path="/">
-							{posts && <MainPage posts={posts}></MainPage>}
-							<SubredditDescription />
-							<LeaderBoard></LeaderBoard>
-						</Route>
-					</Switch>
-				</Router>
+			<div className="container flex  items-start justify-between">
+				{posts && <MainPage posts={posts}></MainPage>}
+				<SubredditDescription />
+				<LeaderBoard></LeaderBoard>
 			</div>
 		</section>
 	);

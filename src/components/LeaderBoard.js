@@ -9,13 +9,8 @@ const LeaderBoard = () => {
 	// const [shortenSubreddits, setShortenSubreddits] = useState([]);
 	const subreddits = useSubreddits();
 
-	const handleSubredditResultClick = (name) => {
+	const handleSubredditResultClick = (name) =>
 		history.push(`/home?subreddit=${name}`);
-
-		setTimeout(() => {
-			window.location.reload();
-		}, 50);
-	};
 
 	// useEffect(() => {
 	// 	subreddits && setShortenSubreddits(subreddits.slice(0, 4));
@@ -65,11 +60,6 @@ const LeaderBoard = () => {
 			<Link
 				className="bottom block font-bold transition hover:bg-blue-300"
 				to="/subreddits"
-				onClick={() => {
-					setTimeout(() => {
-						window.location.reload();
-					}, 50);
-				}}
 			>
 				View All
 			</Link>
