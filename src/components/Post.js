@@ -20,53 +20,12 @@ function Post({ post }) {
 		if (num < 900) return num;
 	};
 
-	const postContent = (() => {
-		if (post.selfText)
-			return (
-				<p className="mx-4 text-gray-50 text-sm leading-6">
-					{post.selftext}{' '}
-				</p>
-			);
-
-		if (post.url) return <img src={post.url} />;
-
-		if (post.is_video)
-			return (
-				<video width="100%" controls>
-					<source
-						src={post.secure_media.reddit_video.fallback_url}
-						type="video/mp4"
-					></source>
-				</video>
-			);
-	})();
-
-	// const postContent = () => {
-	// 	if (post.selfText)
-	// 		return (
-	// 			<p className="mx-4 text-gray-50 text-sm leading-6">
-	// 				{post.selftext}{' '}
-	// 			</p>
-	// 		);
-
-	// 	if (post.url) return <img src={post.url} />;
-	// 	if (post.is_video)
-	// 		return (
-	// 			<video width="100%" controls>
-	// 				<source
-	// 					src={post.secure_media.reddit_video.fallback_url}
-	// 					type="video/mp4"
-	// 				></source>
-	// 			</video>
-	// 		);
-	// };
-
 	const showCommentsModal = () => setPermalinkForComments(post.permalink);
 	const hideCommentsModal = () => setPermalinkForComments();
 
 	return (
 		<div
-			className="post-detail container bg-gray-700 font-nunito"
+			className="post-detail container bg-gray-700 font-nunito shadow"
 			key={post.permalink}
 		>
 			{permalinkForComments && (
@@ -92,7 +51,7 @@ function Post({ post }) {
 					{post.selftext}{' '}
 				</p>
 			) : (
-				<img src={post.url} />
+				!post.is_video && <img src={post.url} />
 			)}
 			{post.is_video && (
 				<video width="100%" controls>
@@ -102,6 +61,7 @@ function Post({ post }) {
 					></source>
 				</video>
 			)}
+			{/* Confusing and hard to read right? well, that's reactjs for you*/}
 
 			<div className="post-btn mx-4 my-4 flex items-center justify-between font-ubuntu ubuntu-bold ">
 				<div className="flex gap-3">
