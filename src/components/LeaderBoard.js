@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import '../App.css';
 import { useSubredditData, useSubreddits } from '../hooks';
+import CustomSubredditIcon from './CustomSubredditIcon';
 
 const LeaderBoard = () => {
 	const history = useHistory();
@@ -33,6 +34,18 @@ const LeaderBoard = () => {
 							className="subreddit"
 							key={i}
 						>
+							{data.icon_img || data.banner_img ? (
+								<img
+									src={data.icon_img || data.banner_img}
+									alt="subreddit icon"
+									className="w-6 h-6 rounded-full border border-2 border-gray-400 shadow"
+								/>
+							) : (
+								<CustomSubredditIcon
+									subName={data.display_name_prefixed}
+								/>
+							)}
+
 							<h4 className="font-bold text-sm">
 								{data.display_name_prefixed}
 							</h4>
