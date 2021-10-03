@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import '../App.css';
 import { useSubredditData, useSubreddits } from '../hooks';
+import CustomSubredditIcon from './CustomSubredditIcon';
 
 const LeaderBoard = () => {
 	const history = useHistory();
@@ -30,17 +31,33 @@ const LeaderBoard = () => {
 							onClick={() =>
 								handleSubredditResultClick(data.display_name)
 							}
-							className="subreddit"
+							className="flex items-center gap-4 py-3 px-6 bg-gray-600 transition hover:bg-gray-500 cursor-pointer"
 							key={i}
 						>
-							<h4 className="font-bold text-sm">
-								{data.display_name_prefixed}
-							</h4>
-							<span className="text-span">
-								{data &&
-									new Intl.NumberFormat().format(data.subscribers)}
-								subscribers
-							</span>
+							{data.icon_img || data.banner_img ? (
+								<img
+									src={data.icon_img || data.banner_img}
+									alt="subreddit icon"
+									className="w-6 h-6 rounded-full border border-2 border-gray-400 shadow"
+								/>
+							) : (
+								<CustomSubredditIcon
+									subName={data.display_name_prefixed}
+								/>
+							)}
+
+							<div className="text-left">
+								<h4 className="font-bold text-sm text-gray-50">
+									{data.display_name_prefixed}
+								</h4>
+								<span className="text-span font-nunito">
+									{data &&
+										new Intl.NumberFormat().format(
+											data.subscribers
+										)}{' '}
+									subscribers
+								</span>
+							</div>
 						</div>
 					);
 				})}

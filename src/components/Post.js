@@ -25,7 +25,7 @@ function Post({ post }) {
 
 	return (
 		<div
-			className="post-detail container bg-gray-700 font-nunito"
+			className="post-detail container bg-gray-700 font-nunito shadow"
 			key={post.permalink}
 		>
 			{permalinkForComments && (
@@ -35,7 +35,7 @@ function Post({ post }) {
 				/>
 			)}
 			<h4 className="flex font-ubuntu no-underline mx-4 mt-3">
-				<CustomSubredditIcon subName={post.author} />
+				<CustomSubredditIcon subName={post.subreddit_name_prefixed} />
 				<span>{post.subreddit_name_prefixed}</span>
 				<span>posted by u/{post.author}</span>
 			</h4>
@@ -46,25 +46,27 @@ function Post({ post }) {
 				</h2>
 			</div>
 			{/* POST CONTENT */}
-			{post.selftext && (
+			{post.selftext ? (
 				<p className="mx-4 text-gray-50 text-sm leading-6">
 					{post.selftext}{' '}
 				</p>
+			) : (
+				!post.is_video && <img src={post.url} />
 			)}
-			{!post.media && <img src={post.url} />}
 			{post.is_video && (
-				<video width="100%" controls>
+				<video className="w-full" controls style={{ maxHeight: '28rem' }}>
 					<source
 						src={post.secure_media.reddit_video.fallback_url}
 						type="video/mp4"
 					></source>
 				</video>
 			)}
+			{/* Confusing and hard to read right? well, that's reactjs for you*/}
 
 			<div className="post-btn mx-4 my-4 flex items-center justify-between font-ubuntu ubuntu-bold ">
 				<div className="flex gap-3">
 					<button className="btn upvote flex items-center justify-between rounded-lg">
-						<ArrowUpIcon className="opacity-50 mr-2" />{' '}
+						<ArrowUpIcon className="opacity-75 mr-2" />{' '}
 						<span>{numFormatter(post.ups)}</span>
 					</button>
 

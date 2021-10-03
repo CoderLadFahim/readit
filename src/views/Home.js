@@ -12,6 +12,7 @@ import { Link, Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import CommentsModal from '../components/CommentsModal';
 import MainPage from '../components/MainPage';
 import LeaderBoard from '../components/LeaderBoard';
+import SubredditDescription from '../components/SubredditDescription';
 
 function Home() {
 	// getting the subreddit to look for from query params, (coming initially from CatchAll and also from subreddit results on SubredditDisplay)
@@ -47,6 +48,7 @@ function Home() {
 						<Route path="/">
 							{posts && <MainPage posts={posts}></MainPage>}
 							<LeaderBoard></LeaderBoard>
+							<SubredditDescription />
 						</Route>
 					</Switch>
 				</Router>
