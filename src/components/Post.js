@@ -20,6 +20,47 @@ function Post({ post }) {
 		if (num < 900) return num;
 	};
 
+	const postContent = (() => {
+		if (post.selfText)
+			return (
+				<p className="mx-4 text-gray-50 text-sm leading-6">
+					{post.selftext}{' '}
+				</p>
+			);
+
+		if (post.url) return <img src={post.url} />;
+
+		if (post.is_video)
+			return (
+				<video width="100%" controls>
+					<source
+						src={post.secure_media.reddit_video.fallback_url}
+						type="video/mp4"
+					></source>
+				</video>
+			);
+	})();
+
+	// const postContent = () => {
+	// 	if (post.selfText)
+	// 		return (
+	// 			<p className="mx-4 text-gray-50 text-sm leading-6">
+	// 				{post.selftext}{' '}
+	// 			</p>
+	// 		);
+
+	// 	if (post.url) return <img src={post.url} />;
+	// 	if (post.is_video)
+	// 		return (
+	// 			<video width="100%" controls>
+	// 				<source
+	// 					src={post.secure_media.reddit_video.fallback_url}
+	// 					type="video/mp4"
+	// 				></source>
+	// 			</video>
+	// 		);
+	// };
+
 	const showCommentsModal = () => setPermalinkForComments(post.permalink);
 	const hideCommentsModal = () => setPermalinkForComments();
 
@@ -46,12 +87,13 @@ function Post({ post }) {
 				</h2>
 			</div>
 			{/* POST CONTENT */}
-			{post.selftext && (
+			{post.selftext ? (
 				<p className="mx-4 text-gray-50 text-sm leading-6">
 					{post.selftext}{' '}
 				</p>
+			) : (
+				<img src={post.url} />
 			)}
-			{!post.media && <img src={post.url} />}
 			{post.is_video && (
 				<video width="100%" controls>
 					<source
