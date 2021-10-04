@@ -7,7 +7,7 @@ function SubredditDescription({ subredditToSearchDataFor }) {
 	const subredditData = useSubredditData(subredditToSearchDataFor);
 
 	return (
-		<div class="sub-desc space-y-4  bg-gray-600 rounded-md hidden w-1/3  xl:block px-4 py-2">
+		<div className="sub-desc space-y-4 bg-gray-600 rounded-md hidden w-1/3 2xl:w-1/4  xl:block px-4 py-2">
 			<header className="flex items-baseline justify-between mt-2">
 				<div className="flex gap-2">
 					{false ? (

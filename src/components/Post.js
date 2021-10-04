@@ -35,7 +35,7 @@ function Post({ post }) {
 			<h4 className="flex font-ubuntu no-underline mx-4 mt-3">
 				<CustomSubredditIcon subName={post.subreddit_name_prefixed} />
 				<span>{post.subreddit_name_prefixed}</span>
-				<span>posted by u/{post.author}</span>
+				<span> by u/{post.author}</span>
 			</h4>
 
 			<div>

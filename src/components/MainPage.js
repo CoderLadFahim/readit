@@ -2,15 +2,15 @@ import { useEffect } from 'react';
 import Post from './Post';
 
 const MainPage = (props) => {
-	// useEffect(() => {
-	// 	console.dir(props.posts);
-	// }, [props.posts]);
+	useEffect(() => {
+		console.dir(props.posts);
+	}, [props.posts]);
 
 	return (
 		<main className="post ">
 			{props.posts &&
 				props.posts.map((post, i) => {
-					return <Post post={post} key={i} />;
+					if (!post.over_18) return <Post post={post} key={i} />;
 				})}
 		</main>
 	);
