@@ -19,6 +19,8 @@ function Post({ post }) {
 	const showCommentsModal = () => setPermalinkForComments(post.permalink);
 	const hideCommentsModal = () => setPermalinkForComments();
 
+	const postContent = () => {};
+
 	return (
 		<div
 			className="post-detail container bg-gray-700 font-nunito shadow"
