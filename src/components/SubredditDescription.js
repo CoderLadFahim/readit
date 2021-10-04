@@ -29,13 +29,15 @@ function SubredditDescription({ subredditData }) {
 				{subredditData.description}
 			</p>
 
-			<h2 className="text-gray-300 text-base leading-3">
-				<span className="ubuntu-black">
-					{numFormatter(subredditData.subscribers)}
-				</span>{' '}
-				<br />
-				<span className="text-sm">subscribers</span>
-			</h2>
+			{subredditData.subscribers && (
+				<h2 className="text-gray-300 text-base leading-3">
+					<span className="ubuntu-black">
+						{numFormatter(subredditData.subscribers)}
+					</span>{' '}
+					<br />
+					<span className="text-sm">subscribers</span>
+				</h2>
+			)}
 		</div>
 	);
 }
