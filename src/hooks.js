@@ -39,6 +39,7 @@ export const useSubreddits = (searchTerm = null) => {
 // takes in a subredditName and returns an object with subredditName and subredditDescription is apiResponse is OK
 export const useSubredditData = (subredditQuery) => {
 	const [subDesc, setSubDesc] = useState(null);
+
 	useEffect(() => {
 		async function getSubredditDesc() {
 			try {
