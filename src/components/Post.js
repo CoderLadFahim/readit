@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useComments } from '../hooks';
+import numFormatter from '../numFormatter';
 import {
 	ArrowDownIcon,
 	ArrowUpIcon,
@@ -9,23 +10,20 @@ import {
 
 import CustomSubredditIcon from './CustomSubredditIcon';
 import CommentsModal from './CommentsModal';
+import RedirectBtn from './RedirectBtn';
 
 function Post({ post }) {
 	let comments = useComments(post.permalink);
 	const [permalinkForComments, setPermalinkForComments] = useState('');
 
-	const numFormatter = (num) => {
-		if (num > 999 && num < 1000000) return (num / 1000).toFixed(1) + 'k';
-		if (num > 1000000) return (num / 1000000).toFixed(1) + 'M';
-		if (num < 900) return num;
-	};
-
 	const showCommentsModal = () => setPermalinkForComments(post.permalink);
 	const hideCommentsModal = () => setPermalinkForComments();
 
+	const postContent = () => {};
+
 	return (
 		<div
-			className="post-detail container bg-gray-700 font-nunito shadow"
+			className="post-detail w-full  bg-gray-700 font-nunito shadow mb-5"
 			key={post.permalink}
 		>
 			{permalinkForComments && (
@@ -37,7 +35,7 @@ function Post({ post }) {
 			<h4 className="flex font-ubuntu no-underline mx-4 mt-3">
 				<CustomSubredditIcon subName={post.subreddit_name_prefixed} />
 				<span>{post.subreddit_name_prefixed}</span>
-				<span>posted by u/{post.author}</span>
+				<span> by u/{post.author}</span>
 			</h4>
 
 			<div>
@@ -80,14 +78,7 @@ function Post({ post }) {
 						</span>
 					</button>
 				</div>
-				<a
-					className="btn text-xs bg-gray-600 flex gap-2 rounded-lg weight-light transition  text-gray-300 hover:text-red-400"
-					href={`https://www.reddit.com${post.permalink}`}
-					target="_blank"
-				>
-					Reddit
-					<RedirectIcon />
-				</a>
+				<RedirectBtn link={post.permalink} />
 			</div>
 		</div>
 	);

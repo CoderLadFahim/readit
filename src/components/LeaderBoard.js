@@ -6,7 +6,6 @@ import CustomSubredditIcon from './CustomSubredditIcon';
 
 const LeaderBoard = () => {
 	const history = useHistory();
-	// const [shortenSubreddits, setShortenSubreddits] = useState([]);
 	const subreddits = useSubreddits();
 
 	const handleSubredditResultClick = (name) => {
@@ -14,12 +13,8 @@ const LeaderBoard = () => {
 
 		setTimeout(() => {
 			window.location.reload();
-		}, 50);
+		}, 100);
 	};
-
-	// useEffect(() => {
-	// 	subreddits && setShortenSubreddits(subreddits.slice(0, 4));
-	// }, [subreddits]);
 
 	return (
 		<div className="leader-board">
@@ -65,11 +60,6 @@ const LeaderBoard = () => {
 			<Link
 				className="bottom block font-bold transition hover:bg-blue-300"
 				to="/subreddits"
-				onClick={() => {
-					setTimeout(() => {
-						window.location.reload();
-					}, 50);
-				}}
 			>
 				View All
 			</Link>

@@ -39,6 +39,12 @@ export const useSubreddits = (searchTerm = null) => {
 // takes in a subredditName and returns an object with subredditName and subredditDescription is apiResponse is OK
 export const useSubredditData = (subredditQuery) => {
 	const [subDesc, setSubDesc] = useState(null);
+	const allSubredditData = {
+		name: 'r/all',
+		description:
+			'The most active posts from all of Reddit. Come here to see new posts rising and be a part of the conversation.',
+	};
+
 	useEffect(() => {
 		async function getSubredditDesc() {
 			try {
@@ -60,7 +66,11 @@ export const useSubredditData = (subredditQuery) => {
 					subscribers: firstSubredditResultData.subscribers,
 				};
 
-				setSubDesc(subredditDataObj);
+				setSubDesc(
+					!subredditQuery.includes('all')
+						? subredditDataObj
+						: allSubredditData
+				);
 			} catch (e) {
 				setSubDesc({
 					msg: '400, not found',
