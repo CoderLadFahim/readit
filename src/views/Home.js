@@ -35,7 +35,7 @@ function Home() {
 	return (
 		<section>
 			{/* <CommentsModal /> */}
-			<div className="container mt-6 flex gap-4  items-start justify-between">
+			<div className="container mt-6 flex gap-4 items-start justify-between">
 				{posts && <MainPage posts={posts}></MainPage>}
 				{subData ? <SubredditDescription subredditData={subData} /> : ''}
 				<LeaderBoard></LeaderBoard>
