@@ -6,15 +6,15 @@ import CustomSubredditIcon from './CustomSubredditIcon';
 
 const LeaderBoard = () => {
 	const history = useHistory();
-	// const [shortenSubreddits, setShortenSubreddits] = useState([]);
 	const subreddits = useSubreddits();
 
-	const handleSubredditResultClick = (name) =>
+	const handleSubredditResultClick = (name) => {
 		history.push(`/home?subreddit=${name}`);
 
-	// useEffect(() => {
-	// 	subreddits && setShortenSubreddits(subreddits.slice(0, 4));
-	// }, [subreddits]);
+		setTimeout(() => {
+			window.location.reload();
+		}, 100);
+	};
 
 	return (
 		<div className="leader-board">
