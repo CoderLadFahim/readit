@@ -63,20 +63,22 @@ function Post({ post }) {
 
 			<div className="post-btn mx-4 my-4 flex items-center justify-between font-ubuntu ubuntu-bold ">
 				<div className="flex gap-3">
-					<button className="btn upvote flex items-center justify-between rounded-lg">
+					<div className="btn upvote flex items-center justify-between rounded-lg">
 						<ArrowUpIcon className="opacity-75 mr-2" />{' '}
 						<span>{numFormatter(post.ups)}</span>
-					</button>
+					</div>
 
-					<button
-						onClick={showCommentsModal}
-						className="btn bg-gray-800 transition  hover:bg-gray-900  right flex items-center shadow  justify-between rounded-lg w-20"
-					>
-						<CommentIcon />
-						<span>
-							{comments && numFormatter(comments.comments.length)}
-						</span>
-					</button>
+					{comments && (
+						<button
+							onClick={showCommentsModal}
+							className="btn bg-gray-800 transition  hover:bg-gray-900  right flex items-center shadow  justify-between rounded-lg w-20"
+						>
+							<CommentIcon />
+							<span>
+								{comments && numFormatter(comments.comments.length)}
+							</span>
+						</button>
+					)}
 				</div>
 				<RedirectBtn link={post.permalink} />
 			</div>
