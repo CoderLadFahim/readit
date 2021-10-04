@@ -23,7 +23,7 @@ function Post({ post }) {
 
 	return (
 		<div
-			className="post-detail container bg-gray-700 font-nunito shadow"
+			className="post-detail bg-gray-700 font-nunito shadow mb-5"
 			key={post.permalink}
 		>
 			{permalinkForComments && (

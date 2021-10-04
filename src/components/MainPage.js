@@ -7,7 +7,7 @@ const MainPage = (props) => {
 	// }, [props.posts]);
 
 	return (
-		<main className="post">
+		<main className="post ">
 			{props.posts &&
 				props.posts.map((post, i) => {
 					return <Post post={post} key={i} />;
