@@ -18,7 +18,7 @@ function SideButtons() {
 		<div className="side-btns fixed right-4 bottom-4 flex flex-col justify-between z-10">
 			{history.location.pathname === '/home' && (
 				<button
-					className="side-btn transform w-9 h-9 bg-gray-200 rounded-full grid place-items-center transition hover:scale-110 shadow sm:hidden"
+					className="hidden side-btn transform w-9 h-9 bg-gray-200 rounded-full grid place-items-center transition hover:scale-110 shadow sm:hidden"
 					onClick={() => {
 						console.log(
 							'Show the subreddit info as a modal on mobile, hanz'
