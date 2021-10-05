@@ -80,7 +80,11 @@ function Post({ post }) {
 						</button>
 					)}
 				</div>
-				<RedirectBtn link={post.permalink} />
+				{/* onClick prop is temporary */}
+				<RedirectBtn
+					onClick={() => console.dir(post.permalink)}
+					link={post.permalink}
+				/>
 			</div>
 		</div>
 	);
