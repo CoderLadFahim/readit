@@ -19,7 +19,26 @@ function Post({ post }) {
 	const showCommentsModal = () => setPermalinkForComments(post.permalink);
 	const hideCommentsModal = () => setPermalinkForComments();
 
-	const postContent = () => {};
+	const postContent = () => {
+		if (post.is_video)
+			return (
+				<video className="w-full" controls style={{ maxHeight: '28rem' }}>
+					<source
+						src={post.secure_media.reddit_video.fallback_url}
+						type="video/mp4"
+					></source>
+				</video>
+			);
+
+		if (post.selftext)
+			return (
+				<p className="mx-4 text-gray-50 text-sm leading-6">
+					{post.selftext}{' '}
+				</p>
+			);
+
+		if (post.url) return <img src={post.url} />;
+	};
 
 	return (
 		<div
