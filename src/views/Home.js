@@ -37,7 +37,21 @@ function Home() {
 			{/* <CommentsModal /> */}
 			<div className="container mt-6 flex gap-4 items-start justify-between">
 				{posts && <MainPage posts={posts}></MainPage>}
-				{subData ? <SubredditDescription subredditData={subData} /> : ''}
+				{subData ? (
+					<SubredditDescription subredditData={subData} />
+				) : (
+					// skeleton loading for SubredditDescription
+					<div className="h-44 w-1/3 p-3 animate-pulse bg-gray-600 rounded-md space-y-10">
+						<div className="skeleton-title w-20 h-5 bg-gray-500 rounded-xl opacity-50"></div>
+
+						<div className="space-y-2">
+							<div className="w-11/12 h-4 bg-gray-500 rounded-xl opacity-50"></div>
+							<div className="w-11/12 h-4 bg-gray-500 rounded-xl opacity-50"></div>
+							<div className="w-11/12 h-4 bg-gray-500 rounded-xl opacity-50"></div>
+							<div className="w-4/5 h-4 bg-gray-500 rounded-xl opacity-50"></div>
+						</div>
+					</div>
+				)}
 				<LeaderBoard></LeaderBoard>
 			</div>
 		</section>
