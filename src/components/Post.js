@@ -19,7 +19,7 @@ function Post({ post }) {
 	const showCommentsModal = () => setPermalinkForComments(post.permalink);
 	const hideCommentsModal = () => setPermalinkForComments();
 
-	const postContent = () => {
+	const renderPostContent = () => {
 		if (post.is_video)
 			return (
 				<video className="w-full" controls style={{ maxHeight: '28rem' }}>
@@ -37,11 +37,18 @@ function Post({ post }) {
 				</p>
 			);
 
-		if (post.url) return <img src={post.url} />;
+		if (post.url) {
+			const imgFormats = ['jpeg', 'jpg', 'png', 'bmp', 'tif', 'tiff'];
+
+			if (post.url.match(/jpeg|jpg|png|bmp|tif|tiff/g))
+				return <img src={post.url} />;
+			else return '';
+		}
 	};
 
 	return (
 		<div
+			onClick={() => console.dir(post)}
 			className="post-detail w-full  bg-gray-700 font-nunito shadow mb-5"
 			key={post.permalink}
 		>
@@ -63,22 +70,7 @@ function Post({ post }) {
 				</h2>
 			</div>
 			{/* POST CONTENT */}
-			{post.selftext ? (
-				<p className="mx-4 text-gray-50 text-sm leading-6">
-					{post.selftext}{' '}
-				</p>
-			) : (
-				!post.is_video && <img src={post.url} />
-			)}
-			{post.is_video && (
-				<video className="w-full" controls style={{ maxHeight: '28rem' }}>
-					<source
-						src={post.secure_media.reddit_video.fallback_url}
-						type="video/mp4"
-					></source>
-				</video>
-			)}
-			{/* Confusing and hard to read right? well, that's reactjs for you*/}
+			{renderPostContent()}
 
 			<div className="post-btn mx-4 my-4 flex items-center justify-between font-ubuntu ubuntu-bold ">
 				<div className="flex gap-3">
