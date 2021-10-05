@@ -48,8 +48,9 @@ function Post({ post }) {
 
 	return (
 		<div
+			// Temporary logger
 			onClick={() => console.dir(post)}
-			className="post-detail w-full  bg-gray-700 font-nunito shadow mb-5"
+			className="post-detail w-full bg-gray-700 font-nunito shadow mb-5"
 			key={post.permalink}
 		>
 			{permalinkForComments && (

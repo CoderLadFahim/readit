@@ -36,12 +36,30 @@ function Home() {
 		<section>
 			{/* <CommentsModal /> */}
 			<div className="container mt-6 flex gap-4 items-start justify-between">
-				{posts && <MainPage posts={posts}></MainPage>}
+				{posts ? (
+					<MainPage posts={posts}></MainPage>
+				) : (
+					<div className="w-full xl:w-1/3 space-y-5">
+						{
+							// skeleton loading for Posts
+							[1, 2, 3].map((el) => (
+								<div className="animate-pulse flex flex-col justify-between w-full   h-96 rounded-xl bg-gray-600 p-4">
+									<div className="flex  space-x-3">
+										<div className="skeleton-title w-24 h-5 bg-gray-500 rounded-xl opacity-50"></div>
+										<div className="skeleton-title w-20 h-5 bg-gray-500 rounded-xl opacity-50"></div>
+									</div>
+
+									<div className="w-full h-4/5 rounded-xl  bg-gray-500"></div>
+								</div>
+							))
+						}
+					</div>
+				)}
 				{subData ? (
 					<SubredditDescription subredditData={subData} />
 				) : (
 					// skeleton loading for SubredditDescription
-					<div className="h-44 w-1/3 p-3 animate-pulse bg-gray-600 rounded-md space-y-10">
+					<div className="h-44 hidden xl:block w-1/3 p-3 animate-pulse bg-gray-600 rounded-md space-y-10">
 						<div className="skeleton-title w-20 h-5 bg-gray-500 rounded-xl opacity-50"></div>
 
 						<div className="space-y-2">
