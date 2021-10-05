@@ -19,7 +19,7 @@ const LeaderBoard = () => {
 	return (
 		<div className="leader-board">
 			<div className="top font-bold"> Top Communities</div>
-			{subreddits &&
+			{subreddits ? (
 				subreddits.slice(0, 4).map((data, i) => {
 					return (
 						<div
@@ -55,7 +55,18 @@ const LeaderBoard = () => {
 							</div>
 						</div>
 					);
-				})}
+				})
+			) : (
+				<div className="w-full bg-gray-600 py-4 animate-pulse">
+					<div className="skeleton-content">
+						<div className="skeleton-logo w-3 h-3 rounded-full bg-gray-500 opacity-50"></div>
+						<div className="skeleton-text">
+							<div className="skeleton-title w-6 h-3 bg-gray-500 rounded-xl opacity-50"></div>
+							<div className="skeleton-numbers w-10 h-3 bg-gray-500 rounded-xl opacity-50"></div>
+						</div>
+					</div>
+				</div>
+			)}
 
 			<Link
 				className="bottom block font-bold transition hover:bg-blue-300"
