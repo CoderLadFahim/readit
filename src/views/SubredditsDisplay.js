@@ -70,7 +70,6 @@ function SubredditsDisplay() {
 						</li>
 					))
 				) : (
-					// skeleton loading
 					<>
 						{new Array(25).fill(null).map((I, i) => (
 							<li

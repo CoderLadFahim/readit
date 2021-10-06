@@ -19,18 +19,15 @@ function CommentsModal({ permalink, modalHider }) {
 
 	return (
 		<section className="modal-container border border-2 border-red-400 text-white">
-			{/* BACKDROP */}
 			<div
 				className="backdrop bg-gray-800 opacity-95 fixed top-0 bottom-0 right-0 left-0 z-40"
 				onClick={modalHider}
 			></div>{' '}
-			{/* COMMENTS MODAL */}
 			<div
 				className="comments-modal w-11/12 h-5/6 bg-gray-600
 					z-50 fixed left-1/2 top-1/2 transform -translate-x-1/2
 					-translate-y-1/2 rounded-xl sm:flex sm:flex-col sm:justify-around sm:w-5/6 lg:w-3/4 xl:w-4/6 2xl:flex 2xl:w-1/2  2xl:justify-evenly"
 			>
-				{/* MODAL HEADER */}
 				<div className="header w-11/12 my-0 mx-auto py-5 mb-2 flex items-center justify-between">
 					{postComments ? (
 						<h1 className="text-sm sm:text-xl xl:text-sm">
@@ -49,12 +46,10 @@ function CommentsModal({ permalink, modalHider }) {
 					/>
 				</div>
 
-				{/* COMMENTS CONTAINER */}
 				<ul
 					id="comments"
 					className="w-11/12 my-0 mx-auto h-5/6 overflow-scroll rounded-lg 2xl:mt-0 xl:mb-5"
 				>
-					{/* COMMENTS */}
 					{postComments ? (
 						postComments.comments.map(
 							(comment, i) =>
@@ -73,7 +68,6 @@ function CommentsModal({ permalink, modalHider }) {
 								)
 						)
 					) : (
-						// skeleton loading
 						<>
 							{new Array(10).fill(null).map((I, i) => (
 								<li

@@ -69,7 +69,6 @@ function Post({ post }) {
 					{post.title}
 				</h2>
 			</div>
-			{/* POST CONTENT */}
 			{renderPostContent()}
 
 			<div className="post-btn mx-4 my-4 flex items-center justify-between font-ubuntu ubuntu-bold ">
@@ -91,7 +90,6 @@ function Post({ post }) {
 						</button>
 					)}
 				</div>
-				{/* onClick prop is temporary */}
 				<RedirectBtn
 					onClick={() => console.dir(post.permalink)}
 					link={post.permalink}
