@@ -1,7 +1,6 @@
 import RedirectBtn from './RedirectBtn';
 import CustomSubredditIcon from './CustomSubredditIcon';
 import numFormatter from '../numFormatter';
-import { useEffect } from 'react';
 
 function SubredditDescription({ subredditData }) {
 	return (

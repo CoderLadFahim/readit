@@ -1,6 +1,6 @@
 import { Link, useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { fetchSubreddits } from '../features/subreddits/subredditSlice';
+// import { useDispatch } from 'react-redux';
+// import { fetchSubreddits } from '../features/subreddits/subredditSlice';
 import { ListIcon } from '../icons';
 import { useQuery } from '../hooks';
 
@@ -8,7 +8,7 @@ function SideButtons() {
 	const history = useHistory();
 	const query = useQuery();
 	const subredditQuery = query.get('subreddit');
-	const dispatch = useDispatch();
+	// const dispatch = useDispatch();
 
 	return (
 		<div className="side-btns fixed right-4 bottom-4 flex flex-col justify-between z-10">

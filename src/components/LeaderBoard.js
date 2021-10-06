@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import '../App.css';
-import { useSubredditData, useSubreddits } from '../hooks';
+import { useSubreddits } from '../hooks';
 import CustomSubredditIcon from './CustomSubredditIcon';
 
 const LeaderBoard = () => {

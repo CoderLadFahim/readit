@@ -1,12 +1,7 @@
 import { useState } from 'react';
 import { useComments } from '../hooks';
 import numFormatter from '../numFormatter';
-import {
-	ArrowDownIcon,
-	ArrowUpIcon,
-	CommentIcon,
-	RedirectIcon,
-} from '../icons';
+import { ArrowUpIcon, CommentIcon } from '../icons';
 
 import CustomSubredditIcon from './CustomSubredditIcon';
 import CommentsModal from './CommentsModal';
@@ -38,10 +33,8 @@ function Post({ post }) {
 			);
 
 		if (post.url) {
-			const imgFormats = ['jpeg', 'jpg', 'png', 'bmp', 'tif', 'tiff'];
-
 			if (post.url.match(/jpeg|jpg|png|bmp|tif|tiff/g))
-				return <img src={post.url} />;
+				return <img src={post.url} alt="" />;
 			else return '';
 		}
 	};

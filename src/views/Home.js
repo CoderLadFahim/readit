@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { clearAll } from '../features/subreddits/subredditSlice';
 import { useDispatch } from 'react-redux';
 import { usePosts, useQuery, useSubredditData } from '../hooks';
-import CommentsModal from '../components/CommentsModal';
 import MainPage from '../components/MainPage';
 import LeaderBoard from '../components/LeaderBoard';
 import SubredditDescription from '../components/SubredditDescription';

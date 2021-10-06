@@ -1,15 +1,15 @@
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import Post from './Post';
 
-const MainPage = (props) => {
+const MainPage = ({ posts }) => {
 	// useEffect(() => {
 	// 	console.dir(props.posts);
 	// }, [props.posts]);
 
 	return (
 		<main className="post ">
-			{props.posts &&
-				props.posts.map((post, i) => {
+			{posts &&
+				posts.map((post, i) => {
 					if (!post.over_18) return <Post post={post} key={i} />;
 				})}
 		</main>
