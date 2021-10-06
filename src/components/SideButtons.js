@@ -17,10 +17,10 @@ function SideButtons() {
 					<span className="font-bold text-gray-600">r/?</span>
 				</button>
 			)}
-			{subredditQuery !== 'all' ? (
+			{subredditQuery ? (
 				<Link
 					className="transform side-btn w-9 h-9 bg-blue-400 rounded-full grid place-items-center transition hover:scale-110 shadow"
-					to="/home?subreddit=all"
+					to="/?subreddit=all"
 				>
 					<span className="font-bold text-white text-xs">r/all</span>
 				</Link>
