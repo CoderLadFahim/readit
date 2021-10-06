@@ -1,34 +1,36 @@
-import { Link, useHistory } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
-// import { fetchSubreddits } from '../features/subreddits/subredditSlice';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { ListIcon } from '../icons';
 import { useQuery } from '../hooks';
 
 function SideButtons() {
 	const history = useHistory();
+	const routeLocation = useLocation();
 	const query = useQuery();
 	const subredditQuery = query.get('subreddit');
 	// const dispatch = useDispatch();
 
 	// these refreshers are necessary as the hooks can't be called on query change
-	const handleLinkClick = () => {
-		setTimeout(() => {
-			window.location.reload();
-		}, 50);
+	const handleListIconClick = () => {
+		if (routeLocation.pathname === '/subreddits')
+			setTimeout(() => {
+				window.location.reload();
+			}, 1000);
 	};
 
 	return (
 		<div className="side-btns fixed right-4 bottom-4 flex flex-col justify-between z-10">
-			{history.location.pathname === '/home' && (
-				<button className="hidden side-btn transform w-9 h-9 bg-gray-200 rounded-full grid place-items-center transition hover:scale-110 shadow sm:hidden">
-					<span className="font-bold text-gray-600">r/?</span>
-				</button>
-			)}
+			<button className="hidden side-btn transform w-9 h-9 bg-gray-200 rounded-full grid place-items-center transition hover:scale-110 shadow sm:hidden">
+				<span className="font-bold text-gray-600">r/?</span>
+			</button>
 			{subredditQuery ? (
 				<Link
 					className="transform side-btn w-9 h-9 bg-blue-400 rounded-full grid place-items-center transition hover:scale-110 shadow"
 					to="/"
-					onClick={handleLinkClick}
+					onClick={() => {
+						setTimeout(() => {
+							window.location.reload();
+						});
+					}}
 				>
 					<span className="font-bold text-white text-xs">r/all</span>
 				</Link>
@@ -42,6 +44,7 @@ function SideButtons() {
 				rounded-full grid place-items-center transition hover:scale-110
 				shadow"
 					to="/subreddits"
+					onClick={handleListIconClick}
 				>
 					<ListIcon
 						className="text-gray-50
