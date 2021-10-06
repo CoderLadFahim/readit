@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './App.css';
 import NavBar from './components/NavBar';
 import InfoModal from './components/InfoModal';
@@ -16,12 +16,6 @@ function App() {
 		setShowInfoModal((prevState) => !prevState);
 		scrollDisabler();
 	};
-
-	useEffect(() => {
-		alert(
-			'This site is still under development, please excuse a few bugs here and there'
-		);
-	}, []);
 
 	return (
 		<Router>
