@@ -1,9 +1,9 @@
 import { useHistory } from 'react-router-dom';
 
 function CatchAll() {
-	const history = useHistory();
-	if (history.location.pathname === '/')
-		return history.push('/home?subreddit=all');
+	// const history = useHistory();
+	// if (history.location.pathname === '/')
+	// 	return history.push('/home?subreddit=all');
 
 	return (
 		<section className="w-screen h-screen flex flex-col items-center justify-evenly">

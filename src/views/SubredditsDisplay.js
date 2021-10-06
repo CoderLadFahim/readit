@@ -24,7 +24,7 @@ function SubredditsDisplay() {
 		}));
 
 	const handleSubredditResultClick = (name) => {
-		history.push(`/home?subreddit=${name}`);
+		history.push(`/?subreddit=${name}`);
 	};
 
 	return (

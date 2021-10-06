@@ -23,7 +23,7 @@ function App() {
 			<NavBar infoModalToggler={toggleInfoModal} />
 			<SideButtons />
 			<Switch>
-				<Route exact path="/home">
+				<Route exact path="/">
 					<Home />
 				</Route>
 

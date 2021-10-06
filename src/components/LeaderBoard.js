@@ -8,7 +8,7 @@ const LeaderBoard = () => {
 	const subreddits = useSubreddits();
 
 	const handleSubredditResultClick = (name) => {
-		history.push(`/home?subreddit=${name}`);
+		history.push(`/?subreddit=${name}`);
 
 		setTimeout(() => {
 			window.location.reload();

@@ -12,7 +12,7 @@ function Home() {
 	const subredditQuery = query.get('subreddit');
 
 	// returns an obj {name, iconImg, desc, subscribers}
-	const subData = useSubredditData(subredditQuery);
+	const subData = useSubredditData(subredditQuery || 'all');
 
 	// the following variable and side effect, clears the subreddits when user visits the home route (DO NOT TAMPER WITH IT)
 	const subredditSliceActionDispatcher = useDispatch();
@@ -25,7 +25,7 @@ function Home() {
 	 properties needed from the post objects: 
 	 		title, over_18 (hide the post if true), author, permalink(need this to fetch comments), subreddit_name_prefixed, ups, downs,
 	*/
-	const posts = usePosts(subredditQuery);
+	const posts = usePosts(subredditQuery || 'all');
 	// uncomment the following useEffect blocc to study the data
 	// useEffect(() => {
 	// 	posts && console.log(posts, subData);
