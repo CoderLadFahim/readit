@@ -1,13 +1,21 @@
 import Logo from './Logo';
 import SearchBar from './SearchBar';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { InfoCircleIcon } from '../icons';
 
 function NavBar({ infoModalToggler }) {
+	const routeLocation = useHistory();
+
+	const handleLogoClick = () => {
+		setTimeout(() => {
+			window.location.reload();
+		}, 50);
+	};
+
 	return (
 		<nav className="bg-gray-700 py-4 sm:py-3">
 			<ul className="container flex justify-between items-center">
-				<li className="hidden sm:block text-xl">
+				<li onClick={handleLogoClick} className="hidden sm:block text-xl">
 					<Link to="/">
 						<Logo />
 					</Link>

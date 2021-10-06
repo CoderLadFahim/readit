@@ -11,7 +11,6 @@ function SubredditsDisplay() {
 	let subreddits = useSubreddits(searchQuery);
 	// let subreddits = false;
 
-	console.log('inky pinkies per donkey monkeys');
 	const relevantDataExtracted =
 		subreddits &&
 		subreddits.map((sub) => ({
