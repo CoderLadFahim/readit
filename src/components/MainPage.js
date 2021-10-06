@@ -1,11 +1,6 @@
-// import { useEffect } from 'react';
 import Post from './Post';
 
 const MainPage = ({ posts }) => {
-	// useEffect(() => {
-	// 	console.dir(props.posts);
-	// }, [props.posts]);
-
 	return (
 		<main className="post ">
 			{posts &&
