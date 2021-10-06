@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { clearAll } from '../features/subreddits/subredditSlice';
 import { useDispatch } from 'react-redux';
 import { usePosts, useQuery, useSubredditData } from '../hooks';
-import MainPage from '../components/MainPage';
+import PostsDisplay from '../components/PostsDisplay';
 import LeaderBoard from '../components/LeaderBoard';
 import SubredditDescription from '../components/SubredditDescription';
 
@@ -36,7 +36,7 @@ function Home() {
 			{/* <CommentsModal /> */}
 			<div className="container mt-6 flex gap-4 items-start justify-between">
 				{posts ? (
-					<MainPage posts={posts}></MainPage>
+					<PostsDisplay posts={posts}></PostsDisplay>
 				) : (
 					<div className="w-full xl:w-1/3 space-y-5">
 						{

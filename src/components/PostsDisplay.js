@@ -1,6 +1,6 @@
 import Post from './Post';
 
-const MainPage = ({ posts }) => {
+const PostsDisplay = ({ posts }) => {
 	return (
 		<main className="post ">
 			{posts &&
@@ -11,7 +11,7 @@ const MainPage = ({ posts }) => {
 	);
 };
 
-export default MainPage;
+export default PostsDisplay;
 
 /*
 	 returns an array of postObjs
