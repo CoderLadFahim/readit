@@ -1,4 +1,7 @@
+import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { clearAll } from '../features/subreddits/subredditSlice';
+import { useDispatch } from 'react-redux';
 import { useSubreddits, useQuery } from '../hooks';
 import CustomSubredditIcon from '../components/CustomSubredditIcon';
 
@@ -7,6 +10,12 @@ function SubredditsDisplay() {
 	const query = useQuery();
 	const history = useHistory();
 	const searchQuery = query.get('q');
+
+	// the following variable and side effect, clears the subreddits when user visits the home route (DO NOT TAMPER WITH IT)
+	const subredditSliceActionDispatcher = useDispatch();
+	useEffect(() => {
+		subredditSliceActionDispatcher(clearAll());
+	}, []);
 
 	let subreddits = useSubreddits(searchQuery);
 	// let subreddits = false;

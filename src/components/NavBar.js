@@ -1,15 +1,17 @@
 import Logo from './Logo';
 import SearchBar from './SearchBar';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { InfoCircleIcon } from '../icons';
 
 function NavBar({ infoModalToggler }) {
-	const routeLocation = useHistory();
+	const routeLocation = useLocation();
 
 	const handleLogoClick = () => {
-		setTimeout(() => {
-			window.location.reload();
-		}, 50);
+		if (routeLocation.pathname === '/') {
+			setTimeout(() => {
+				window.location.reload();
+			}, 50);
+		}
 	};
 
 	return (
