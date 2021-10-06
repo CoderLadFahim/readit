@@ -33,7 +33,7 @@ function SubredditDescription({ subredditData }) {
 					<h2 className="text-gray-300 text-base leading-3">
 						<span className="ubuntu-black">
 							{numFormatter(subredditData.subscribers)}
-						</span>{' '}
+						</span>
 						<br />
 						<span className="text-sm">subscribers</span>
 					</h2>

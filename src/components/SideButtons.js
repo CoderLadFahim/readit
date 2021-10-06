@@ -17,28 +17,32 @@ function SideButtons() {
 					<span className="font-bold text-gray-600">r/?</span>
 				</button>
 			)}
-			{subredditQuery !== 'all' && (
+			{subredditQuery !== 'all' ? (
 				<Link
 					className="transform side-btn w-9 h-9 bg-blue-400 rounded-full grid place-items-center transition hover:scale-110 shadow"
 					to="/home?subreddit=all"
 				>
 					<span className="font-bold text-white text-xs">r/all</span>
 				</Link>
+			) : (
+				''
 			)}
-			{history.location.search && (
+
+			{history.location.search ? (
 				<Link
 					className="side-btn top-communities-btn transform w-9 h-9 bg-gray-500
 				rounded-full grid place-items-center transition hover:scale-110
 				shadow"
 					to="/subreddits"
 				>
-					{' '}
 					<ListIcon
 						className="text-gray-50
 					transform scale-125"
-					/>{' '}
+					/>
 				</Link>
-			)}{' '}
+			) : (
+				''
+			)}
 		</div>
 	);
 }

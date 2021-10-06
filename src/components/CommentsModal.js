@@ -22,7 +22,7 @@ function CommentsModal({ permalink, modalHider }) {
 			<div
 				className="backdrop bg-gray-800 opacity-95 fixed top-0 bottom-0 right-0 left-0 z-40"
 				onClick={modalHider}
-			></div>{' '}
+			></div>
 			<div
 				className="comments-modal w-11/12 h-5/6 bg-gray-600
 					z-50 fixed left-1/2 top-1/2 transform -translate-x-1/2

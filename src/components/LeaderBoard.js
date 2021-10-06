@@ -17,7 +17,7 @@ const LeaderBoard = () => {
 
 	return (
 		<div className="leader-board">
-			<div className="top font-bold"> Top Communities</div>
+			<div className="top font-bold">Top Communities</div>
 			{subreddits
 				? subreddits.slice(0, 4).map((data, i) => {
 						return (
@@ -48,15 +48,14 @@ const LeaderBoard = () => {
 										{data &&
 											new Intl.NumberFormat().format(
 												data.subscribers
-											)}{' '}
+											)}
 										subscribers
 									</span>
 								</div>
 							</div>
 						);
 				  })
-				: // skeleton loading for LeaderBoard
-				  [1, 2, 3, 4].map((el) => (
+				: [1, 2, 3, 4].map((el) => (
 						<div
 							key={el}
 							className="w-full bg-gray-600 py-4 animate-pulse px-5"
