@@ -10,6 +10,13 @@ function SideButtons() {
 	const subredditQuery = query.get('subreddit');
 	// const dispatch = useDispatch();
 
+	// these refreshers are necessary as the hooks can't be called on query change
+	const handleAllLinkClick = () => {
+		setTimeout(() => {
+			window.location.reload();
+		}, 50);
+	};
+
 	return (
 		<div className="side-btns fixed right-4 bottom-4 flex flex-col justify-between z-10">
 			{history.location.pathname === '/home' && (
@@ -20,7 +27,8 @@ function SideButtons() {
 			{subredditQuery ? (
 				<Link
 					className="transform side-btn w-9 h-9 bg-blue-400 rounded-full grid place-items-center transition hover:scale-110 shadow"
-					to="/?subreddit=all"
+					to="/"
+					onClick={handleAllLinkClick}
 				>
 					<span className="font-bold text-white text-xs">r/all</span>
 				</Link>
