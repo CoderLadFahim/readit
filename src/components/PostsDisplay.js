@@ -1,22 +1,17 @@
-import { useEffect } from 'react';
 import Post from './Post';
 
-const MainPage = (props) => {
-	// useEffect(() => {
-	// 	console.dir(props.posts);
-	// }, [props.posts]);
-
+const PostsDisplay = ({ posts }) => {
 	return (
 		<main className="post ">
-			{props.posts &&
-				props.posts.map((post, i) => {
+			{posts &&
+				posts.map((post, i) => {
 					if (!post.over_18) return <Post post={post} key={i} />;
 				})}
 		</main>
 	);
 };
 
-export default MainPage;
+export default PostsDisplay;
 
 /*
 	 returns an array of postObjs

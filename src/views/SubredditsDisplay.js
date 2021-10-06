@@ -9,7 +9,9 @@ function SubredditsDisplay() {
 	const searchQuery = query.get('q');
 
 	let subreddits = useSubreddits(searchQuery);
+	// let subreddits = false;
 
+	console.log('inky pinkies per donkey monkeys');
 	const relevantDataExtracted =
 		subreddits &&
 		subreddits.map((sub) => ({

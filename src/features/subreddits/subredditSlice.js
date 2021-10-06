@@ -7,7 +7,7 @@ const initialState = {
 };
 
 export const fetchSubreddits = createAsyncThunk(
-	'counter/fetchSubreddits',
+	'subreddits/fetchSubreddits',
 	async (searchTerm = null) => {
 		const topSubredditsEndpoint = 'https://www.reddit.com/subreddits.json';
 		const subredditsBySearchTermEndpoint = `https://www.reddit.com/search.json?q=${searchTerm}&type=sr`;
