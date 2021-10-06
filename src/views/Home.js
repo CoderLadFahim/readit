@@ -43,7 +43,10 @@ function Home() {
 						{
 							// skeleton loading for Posts
 							[1, 2, 3].map((el) => (
-								<div className="animate-pulse flex flex-col justify-between w-full   h-96 rounded-xl bg-gray-600 p-4">
+								<div
+									key={el}
+									className="animate-pulse flex flex-col justify-between w-full   h-96 rounded-xl bg-gray-600 p-4"
+								>
 									<div className="flex  space-x-3">
 										<div className="skeleton-title w-24 h-5 bg-gray-500 rounded-xl opacity-50"></div>
 										<div className="skeleton-title w-20 h-5 bg-gray-500 rounded-xl opacity-50"></div>

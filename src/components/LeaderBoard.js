@@ -58,7 +58,10 @@ const LeaderBoard = () => {
 				  })
 				: // skeleton loading for LeaderBoard
 				  [1, 2, 3, 4].map((el) => (
-						<div className="w-full bg-gray-600 py-4 animate-pulse px-5">
+						<div
+							key={el}
+							className="w-full bg-gray-600 py-4 animate-pulse px-5"
+						>
 							<div className="skeleton-content space-y-2">
 								<div className="skeleton-logo w-6 h-6 rounded-full bg-gray-500 opacity-50"></div>
 								<div className="skeleton-text space-y-1">

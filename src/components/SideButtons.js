@@ -10,10 +10,6 @@ function SideButtons() {
 	const subredditQuery = query.get('subreddit');
 	const dispatch = useDispatch();
 
-	const listIconClickHandler = () => {
-		dispatch(fetchSubreddits());
-	};
-
 	return (
 		<div className="side-btns fixed right-4 bottom-4 flex flex-col justify-between z-10">
 			{history.location.pathname === '/home' && (
@@ -35,7 +31,6 @@ function SideButtons() {
 				rounded-full grid place-items-center transition hover:scale-110
 				shadow"
 					to="/subreddits"
-					onClick={listIconClickHandler}
 				>
 					{' '}
 					<ListIcon
