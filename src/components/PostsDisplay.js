@@ -3,10 +3,9 @@ import Post from './Post';
 const PostsDisplay = ({ posts }) => {
 	return (
 		<main className="post ">
-			{posts &&
-				posts.map((post, i) => {
-					if (!post.over_18) return <Post post={post} key={i} />;
-				})}
+			{posts.map((post, i) =>
+				!post.over_18 ? <Post post={post} key={i} /> : ''
+			)}
 		</main>
 	);
 };
