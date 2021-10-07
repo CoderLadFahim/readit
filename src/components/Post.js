@@ -15,15 +15,31 @@ function Post({ post }) {
 	const hideCommentsModal = () => setPermalinkForComments();
 
 	const renderPostContent = () => {
-		if (post.is_video)
+		if (post.is_video) {
+			const videoUrl = post.secure_media.reddit_video.fallback_url;
+			const videoType = (() => {
+				if (videoUrl.includes('.mp4')) return 'mp4';
+				if (videoUrl.includes('.webm')) return 'webm';
+				if (videoUrl.includes('.mpg')) return 'mpg';
+				if (videoUrl.includes('.mp2')) return 'mp2';
+				if (videoUrl.includes('.mpeg')) return 'mpeg';
+				if (videoUrl.includes('.mpv')) return 'mpv';
+				if (videoUrl.includes('.m4p')) return 'm4p';
+				if (videoUrl.includes('.m4v')) return 'm4v';
+				if (videoUrl.includes('.avi')) return 'avi';
+				if (videoUrl.includes('.wmv')) return 'wmv';
+				if (videoUrl.includes('.mov')) return 'mov';
+				if (videoUrl.includes('.qt')) return 'qt';
+				if (videoUrl.includes('.flv')) return 'flv';
+				if (videoUrl.includes('.swf')) return 'swf';
+				if (videoUrl.includes('.avchd')) return 'avchd';
+			})();
 			return (
 				<video className="w-full" controls style={{ maxHeight: '28rem' }}>
-					<source
-						src={post.secure_media.reddit_video.fallback_url}
-						type="video/mp4"
-					></source>
+					<source src={videoUrl} type={`video/${videoType}`}></source>
 				</video>
 			);
+		}
 
 		if (post.selftext)
 			return (
