@@ -57,7 +57,6 @@ function Post({ post }) {
 
 	return (
 		<div
-			onClick={() => console.dir(post)}
 			className="post-detail w-full bg-gray-700 font-nunito shadow mb-5"
 			key={post.permalink}
 		>
