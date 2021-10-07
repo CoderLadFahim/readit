@@ -48,7 +48,7 @@ const LeaderBoard = () => {
 										{data &&
 											new Intl.NumberFormat().format(
 												data.subscribers
-											)}
+											)}{' '}
 										subscribers
 									</span>
 								</div>
