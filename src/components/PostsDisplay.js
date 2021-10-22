@@ -9,16 +9,11 @@ const PostsDisplay = ({ posts }) => {
 			{posts.map((post, i) =>
 				!post.over_18 ? <Post post={post} key={i} /> : ''
 			)}
-<<<<<<< HEAD
 			<button
 				onClick={() => setBtnClicked(true)}
 				className="w-full py-3 mb-5 bg-red-400 rounded-md font-bold text-white text-lg hover:bg-red-300"
 			>
 				{btnClicked ? 'Feature coming soon' : 'Load more posts'}
-=======
-			<button className="w-full py-3 mb-5 bg-red-400 rounded-md font-bold text-white text-lg hover:bg-red-300">
-				Load more posts
->>>>>>> 065401fd5422df5f23e57d962fe310a380c6c1a7
 			</button>
 		</main>
 	);
