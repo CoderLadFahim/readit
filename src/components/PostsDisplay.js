@@ -6,6 +6,9 @@ const PostsDisplay = ({ posts }) => {
 			{posts.map((post, i) =>
 				!post.over_18 ? <Post post={post} key={i} /> : ''
 			)}
+			<button className="w-full py-3 mb-5 bg-red-400 rounded-md font-bold text-white text-lg hover:bg-red-300">
+				Load more posts
+			</button>
 		</main>
 	);
 };
