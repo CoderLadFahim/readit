@@ -1,9 +1,12 @@
 import { Link, useHistory, useLocation } from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+import {clearPosts} from '../features/posts/postsSlice';
 import { ListIcon } from '../icons';
 import { useQuery } from '../hooks';
 
 function SideButtons() {
 	const history = useHistory();
+	const dispatch = useDispatch();
 	const routeLocation = useLocation();
 	const query = useQuery();
 	const subredditQuery = query.get('subreddit');
@@ -26,11 +29,7 @@ function SideButtons() {
 				<Link
 					className="transform side-btn w-9 h-9 bg-blue-400 rounded-full grid place-items-center transition hover:scale-110 shadow"
 					to="/"
-					onClick={() => {
-						setTimeout(() => {
-							window.location.reload();
-						});
-					}}
+					onClick={() => dispatch(clearPosts())}
 				>
 					<span className="font-bold text-white text-xs">r/all</span>
 				</Link>

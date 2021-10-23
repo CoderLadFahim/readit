@@ -2,17 +2,17 @@ import { useHistory } from 'react-router-dom';
 import '../App.css';
 import { useSubreddits } from '../hooks';
 import CustomSubredditIcon from './CustomSubredditIcon';
+import {useDispatch} from 'react-redux';
+import {clearPosts} from '../features/posts/postsSlice';
 
 const LeaderBoard = () => {
 	const history = useHistory();
 	const subreddits = useSubreddits();
+	const dispatch = useDispatch();
 
 	const handleSubredditResultClick = (name) => {
 		history.push(`/?subreddit=${name}`);
-
-		setTimeout(() => {
-			window.location.reload();
-		}, 50);
+		dispatch(clearPosts())
 	};
 
 	return (

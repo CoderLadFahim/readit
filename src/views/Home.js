@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { clearAll } from '../features/subreddits/subredditSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts } from '../features/posts/postsSlice';
-import { usePosts, useQuery, useSubredditData } from '../hooks';
+import { useQuery, useSubredditData } from '../hooks';
 import PostsDisplay from '../components/PostsDisplay';
 import LeaderBoard from '../components/LeaderBoard';
 import SubredditDescription from '../components/SubredditDescription';
@@ -16,12 +16,10 @@ function Home() {
 	// returns an obj {name, iconImg, desc, subscribers}
 	const subData = useSubredditData(subredditQuery || 'all');
 
-	// the following variable and side effect, clears the subreddits when user visits the home route (DO NOT TAMPER WITH IT)
-	// const subredditSliceActionDispatcher = useDispatch();
-
-	// useEffect(() => {
-	// 	subredditSliceActionDispatcher(clearAll());
-	// }, []);
+	// the following side effect, clears the subreddits when user visits the home route (DO NOT TAMPER WITH IT)
+	useEffect(() => {
+		dispatch(clearAll());
+	}, []);
 
 	useEffect(() => {
 		dispatch(fetchPosts(subredditQuery || 'all'));

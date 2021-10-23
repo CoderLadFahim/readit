@@ -1,20 +1,21 @@
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { clearAll } from '../features/subreddits/subredditSlice';
+import { clearPosts } from '../features/posts/postsSlice';
 import { useDispatch } from 'react-redux';
 import { useSubreddits, useQuery } from '../hooks';
 import CustomSubredditIcon from '../components/CustomSubredditIcon';
 
 function SubredditsDisplay() {
 	// getting the query params
+	const dispatch = useDispatch();
 	const query = useQuery();
 	const history = useHistory();
 	const searchQuery = query.get('q');
 
-	// the following variable and side effect, clears the subreddits when user visits the home route (DO NOT TAMPER WITH IT)
-	const subredditSliceActionDispatcher = useDispatch();
+	// the following side effect, clears the subreddits when user visits the home route (DO NOT TAMPER WITH IT)
 	useEffect(() => {
-		subredditSliceActionDispatcher(clearAll());
+		dispatch(clearAll());
 	}, []);
 
 	let subreddits = useSubreddits(searchQuery);
@@ -33,6 +34,7 @@ function SubredditsDisplay() {
 
 	const handleSubredditResultClick = (name) => {
 		history.push(`/?subreddit=${name}`);
+		dispatch(clearPosts());
 	};
 
 	return (

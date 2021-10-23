@@ -1,11 +1,9 @@
 import Logo from './Logo';
 import SearchBar from './SearchBar';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { InfoCircleIcon } from '../icons';
 
 function NavBar({ infoModalToggler }) {
-	const routeLocation = useLocation();
-
 	return (
 		<nav className="bg-gray-700 py-4 sm:py-3">
 			<ul className="container flex justify-between items-center">

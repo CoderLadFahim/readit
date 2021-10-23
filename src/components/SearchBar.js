@@ -11,7 +11,7 @@ function SearchBar() {
 	const handleEnterPress = (e) => {
 		if (searchTerm) history.push(`/subreddits?q=${searchTerm}`);
 		// if user searches for anything whilst being on the /subreddits route, page will refresh, showing the new data
-		if (pathname === '/subreddits') window.location.reload();
+		// if (pathname === '/subreddits') window.location.reload();
 	};
 
 	return (
