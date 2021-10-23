@@ -16,10 +16,10 @@ const LeaderBoard = () => {
 	};
 
 	return (
-		<div className="leader-board">
+		<div className="leader-board rounded-2xl overflow-hidden">
 			<div className="top font-bold">Top Communities</div>
 			{subreddits
-				? subreddits.slice(0, 4).map((data, i) => {
+				? subreddits.map((data, i) => {
 						return (
 							<div
 								onClick={() =>
@@ -70,12 +70,12 @@ const LeaderBoard = () => {
 						</div>
 				  ))}
 
-			<Link
-				className="bottom block font-bold transition hover:bg-blue-300"
-				to="/subreddits"
-			>
-				View All
-			</Link>
+			{/* <Link */}
+			{/* 	className="bottom block font-bold transition hover:bg-blue-300" */}
+			{/* 	to="/subreddits" */}
+			{/* > */}
+			{/* 	View All */}
+			{/* </Link> */}
 		</div>
 	);
 };
