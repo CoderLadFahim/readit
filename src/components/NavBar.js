@@ -6,18 +6,10 @@ import { InfoCircleIcon } from '../icons';
 function NavBar({ infoModalToggler }) {
 	const routeLocation = useLocation();
 
-	const handleLogoClick = () => {
-		if (routeLocation.pathname === '/') {
-			setTimeout(() => {
-				window.location.reload();
-			}, 50);
-		}
-	};
-
 	return (
 		<nav className="bg-gray-700 py-4 sm:py-3">
 			<ul className="container flex justify-between items-center">
-				<li onClick={handleLogoClick} className="hidden sm:block text-xl">
+				<li className="hidden sm:block text-xl">
 					<Link to="/">
 						<Logo />
 					</Link>
