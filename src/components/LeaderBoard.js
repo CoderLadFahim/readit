@@ -1,4 +1,4 @@
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import '../App.css';
 import { useSubreddits } from '../hooks';
 import CustomSubredditIcon from './CustomSubredditIcon';
