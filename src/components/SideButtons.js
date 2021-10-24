@@ -11,14 +11,8 @@ function SideButtons() {
 	const query = useQuery();
 	const subredditQuery = query.get('subreddit');
 
-	// these refreshers are necessary as the hooks can't be called on query change
 	const handleListIconClick = () => {
 		dispatch(clearAll());
-
-		// if (routeLocation.pathname === '/subreddits')
-		// setTimeout(() => {
-		// 	window.location.reload();
-		// }, 1000);
 	};
 
 	return (
@@ -38,7 +32,7 @@ function SideButtons() {
 				''
 			)}
 
-			{history.location.search || history.location.pathname === '/' ? (
+			{history.location.search || history.location.pathname !== '/' ? (
 				<Link
 					className="side-btn top-communities-btn transform w-9 h-9 bg-gray-500
 				rounded-full grid place-items-center transition hover:scale-110
