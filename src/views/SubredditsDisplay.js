@@ -45,6 +45,7 @@ function SubredditsDisplay() {
 	const handleSubredditResultClick = (name) => {
 		history.push(`/?subreddit=${name}`);
 		dispatch(clearPosts());
+		dispatch(clearAll());
 	};
 
 	return (

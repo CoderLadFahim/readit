@@ -39,13 +39,14 @@ export const useSubreddits = (searchTerm = null) => {
 // takes in a subredditName and returns an object with subredditName and subredditDescription is apiResponse is OK
 export const useSubredditData = (subredditQuery) => {
 	const [subDesc, setSubDesc] = useState(null);
-	const allSubredditData = {
-		name: 'r/all',
-		description:
-			'The most active posts from all of Reddit. Come here to see new posts rising and be a part of the conversation.',
-	};
 
 	useEffect(() => {
+		const allSubredditData = {
+			name: 'r/all',
+			description:
+				'The most active posts from all of Reddit. Come here to see new posts rising and be a part of the conversation.',
+		};
+
 		async function getSubredditDesc() {
 			try {
 				const subredditSearchEndpoint = `https://www.reddit.com/search.json?q=${subredditQuery}&type=sr`;

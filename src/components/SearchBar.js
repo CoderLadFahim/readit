@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { clearAll } from '../features/subreddits/subredditSlice';
+import { useDispatch } from 'react-redux';
 import {
 	useHistory,
 	// useLocation
@@ -8,10 +10,12 @@ import { SearchIcon } from '../icons';
 function SearchBar() {
 	const [searchTerm, setSearchTerm] = useState('');
 	const history = useHistory();
+	const dispatch = useDispatch();
 	// const { pathname } = useLocation();
 
 	// this fires on every keystroke on the searchbar input, but calls the api only when searchTerm is truthy and on enter press
 	const handleEnterPress = () => {
+		dispatch(clearAll());
 		if (searchTerm) history.push(`/subreddits?q=${searchTerm}`);
 		// if user searches for anything whilst being on the /subreddits route, page will refresh, showing the new data
 		// if (pathname === '/subreddits') window.location.reload();

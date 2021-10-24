@@ -16,31 +16,14 @@ function Home() {
 	// returns an obj {name, iconImg, desc, subscribers}
 	const subData = useSubredditData(subredditQuery || 'all');
 
-	// the following side effect, clears the subreddits when user visits the home route (DO NOT TAMPER WITH IT)
-	// useEffect(() => {
-	// 	dispatch(clearAll());
-	// }, []);
-
 	useEffect(() => {
 		dispatch(fetchPosts(subredditQuery || 'all'));
 	}, [subredditQuery]);
-
-	/*
-	 returns an array of postObjs
-	 properties needed from the post objects: 
-	 		title, over_18 (hide the post if true), author, permalink(need this to fetch comments), subreddit_name_prefixed, ups, downs,
-	*/
 
 	const posts = useSelector((state) => {
 		if (state.posts.posts) return state.posts.posts;
 		return null;
 	});
-
-	// const posts = usePosts(subredditQuery || 'all');
-	// uncomment the following useEffect blocc to study the data
-	// useEffect(() => {
-	// 	posts && console.log(posts, subData);
-	// }, [posts]);
 
 	return (
 		<section>
@@ -49,7 +32,7 @@ function Home() {
 					<PostsDisplay posts={posts}></PostsDisplay>
 				) : (
 					<div className="w-full xl:w-1/3 space-y-5">
-						{[1, 2, 3].map((el) => (
+						{[...new Array(24)].map((el) => (
 							<div
 								key={el}
 								className="animate-pulse flex flex-col justify-between w-full   h-96 rounded-xl bg-gray-600 p-4"

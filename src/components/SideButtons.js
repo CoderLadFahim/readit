@@ -1,8 +1,9 @@
 import { Link, useHistory, useLocation } from 'react-router-dom';
-import {useDispatch} from 'react-redux';
-import {clearPosts} from '../features/posts/postsSlice';
+import { useDispatch } from 'react-redux';
+import { clearPosts } from '../features/posts/postsSlice';
 import { ListIcon } from '../icons';
 import { useQuery } from '../hooks';
+import { clearAll } from '../features/subreddits/subredditSlice';
 
 function SideButtons() {
 	const history = useHistory();
@@ -10,14 +11,15 @@ function SideButtons() {
 	const routeLocation = useLocation();
 	const query = useQuery();
 	const subredditQuery = query.get('subreddit');
-	// const dispatch = useDispatch();
 
 	// these refreshers are necessary as the hooks can't be called on query change
 	const handleListIconClick = () => {
-		if (routeLocation.pathname === '/subreddits')
-			setTimeout(() => {
-				window.location.reload();
-			}, 1000);
+		dispatch(clearAll());
+
+		// if (routeLocation.pathname === '/subreddits')
+		// setTimeout(() => {
+		// 	window.location.reload();
+		// }, 1000);
 	};
 
 	return (
