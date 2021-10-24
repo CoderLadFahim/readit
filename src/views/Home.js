@@ -25,9 +25,10 @@ function Home() {
 	});
 
 	// subreddit description logic
-	// returns an obj {name, iconImg, desc, subscribers}
+	// returns an obj {name, iconImg, desc, subscribers} this state is passed to SubredditDescription
 	const [subDesc, setSubDesc] = useState(null);
 
+	// description data for r/All
 	const allSubredditData = {
 		name: 'r/all',
 		description:
@@ -68,6 +69,7 @@ function Home() {
 		}
 	}
 
+	// fetching new sub descriptions everytime subredditQuery changes
 	useEffect(() => {
 		setSubDesc(null);
 		getSubredditDesc(subredditQuery || 'all');
