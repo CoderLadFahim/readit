@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { clearAll } from '../features/subreddits/subredditSlice';
 import { clearPosts } from '../features/posts/postsSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { useSubreddits, useQuery } from '../hooks';
+import { useQuery } from '../hooks';
 import { fetchSubreddits } from '../features/subreddits/subredditSlice';
 import CustomSubredditIcon from '../components/CustomSubredditIcon';
 

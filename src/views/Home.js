@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-import { clearAll } from '../features/subreddits/subredditSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts } from '../features/posts/postsSlice';
-import { useQuery, useSubredditData } from '../hooks';
+import { useQuery } from '../hooks';
 import PostsDisplay from '../components/PostsDisplay';
 import LeaderBoard from '../components/LeaderBoard';
 import SubredditDescription from '../components/SubredditDescription';
@@ -25,9 +24,10 @@ function Home() {
 	});
 
 	// subreddit description logic
-	// returns an obj {name, iconImg, desc, subscribers}
+	// returns an obj {name, iconImg, desc, subscribers} this state is passed to SubredditDescription
 	const [subDesc, setSubDesc] = useState(null);
 
+	// description data for r/All
 	const allSubredditData = {
 		name: 'r/all',
 		description:
@@ -68,6 +68,7 @@ function Home() {
 		}
 	}
 
+	// fetching new sub descriptions everytime subredditQuery changes
 	useEffect(() => {
 		setSubDesc(null);
 		getSubredditDesc(subredditQuery || 'all');
