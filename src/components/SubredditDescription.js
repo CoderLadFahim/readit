@@ -3,6 +3,8 @@ import CustomSubredditIcon from './CustomSubredditIcon';
 import numFormatter from '../numFormatter';
 
 function SubredditDescription({ subredditData }) {
+	// console.dir(subredditData);
+
 	return (
 		<div className="backdrop hidden w-1/3 2xl:w-1/4 xl:block">
 			<div className="sub-desc w-full h-full space-y-4 bg-gray-600 rounded-md px-4 py-2">

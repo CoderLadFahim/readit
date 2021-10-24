@@ -13,8 +13,7 @@ function Home() {
 	const subredditQuery = query.get('subreddit');
 	const dispatch = useDispatch();
 
-	// returns an obj {name, iconImg, desc, subscribers}
-	let subData = useSubredditData(subredditQuery || 'all');
+	// let subData = useSubredditData(subredditQuery || 'all');
 
 	useEffect(() => {
 		dispatch(fetchPosts(subredditQuery || 'all'));
@@ -26,6 +25,7 @@ function Home() {
 	});
 
 	// subreddit description logic
+	// returns an obj {name, iconImg, desc, subscribers}
 	const [subDesc, setSubDesc] = useState(null);
 
 	const allSubredditData = {
@@ -34,7 +34,9 @@ function Home() {
 			'The most active posts from all of Reddit. Come here to see new posts rising and be a part of the conversation.',
 	};
 
-	async function getSubredditDesc() {
+	async function getSubredditDesc(subredditQuery) {
+		if (subredditQuery === 'all') return setSubDesc(allSubredditData);
+
 		try {
 			const subredditSearchEndpoint = `https://www.reddit.com/search.json?q=${subredditQuery}&type=sr`;
 			const apiResponse = await fetch(subredditSearchEndpoint);
@@ -67,7 +69,8 @@ function Home() {
 	}
 
 	useEffect(() => {
-		getSubredditDesc();
+		setSubDesc(null);
+		getSubredditDesc(subredditQuery || 'all');
 	}, [subredditQuery]);
 
 	return (
