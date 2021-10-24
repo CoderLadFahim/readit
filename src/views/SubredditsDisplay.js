@@ -2,8 +2,9 @@ import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { clearAll } from '../features/subreddits/subredditSlice';
 import { clearPosts } from '../features/posts/postsSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useSubreddits, useQuery } from '../hooks';
+import { fetchSubreddits } from '../features/subreddits/subredditSlice';
 import CustomSubredditIcon from '../components/CustomSubredditIcon';
 
 function SubredditsDisplay() {
@@ -18,7 +19,16 @@ function SubredditsDisplay() {
 		dispatch(clearAll());
 	}, []);
 
-	let subreddits = useSubreddits(searchQuery);
+	useEffect(() => {
+		dispatch(fetchSubreddits(searchQuery));
+	}, [searchQuery]);
+
+	let subreddits = useSelector((state) => {
+		if (state) return state.subreddits.subreddits;
+		return null;
+	});
+
+	subreddits = useSubreddits(searchQuery);
 	// let subreddits = false;
 
 	const relevantDataExtracted =
