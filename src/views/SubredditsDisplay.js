@@ -12,13 +12,16 @@ function SubredditsDisplay() {
 	const dispatch = useDispatch();
 	const query = useQuery();
 	const history = useHistory();
+
+	// searchQuery coming from SearchBar.js
 	const searchQuery = query.get('q');
 
-	// the following side effect, clears the subreddits when user visits the home route (DO NOT TAMPER WITH IT)
-	useEffect(() => {
-		dispatch(clearAll());
-	}, []);
+	// // the following side effect, clears the subreddits when user visits the home route (DO NOT TAMPER WITH IT)
+	// useEffect(() => {
+	// 	dispatch(clearAll());
+	// }, []);
 
+	// fetching new subreddits when user searches for new ones
 	useEffect(() => {
 		dispatch(fetchSubreddits(searchQuery));
 	}, [searchQuery]);
@@ -27,9 +30,6 @@ function SubredditsDisplay() {
 		if (state) return state.subreddits.subreddits;
 		return null;
 	});
-
-	subreddits = useSubreddits(searchQuery);
-	// let subreddits = false;
 
 	const relevantDataExtracted =
 		subreddits &&

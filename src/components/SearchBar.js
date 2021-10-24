@@ -1,14 +1,17 @@
 import { useState } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import {
+	useHistory,
+	// useLocation
+} from 'react-router-dom';
 import { SearchIcon } from '../icons';
 
 function SearchBar() {
 	const [searchTerm, setSearchTerm] = useState('');
 	const history = useHistory();
-	const { pathname } = useLocation();
+	// const { pathname } = useLocation();
 
 	// this fires on every keystroke on the searchbar input, but calls the api only when searchTerm is truthy and on enter press
-	const handleEnterPress = (e) => {
+	const handleEnterPress = () => {
 		if (searchTerm) history.push(`/subreddits?q=${searchTerm}`);
 		// if user searches for anything whilst being on the /subreddits route, page will refresh, showing the new data
 		// if (pathname === '/subreddits') window.location.reload();

@@ -17,9 +17,9 @@ function Home() {
 	const subData = useSubredditData(subredditQuery || 'all');
 
 	// the following side effect, clears the subreddits when user visits the home route (DO NOT TAMPER WITH IT)
-	useEffect(() => {
-		dispatch(clearAll());
-	}, []);
+	// useEffect(() => {
+	// 	dispatch(clearAll());
+	// }, []);
 
 	useEffect(() => {
 		dispatch(fetchPosts(subredditQuery || 'all'));
