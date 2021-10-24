@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { clearAll } from '../features/subreddits/subredditSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts } from '../features/posts/postsSlice';
@@ -14,7 +14,7 @@ function Home() {
 	const dispatch = useDispatch();
 
 	// returns an obj {name, iconImg, desc, subscribers}
-	const subData = useSubredditData(subredditQuery || 'all');
+	let subData = useSubredditData(subredditQuery || 'all');
 
 	useEffect(() => {
 		dispatch(fetchPosts(subredditQuery || 'all'));
@@ -24,6 +24,51 @@ function Home() {
 		if (state.posts.posts) return state.posts.posts;
 		return null;
 	});
+
+	// subreddit description logic
+	const [subDesc, setSubDesc] = useState(null);
+
+	const allSubredditData = {
+		name: 'r/all',
+		description:
+			'The most active posts from all of Reddit. Come here to see new posts rising and be a part of the conversation.',
+	};
+
+	async function getSubredditDesc() {
+		try {
+			const subredditSearchEndpoint = `https://www.reddit.com/search.json?q=${subredditQuery}&type=sr`;
+			const apiResponse = await fetch(subredditSearchEndpoint);
+			// returns an array of matching subreddits
+			const apiData = await apiResponse.json();
+
+			// getting only the first search result
+			const firstSubredditResultData = apiData.data.children[0].data;
+
+			// extracting the relevant properties
+			const subredditDataObj = {
+				name: firstSubredditResultData.display_name_prefixed,
+				description: firstSubredditResultData.public_description,
+				iconImg:
+					firstSubredditResultData.icon_img ||
+					firstSubredditResultData.banner_img,
+				subscribers: firstSubredditResultData.subscribers,
+			};
+
+			setSubDesc(
+				!subredditQuery.includes('all')
+					? subredditDataObj
+					: allSubredditData
+			);
+		} catch (e) {
+			setSubDesc({
+				msg: '400, not found',
+			});
+		}
+	}
+
+	useEffect(() => {
+		getSubredditDesc();
+	}, [subredditQuery]);
 
 	return (
 		<section>
@@ -47,8 +92,8 @@ function Home() {
 						))}
 					</div>
 				)}
-				{subData ? (
-					<SubredditDescription subredditData={subData} />
+				{subDesc ? (
+					<SubredditDescription subredditData={subDesc} />
 				) : (
 					<div className="h-44 hidden xl:block w-1/3 p-3 animate-pulse bg-gray-600 rounded-md space-y-10">
 						<div className="skeleton-title w-20 h-5 bg-gray-500 rounded-xl opacity-50"></div>
