@@ -12,7 +12,13 @@ function SideButtons() {
 	const subredditQuery = query.get('subreddit');
 	const searchQuery = query.get('q');
 
-	const handleListIconClick = () => dispatch(clearAll());
+	const handleListIconClick = () => {
+		console.dir({
+			searchQuery,
+		});
+
+		dispatch(clearAll());
+	};
 
 	return (
 		<div className="side-btns fixed right-4 bottom-4 flex flex-col justify-between z-10">
@@ -28,18 +34,22 @@ function SideButtons() {
 				''
 			)}
 
-			<Link
-				className={`side-btn top-communities-btn transform w-9 h-9 bg-gray-500
+			{history.location.pathname !== '/subreddits' || searchQuery ? (
+				<Link
+					className={`side-btn top-communities-btn transform w-9 h-9 bg-gray-500
 				rounded-full grid place-items-center transition hover:scale-110
 				shadow`}
-				to="/subreddits"
-				onClick={handleListIconClick}
-			>
-				<ListIcon
-					className="text-gray-50
+					to="/subreddits"
+					onClick={handleListIconClick}
+				>
+					<ListIcon
+						className="text-gray-50
 					transform scale-125"
-				/>
-			</Link>
+					/>
+				</Link>
+			) : (
+				''
+			)}
 		</div>
 	);
 }
