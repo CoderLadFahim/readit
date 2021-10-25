@@ -38,7 +38,7 @@ function SideButtons() {
 				<Link
 					className={`side-btn top-communities-btn transform w-9 h-9 bg-gray-500
 				rounded-full grid place-items-center transition hover:scale-110
-				shadow`}
+				shadow ${history.location.pathname === '/' && 'sm:hidden'}`}
 					to="/subreddits"
 					onClick={handleListIconClick}
 				>
