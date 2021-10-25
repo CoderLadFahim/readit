@@ -77,7 +77,7 @@ function Home() {
 	return (
 		<section>
 			<div className="container mt-6 flex gap-4 items-start justify-between">
-				{posts ? (
+				{posts.length ? (
 					<PostsDisplay posts={posts}></PostsDisplay>
 				) : (
 					<div className="w-full xl:w-1/3 space-y-5">
