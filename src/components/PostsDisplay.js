@@ -1,8 +1,9 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Post from './Post';
 
 const PostsDisplay = ({ posts, fetchAdditionalPosts }) => {
-	const [btnClicked, setBtnClicked] = useState(false);
+	const postsLoading = useSelector((state) => state.posts.postsLoading);
 
 	return (
 		<main className="post ">
@@ -12,9 +13,11 @@ const PostsDisplay = ({ posts, fetchAdditionalPosts }) => {
 
 			<button
 				onClick={fetchAdditionalPosts}
-				className="w-full py-3 mb-5 bg-red-400 rounded-md font-bold text-white text-lg hover:bg-red-300"
+				className={`font-nunito w-full py-3 mb-5 bg-blue-400 rounded-md font-bold text-white text-lg hover:bg-blue-300 ${
+					postsLoading ? 'animate-pulse' : ''
+				}`}
 			>
-				Load more posts
+				{postsLoading ? 'Loading Posts' : 'Load more posts'}
 			</button>
 		</main>
 	);
