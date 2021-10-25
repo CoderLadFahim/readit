@@ -46,6 +46,7 @@ const LeaderBoard = () => {
 										<h4 className="font-bold text-sm text-gray-50">
 											{data.display_name_prefixed}
 										</h4>
+
 										<span className="text-span font-nunito">
 											{data &&
 												new Intl.NumberFormat().format(

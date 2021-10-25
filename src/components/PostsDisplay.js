@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Post from './Post';
 
-const PostsDisplay = ({ posts }) => {
+const PostsDisplay = ({ posts, fetchAdditionalPosts }) => {
 	const [btnClicked, setBtnClicked] = useState(false);
 
 	return (
@@ -9,11 +9,12 @@ const PostsDisplay = ({ posts }) => {
 			{posts.map((post, i) =>
 				!post.over_18 ? <Post post={post} key={i} /> : ''
 			)}
+
 			<button
-				onClick={() => setBtnClicked(true)}
+				onClick={fetchAdditionalPosts}
 				className="w-full py-3 mb-5 bg-red-400 rounded-md font-bold text-white text-lg hover:bg-red-300"
 			>
-				{btnClicked ? 'Feature coming soon' : 'Load more posts'}
+				Load more posts
 			</button>
 		</main>
 	);

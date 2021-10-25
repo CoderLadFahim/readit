@@ -10,13 +10,17 @@ const initialState = {
 
 export const fetchPosts = createAsyncThunk(
 	'posts/fetchPosts',
-	async (subredditName, afterValue) => {
-		const apiResponse = await fetch(
-			!afterValue
-				? `https://www.reddit.com/r/${subredditName.toLowerCase()}.json`
-				: `https://www.reddit.com/r/${subredditName.toLowerCase()}.json?after=${afterValue}`
-		);
+	async ({
+		subredditQuery: subredditName,
+		afterValueForFetchingNewPosts: afterValue,
+	}) => {
+		const apiEndpoint = afterValue
+			? `https://www.reddit.com/r/${subredditName.toLowerCase()}.json?after=${afterValue}`
+			: `https://www.reddit.com/r/${subredditName.toLowerCase()}.json`;
+
+		const apiResponse = await fetch(apiEndpoint);
 		const apiData = await apiResponse.json();
+
 		return apiData;
 	}
 );
@@ -47,7 +51,10 @@ export const postsSlice = createSlice({
 					}
 				) => {
 					state.postsLoading = false;
-					state.posts = [...children.map((postData) => postData.data)];
+					state.posts = [
+						...state.posts,
+						...children.map((postData) => postData.data),
+					];
 					state.postsError = false;
 
 					state.afterValue = after;

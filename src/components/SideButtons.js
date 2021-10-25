@@ -10,44 +10,36 @@ function SideButtons() {
 	const dispatch = useDispatch();
 	const query = useQuery();
 	const subredditQuery = query.get('subreddit');
+	const searchQuery = query.get('q');
 
-	const handleListIconClick = () => {
-		dispatch(clearAll());
-	};
+	const handleListIconClick = () => dispatch(clearAll());
 
 	return (
 		<div className="side-btns fixed right-4 bottom-4 flex flex-col justify-between z-10">
 			<button className="hidden side-btn transform w-9 h-9 bg-gray-200 rounded-full grid place-items-center transition hover:scale-110 shadow sm:hidden">
 				<span className="font-bold text-gray-600">r/?</span>
 			</button>
-			{subredditQuery ? (
-				<Link
-					className="transform side-btn w-9 h-9 bg-blue-400 rounded-full grid place-items-center transition hover:scale-110 shadow"
-					to="/"
-					onClick={() => dispatch(clearPosts())}
-				>
-					<span className="font-bold text-white text-xs">r/all</span>
-				</Link>
-			) : (
-				''
-			)}
 
-			{history.location.search || history.location.pathname !== '/' ? (
-				<Link
-					className="side-btn top-communities-btn transform w-9 h-9 bg-gray-500
+			<Link
+				className={`transform side-btn w-9 h-9 bg-blue-400 rounded-full grid place-items-center transition hover:scale-110 shadow`}
+				to="/"
+				onClick={() => dispatch(clearPosts())}
+			>
+				<span className="font-bold text-white text-xs">r/all</span>
+			</Link>
+
+			<Link
+				className={`side-btn top-communities-btn transform w-9 h-9 bg-gray-500
 				rounded-full grid place-items-center transition hover:scale-110
-				shadow"
-					to="/subreddits"
-					onClick={handleListIconClick}
-				>
-					<ListIcon
-						className="text-gray-50
+				shadow`}
+				to="/subreddits"
+				onClick={handleListIconClick}
+			>
+				<ListIcon
+					className="text-gray-50
 					transform scale-125"
-					/>
-				</Link>
-			) : (
-				''
-			)}
+				/>
+			</Link>
 		</div>
 	);
 }

@@ -9,19 +9,29 @@ import SubredditDescription from '../components/SubredditDescription';
 function Home() {
 	// getting the subreddit to look for from query params, (coming initially from CatchAll and also from subreddit results on SubredditDisplay)
 	const query = useQuery();
-	const subredditQuery = query.get('subreddit');
+	const subredditQuery = query.get('subreddit') || 'all';
 	const dispatch = useDispatch();
 
 	// let subData = useSubredditData(subredditQuery || 'all');
 
 	useEffect(() => {
-		dispatch(fetchPosts(subredditQuery || 'all'));
+		dispatch(fetchPosts({ subredditQuery }));
 	}, [subredditQuery]);
 
 	const posts = useSelector((state) => {
 		if (state.posts.posts) return state.posts.posts;
 		return null;
 	});
+
+	const afterValueForFetchingNewPosts = useSelector((state) => {
+		if (state.posts.afterValue) return state.posts.afterValue;
+		return null;
+	});
+
+	const fetchAdditionalPosts = () => {
+		dispatch(fetchPosts({ subredditQuery, afterValueForFetchingNewPosts }));
+		// console.dir({ subredditQuery, afterValueForFetchingNewPosts });
+	};
 
 	// subreddit description logic
 	// returns an obj {name, iconImg, desc, subscribers} this state is passed to SubredditDescription
@@ -71,14 +81,17 @@ function Home() {
 	// fetching new sub descriptions everytime subredditQuery changes
 	useEffect(() => {
 		setSubDesc(null);
-		getSubredditDesc(subredditQuery || 'all');
+		getSubredditDesc(subredditQuery);
 	}, [subredditQuery]);
 
 	return (
 		<section>
 			<div className="container mt-6 flex gap-4 items-start justify-between">
 				{posts.length ? (
-					<PostsDisplay posts={posts}></PostsDisplay>
+					<PostsDisplay
+						fetchAdditionalPosts={fetchAdditionalPosts}
+						posts={posts}
+					></PostsDisplay>
 				) : (
 					<div className="w-full xl:w-1/3 space-y-5">
 						{[...new Array(24)].map((el) => (
