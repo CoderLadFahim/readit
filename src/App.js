@@ -23,17 +23,9 @@ function App() {
 			<NavBar infoModalToggler={toggleInfoModal} />
 			<SideButtons />
 			<Routes>
-				<Route exact path="/">
-					<Home />
-				</Route>
-
-				<Route exact path="/subreddits">
-					<SubredditsDisplay />
-				</Route>
-
-				<Route exact path="*">
-					<CatchAll />
-				</Route>
+				<Route path="/" element={<Home />} />
+				<Route path="/subreddits" element={<SubredditsDisplay />} />
+				<Route path="*" element={<CatchAll />} />
 			</Routes>
 		</Router>
 	);
