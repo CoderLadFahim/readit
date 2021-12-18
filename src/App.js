@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 import './App.css';
 import NavBar from './components/NavBar';
@@ -22,7 +22,7 @@ function App() {
 			{showInfoModal && <InfoModal infoModalToggler={toggleInfoModal} />}
 			<NavBar infoModalToggler={toggleInfoModal} />
 			<SideButtons />
-			<Switch>
+			<Routes>
 				<Route exact path="/">
 					<Home />
 				</Route>
@@ -34,7 +34,7 @@ function App() {
 				<Route exact path="*">
 					<CatchAll />
 				</Route>
-			</Switch>
+			</Routes>
 		</Router>
 	);
 }

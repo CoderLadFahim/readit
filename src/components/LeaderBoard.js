@@ -1,4 +1,4 @@
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../App.css';
 import { useSubreddits } from '../hooks';
 import CustomSubredditIcon from './CustomSubredditIcon';
@@ -6,12 +6,12 @@ import { useDispatch } from 'react-redux';
 import { clearPosts } from '../features/posts/postsSlice';
 
 const LeaderBoard = () => {
-	const history = useHistory();
+	const navigate = useNavigate();
 	const subreddits = useSubreddits();
 	const dispatch = useDispatch();
 
 	const handleSubredditResultClick = (name) => {
-		history.push(`/?subreddit=${name}`);
+		navigate.push(`/?subreddit=${name}`);
 		// clearing the existing posts to load new ones
 		dispatch(clearPosts());
 	};

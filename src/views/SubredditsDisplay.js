@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { clearAll } from '../features/subreddits/subredditSlice';
 import { clearPosts } from '../features/posts/postsSlice';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,7 +11,7 @@ function SubredditsDisplay() {
 	// getting the query params
 	const dispatch = useDispatch();
 	const query = useQuery();
-	const history = useHistory();
+	const navigate = useNavigate();
 
 	// searchQuery coming from SearchBar.js
 	const searchQuery = query.get('q');
@@ -43,7 +43,7 @@ function SubredditsDisplay() {
 		}));
 
 	const handleSubredditResultClick = (name) => {
-		history.push(`/?subreddit=${name}`);
+		navigate.push(`/?subreddit=${name}`);
 		dispatch(clearPosts());
 		dispatch(clearAll());
 	};
