@@ -11,7 +11,7 @@ const LeaderBoard = () => {
 	const dispatch = useDispatch();
 
 	const handleSubredditResultClick = (name) => {
-		navigate.push(`/?subreddit=${name}`);
+		navigate(`/?subreddit=${name}`);
 		// clearing the existing posts to load new ones
 		dispatch(clearPosts());
 	};
