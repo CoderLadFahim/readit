@@ -60,10 +60,10 @@ function SubredditsDisplay() {
 					: 'Top Communities'}
 			</h1>
 
-			<ul>
+			<div>
 				{relevantDataExtracted ? (
 					relevantDataExtracted.map((sub) => (
-						<li
+						<a
 							key={sub.postId}
 							className="container mb-5 rounded-md bg-gray-600 shadow flex items-center py-2 gap-5 pl-5 cursor-pointer transition hover:bg-gray-500"
 							onClick={() =>
@@ -90,7 +90,7 @@ function SubredditsDisplay() {
 									members
 								</p>
 							</div>
-						</li>
+						</a>
 					))
 				) : (
 					<>
@@ -110,7 +110,7 @@ function SubredditsDisplay() {
 						))}
 					</>
 				)}
-			</ul>
+			</div>
 		</div>
 	);
 }
