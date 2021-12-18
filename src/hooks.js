@@ -118,3 +118,5 @@ export const useQuery = () => {
 	const searchParams = new URLSearchParams(routeLocation.search);
 	return searchParams;
 };
+
+// this is juat a comment
